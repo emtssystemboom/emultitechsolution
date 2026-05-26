@@ -1457,6 +1457,39 @@ html, body {
   color: #25D366; /* WhatsApp green icon */
 }
 
+/* ── CTA reassurance microcopy — small grey line under primary CTAs
+       (hero, CTA bands on legal pages, testimonial CTA). Conveys
+       "what to expect" so visitors click with confidence. */
+.cta-reassurance {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.003em;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0.75rem 0 0;
+  text-align: inherit;
+}
+.cta-reassurance--on-dark {
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* Footer-bottom credentials — Kathmandu / Melbourne / Established 2010.
+   Wraps cleanly to second line on small screens without changing layout. */
+.footer-credentials {
+  display: inline;
+  opacity: 0.78;
+  font-size: 0.875em;
+}
+@media (max-width: 600px) {
+  .footer-credentials {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8em;
+  }
+}
+
 /* Multi-step form progress — sticky-pin to top on mobile so the user
    always sees which step they're on while scrolling the long form.
    Desktop unchanged (wizard sits at top of layout already). */
