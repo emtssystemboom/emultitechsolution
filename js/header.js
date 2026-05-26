@@ -8,42 +8,45 @@
 
 (function () {
   const headerHTML = `
+  <a class="a11y-skip-link" href="#main">Skip to main content</a>
   <header>
-    <nav class="navbar navbar-light blue-bg fixed-top">
+    <nav class="navbar navbar-light blue-bg fixed-top" aria-label="Primary navigation">
       <div class="container-fluid d-flex justify-content-between">
-        <a class="navbar-brand" href="index.html">
-          <img src="images/logo.png" alt="E Multitech Solution Logo" height="42" loading="lazy">
+        <a class="navbar-brand" href="index.html" aria-label="E Multitech Solution — go to homepage">
+          <img src="images/logo.png" alt="E Multitech Solution" height="42">
         </a>
 
         <div class="right--bar">
           <div class="contact-info">
-            <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-whatsapp"></i> +977 9851038796
+            <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp at +977 9851038796">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> +977 9851038796
             </a>
           </div>
-          <button class="navbar-toggler" type="button" aria-label="Toggle navigation" onclick="toggleMenu()">
-            <img src="images/nav-toggle-icon.png" alt="Toggle Menu" loading="lazy">
+          <button class="navbar-toggler" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navbarMenu" onclick="toggleMenu()">
+            <img src="images/nav-toggle-icon.png" alt="" aria-hidden="true" loading="lazy">
           </button>
         </div>
       </div>
     </nav>
   </header>
 
-  <div class="menu-backdrop" id="menuBackdrop" onclick="closeMenu()"></div>
-  <aside class="navbar-collapse" id="navbarMenu">
-    <button class="menu-close" onclick="closeMenu()">&times;</button>
+  <div class="menu-backdrop" id="menuBackdrop" onclick="closeMenu()" aria-hidden="true"></div>
+  <aside class="navbar-collapse" id="navbarMenu" role="dialog" aria-label="Site navigation menu" aria-modal="false">
+    <button class="menu-close" type="button" aria-label="Close navigation menu" onclick="closeMenu()">&times;</button>
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
       <li class="nav-item">
-        <a class="nav-link dropdown-toggle" id="servicesDropdown" onclick="toggleDropdown(this)">Services</a>
-        <div class="dropdown-menu" id="servicesMenu">
-        <a class="dropdown-item" href="custom-software-development.html">Software Development</a>
-        <a class="dropdown-item" href="saas-development.html">SaaS Development</a> 
-        <a class="dropdown-item" href="mobile-development.html">Mobile App Development</a>
-          <a class="dropdown-item" href="ai-powered-solutions.html">AI Solutions</a>                             
-          <a class="dropdown-item" href="devops-engineer.html">DevOps Engineer</a>
-          <a class="dropdown-item" href="product-engineering.html">Product Engineering</a>
+        <button class="nav-link dropdown-toggle" type="button" id="servicesDropdown" aria-haspopup="true" aria-expanded="false" aria-controls="servicesMenu" onclick="toggleDropdown(this)">Services</button>
+        <div class="dropdown-menu" id="servicesMenu" role="menu" aria-labelledby="servicesDropdown">
+          <a class="dropdown-item" role="menuitem" href="ai-powered-solutions.html">AI Solutions &amp; Automation</a>
+          <a class="dropdown-item" role="menuitem" href="custom-software-development.html">Custom Software Development</a>
+          <a class="dropdown-item" role="menuitem" href="saas-development.html">SaaS Product Development</a>
+          <a class="dropdown-item" role="menuitem" href="mobile-development.html">Mobile App Development</a>
+          <a class="dropdown-item" role="menuitem" href="devops-engineer.html">DevOps &amp; Cloud Engineering</a>
+          <a class="dropdown-item" role="menuitem" href="product-engineering.html">Product Engineering</a>
+          <div class="dropdown-subhead" role="presentation">Specialty</div>
+          <a class="dropdown-item" role="menuitem" href="auction-software.html">Auction Software</a>
         </div>
       </li>
       <li class="nav-item"><a class="nav-link" href="case-studies.html">Case Studies</a></li>
@@ -56,20 +59,29 @@
   </aside>
   `;
 
-  // Inject into #site-header placeholder if it exists, otherwise prepend to body
+  // Inject the header at runtime ONLY if the page doesn't already have one.
+  // Pages built by tools/build-pages.mjs have the header HTML inlined directly
+  // (so crawlers and AI bots see real content) — in that case this is a no-op.
   const placeholder = document.getElementById('site-header');
-  if (placeholder) {
-    placeholder.outerHTML = headerHTML;
-  } else {
-    document.body.insertAdjacentHTML('afterbegin', headerHTML);
+  const hasInlinedHeader = document.querySelector('header') !== null;
+  if (!hasInlinedHeader) {
+    if (placeholder) {
+      placeholder.outerHTML = headerHTML;
+    } else {
+      document.body.insertAdjacentHTML('afterbegin', headerHTML);
+    }
+  } else if (placeholder) {
+    // Tidy up: remove the now-unused placeholder so the DOM stays clean.
+    placeholder.remove();
   }
 
-  // Highlight the active nav link based on current page
+  // Highlight the active nav link based on current page (+ aria-current for SR users)
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.navbar-nav .nav-link, .dropdown-item').forEach(link => {
     const href = link.getAttribute('href');
     if (href && href === currentPage) {
       link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
     }
   });
 })();
@@ -80,6 +92,7 @@ function toggleMenu() {
   const navbar   = document.querySelector('.navbar');
   const menu     = document.getElementById('navbarMenu');
   const backdrop = document.getElementById('menuBackdrop');
+  const toggler  = document.querySelector('.navbar-toggler');
 
   const isOpen = menu.classList.contains('show');
   if (isOpen) {
@@ -88,6 +101,13 @@ function toggleMenu() {
     menu.classList.add('show');
     backdrop.classList.add('show');
     navbar.classList.add('scrolled');
+    if (toggler) {
+      toggler.setAttribute('aria-expanded', 'true');
+      toggler.setAttribute('aria-label', 'Close navigation menu');
+    }
+    // Move keyboard focus into the menu so screen-reader users land in it
+    const firstLink = menu.querySelector('a, button');
+    if (firstLink) setTimeout(() => firstLink.focus(), 50);
   }
 }
 
@@ -95,32 +115,88 @@ function closeMenu() {
   const navbar   = document.querySelector('.navbar');
   const menu     = document.getElementById('navbarMenu');
   const backdrop = document.getElementById('menuBackdrop');
+  const toggler  = document.querySelector('.navbar-toggler');
 
-  menu.classList.remove('show');
-  backdrop.classList.remove('show');
-  if (window.scrollY < 50) {
+  const wasOpen = menu && menu.classList.contains('show');
+  if (menu) menu.classList.remove('show');
+  if (backdrop) backdrop.classList.remove('show');
+  if (navbar && window.scrollY < 50) {
     navbar.classList.remove('scrolled');
   }
+  if (toggler) {
+    toggler.setAttribute('aria-expanded', 'false');
+    toggler.setAttribute('aria-label', 'Open navigation menu');
+    // Return focus to the toggler when closing via ESC / close button
+    if (wasOpen) toggler.focus();
+  }
+  // Also collapse any open dropdown
+  document.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
+  document.querySelectorAll('.dropdown-toggle').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-expanded', 'false');
+  });
 }
 
 function toggleDropdown(element) {
   const dropdownMenu = element.nextElementSibling;
   const isOpen = dropdownMenu.classList.contains('show');
 
-  // Close all dropdowns first
+  // Close all dropdowns first + reset their aria
   document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
-  document.querySelectorAll('.dropdown-toggle').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.dropdown-toggle').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-expanded', 'false');
+  });
 
-  // Open clicked dropdown if it was not already open
   if (!isOpen) {
     dropdownMenu.classList.add('show');
     element.classList.add('active');
+    element.setAttribute('aria-expanded', 'true');
   }
 }
 
-// Close menu on ESC
+/* ── Keyboard navigation ───────────────────────────────────────────── */
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeMenu();
+  // ESC closes menu and any open dropdown
+  if (e.key === 'Escape') {
+    const dropdownOpen = document.querySelector('.dropdown-menu.show');
+    if (dropdownOpen) {
+      dropdownOpen.classList.remove('show');
+      const toggle = document.querySelector('.dropdown-toggle.active');
+      if (toggle) {
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+      return;
+    }
+    closeMenu();
+    return;
+  }
+
+  // Arrow-key navigation within an open dropdown menu
+  const openMenu = document.querySelector('.dropdown-menu.show');
+  if (openMenu && (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Home' || e.key === 'End')) {
+    const items = [...openMenu.querySelectorAll('.dropdown-item')];
+    const idx = items.indexOf(document.activeElement);
+    let next;
+    if (e.key === 'ArrowDown') next = items[(idx + 1) % items.length] || items[0];
+    if (e.key === 'ArrowUp')   next = items[(idx - 1 + items.length) % items.length] || items[items.length - 1];
+    if (e.key === 'Home')      next = items[0];
+    if (e.key === 'End')       next = items[items.length - 1];
+    if (next) { e.preventDefault(); next.focus(); }
+  }
+});
+
+// Close any open dropdown when clicking outside it
+document.addEventListener('click', e => {
+  if (!e.target.closest('.dropdown-toggle, .dropdown-menu')) {
+    document.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
+    document.querySelectorAll('.dropdown-toggle.active').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-expanded', 'false');
+    });
+  }
 });
 
 // Navbar scroll background

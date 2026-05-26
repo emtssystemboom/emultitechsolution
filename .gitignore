@@ -1,0 +1,45 @@
+# ── Dependencies ────────────────────────────────────────────────────
+node_modules/
+package-lock.json.bak
+
+# ── Logs ────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Environment / secrets ──────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── OS junk ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+Icon?
+
+# ── Editor / IDE ───────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# ── Claude Code per-user settings (keep launch.json tracked) ──────
+.claude/settings.local.json
+.claude/projects/
+.claude/memory/
+
+# ── Temporary build artifacts (not the committed build outputs) ───
+tools/_scan.json
+.cache/
+.parcel-cache/
+.tmp/
+
+# ── Coverage / test ────────────────────────────────────────────────
+coverage/
+.nyc_output/

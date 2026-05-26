@@ -65,7 +65,6 @@
             <li><a href="healthcare.html"        class="footer-text">Healthcare</a></li>
             <li><a href="realestate.html"         class="footer-text">Real Estate</a></li>
             <li><a href="auction-software.html"  class="footer-text">Auction Software</a></li>
-            <li><a href="procurement.html"       class="footer-text">Procurement Solution</a></li>
           </ul>
         </div>
 
@@ -97,11 +96,18 @@
   </footer>
   `;
 
-  // Inject into #site-footer placeholder if it exists, otherwise append to body
+  // Inject the footer at runtime ONLY if the page doesn't already have one.
+  // Pages built by tools/build-pages.mjs have the footer HTML inlined directly
+  // (so crawlers and AI bots see real content) — in that case this is a no-op.
   const placeholder = document.getElementById('site-footer');
-  if (placeholder) {
-    placeholder.outerHTML = footerHTML;
-  } else {
-    document.body.insertAdjacentHTML('beforeend', footerHTML);
+  const hasInlinedFooter = document.querySelector('footer') !== null;
+  if (!hasInlinedFooter) {
+    if (placeholder) {
+      placeholder.outerHTML = footerHTML;
+    } else {
+      document.body.insertAdjacentHTML('beforeend', footerHTML);
+    }
+  } else if (placeholder) {
+    placeholder.remove();
   }
 })();

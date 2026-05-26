@@ -1,0 +1,2116 @@
+/*  ─────────────────────────────────────────────────────────────────────────
+    theme.css — modern design system overlay
+    Loaded AFTER css/style.css so its rules cascade over the existing styles
+    without requiring a rewrite. Design tokens live in :root and can be
+    consumed by future components.
+    ───────────────────────────────────────────────────────────────────────── */
+
+/* ── Design tokens ───────────────────────────────────────────────────────── */
+:root {
+  /* Type — Inter is loaded by the per-page <link> in <head> */
+  --ff-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --ff-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+
+  /* Type scale — fluid, calibrated for modern SaaS sites */
+  --fs-hero: clamp(2.5rem, 5.5vw, 4.5rem);   /* 40px → 72px */
+  --fs-h2: clamp(2rem, 3.6vw, 3rem);         /* 32px → 48px */
+  --fs-h3: clamp(1.375rem, 2vw, 1.625rem);   /* 22px → 26px */
+  --fs-lead: clamp(1.0625rem, 1.4vw, 1.25rem); /* 17px → 20px */
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+
+  /* Line heights & tracking */
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-normal: 1.5;
+  --lh-loose: 1.7;
+  --ls-tight: -0.022em;
+  --ls-snug: -0.012em;
+
+  /* Spacing scale (powers of clamp for fluid sections) */
+  --space-section: clamp(4rem, 9vw, 8rem);
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Radius */
+  --r-sm-2: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-pill: 9999px;
+
+  /* Border (very subtle — Linear/Vercel style hairlines) */
+  --bd-subtle: rgba(15, 23, 42, 0.06);
+  --bd-default: rgba(15, 23, 42, 0.10);
+  --bd-strong: rgba(15, 23, 42, 0.18);
+
+  /* Shadows — restrained */
+  --sh-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --sh-md: 0 4px 16px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --sh-lg: 0 24px 48px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.05);
+  --sh-glow: 0 0 0 1px rgba(26, 107, 204, 0.18), 0 12px 32px rgba(26, 107, 204, 0.15);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 420ms;
+
+  /* Container width */
+  --container-max: 1240px;
+}
+
+/* ── Base typography refresh ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  font-family: var(--ff-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--ff-sans);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+  letter-spacing: -0.003em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-display);
+  letter-spacing: var(--ls-snug);
+  line-height: var(--lh-snug);
+}
+
+h1 {
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-tight);
+}
+
+/* ── Reveal-on-scroll (replacement for AOS on modernized sections) ───────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal-delay='1'] { transition-delay: 80ms; }
+[data-reveal-delay='2'] { transition-delay: 160ms; }
+[data-reveal-delay='3'] { transition-delay: 240ms; }
+[data-reveal-delay='4'] { transition-delay: 320ms; }
+[data-reveal-delay='5'] { transition-delay: 400ms; }
+[data-reveal-delay='6'] { transition-delay: 480ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Hero refresh ────────────────────────────────────────────────────────── */
+/* The existing .hero markup has: <video class="hero-video">, .hero-overlay,
+   .hero-content with h1 + p + .hero__btn__area + .hero-trust-bar.
+   We re-skin those without touching markup. */
+
+.hero {
+  min-height: 92vh;
+  padding-top: clamp(7rem, 10vw, 9rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.hero-overlay {
+  /* Deeper gradient for headline contrast — closer to Stripe/Linear darks */
+  background:
+    radial-gradient(at 20% 20%, rgba(26, 107, 204, 0.35) 0%, transparent 55%),
+    radial-gradient(at 80% 0%, rgba(0, 194, 224, 0.18) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(5, 10, 22, 0.55) 0%, rgba(5, 10, 22, 0.85) 100%);
+}
+
+.hero h1 {
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-tight);
+  margin-bottom: 1.25rem;
+  max-width: 22ch;
+  /* Subtle gradient highlight on a portion of the headline if a <span class="grad"> is used */
+  color: #ffffff;
+}
+
+.hero h1 .grad {
+  background: linear-gradient(135deg, #7cb6ff 0%, #ffffff 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 60ch;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.hero__btn__area {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+/* Buttons — pill-shaped, sharper hover, no all-caps */
+.btn-hero,
+.btn-hero-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0;
+  text-transform: none;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+  border: 1px solid transparent;
+  line-height: 1;
+}
+
+.btn-hero {
+  background: #ffffff;
+  color: #0a0a0a;
+  border-color: #ffffff;
+}
+
+.btn-hero:hover {
+  background: #f1f5f9;
+  color: #0a0a0a;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.btn-hero-white {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(8px);
+}
+
+.btn-hero-white:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+/* Trust bar — restrained, monochrome */
+.hero-trust-bar {
+  margin-top: 1.5rem;
+}
+
+.trust-items-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.trust-items-inline li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.trust-items-inline li i {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.875rem;
+}
+
+/* ── Navbar polish — tinted dark glass that works on every page ──────────── */
+/* Many pages don't have a dark hero behind the nav (testimonial, contact,
+   request-quote, blog list, policy pages…). A purely transparent navbar
+   becomes invisible on white backgrounds. Use a tinted dark glass that
+   looks frosted over a hero but reads as a solid dark navbar on light pages. */
+.navbar {
+  background: rgba(10, 22, 40, 0.78) !important;
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  transition:
+    background-color var(--dur-base) var(--ease-std),
+    border-color var(--dur-base) var(--ease-std);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 22, 40, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* ── About-section type refresh ──────────────────────────────────────────── */
+.about-section .content h2 {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--blue, #1a6bcc);
+  margin-bottom: 0.5rem;
+}
+
+.about-section .content h1 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  letter-spacing: var(--ls-snug);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  max-width: 22ch;
+}
+
+.about-section .content p {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: #475569;
+  max-width: 60ch;
+}
+
+.about-section .more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.375rem;
+  border-radius: var(--r-pill);
+  background: #0a0a0a;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: transform var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+
+.about-section .more-btn:hover {
+  background: #1a6bcc;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ── Services section refresh ────────────────────────────────────────────── */
+.services-section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+.services-section h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  letter-spacing: var(--ls-snug);
+  line-height: 1.1;
+  max-width: 22ch;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+/* Modernized cards — hairline border, subtle hover lift, monochrome accent */
+.service-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--bd-subtle);
+  border-radius: var(--r-md);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--sh-sm);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Neutralize the per-card colored backgrounds — they fight the new aesthetic */
+.service-card.card-navyblue,
+.service-card.card-blue,
+.service-card.card-pink,
+.service-card.card-purple,
+.service-card.card-yellow,
+.service-card.card-lightgrey {
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--bd-strong);
+  box-shadow: var(--sh-md);
+}
+
+.service-card h3,
+.service-card h3.black {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: #0a0a0a;
+  margin-bottom: 0.75rem;
+  letter-spacing: var(--ls-snug);
+  line-height: 1.25;
+}
+
+.service-card p,
+.service-card p.black {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
+.service-card .services--icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm-2);
+  background: rgba(26, 107, 204, 0.08);
+  margin-bottom: 1.25rem;
+  padding: 8px;
+}
+
+/* Icons have varied aspect ratios (some tall like 68x98, some wide). Use
+   max-* dimensions + object-fit so each icon renders at its natural shape
+   without overflowing the 72x72 container. */
+.service-card .services--icon img,
+.service-card .services--icon picture,
+.service-card .services--icon picture img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.service-card a.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-pill);
+  background: transparent;
+  border: 1px solid var(--bd-default);
+  transition: background var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.service-card:hover a.arrow {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+}
+
+.service-card:hover a.arrow img {
+  filter: invert(1) brightness(2);
+}
+
+.service-card a.arrow img {
+  width: 14px;
+  height: 14px;
+  transition: filter var(--dur-base) var(--ease-out);
+}
+
+/* ── Section spacing harmonization for other sections ────────────────────── */
+.about-section,
+.company-logo-section,
+.testimonials-container {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* ── Quote/CTA strip (footer top) ────────────────────────────────────────── */
+.quote__section {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: var(--ls-snug);
+}
+
+/* ── Footer type refresh ─────────────────────────────────────────────────── */
+.footer-column h5 {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  margin-bottom: 1rem;
+}
+
+.footer-column ul li a {
+  font-size: 0.9375rem;
+}
+
+/* ── Selection color ─────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(26, 107, 204, 0.22);
+  color: #0a0a0a;
+}
+
+/* =================================================================
+   OVERRIDE LAYER
+   The original css/style.css uses several `!important` declarations
+   on button colors, services-section h2 positioning, and card text.
+   These overrides re-establish the modern theme as authoritative.
+   Keep this block at the very end of theme.css.
+   ================================================================= */
+
+/* Hero buttons — kill the legacy gradient + forced color rules so the new
+   pill styling renders as designed. The original style.css used
+   `color: #fff !important` and `color: #000 !important` which were
+   making the button labels invisible against the new white pill / dark
+   transparent backgrounds. */
+.btn-hero {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  text-shadow: none !important;
+}
+
+.btn-hero:hover {
+  background: #f1f5f9 !important;
+  color: #0a0a0a !important;
+}
+
+.btn-hero-white {
+  background: transparent !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+.btn-hero-white:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  color: #ffffff !important;
+}
+
+/* ── Services section — Silicon Valley standard ──────────────────────────── */
+
+.services-section {
+  padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 4vw, 3rem) !important;
+  background: #ffffff !important;
+}
+
+.services-section .bg-animated {
+  display: none !important;
+}
+
+/* Section header — eyebrow + h2 + lead */
+.services-section__head {
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.services-section__eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue, #1a6bcc);
+  margin-bottom: 1rem;
+}
+
+.services-section h2 {
+  position: static !important;
+  top: auto !important;
+  padding: 0 !important;
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  font-size: clamp(2rem, 4vw, 3.25rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: var(--ls-tight) !important;
+  margin: 0 0 1rem !important;
+  text-align: center;
+}
+
+.services-section__lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: #475569;
+  margin: 0 auto;
+  max-width: 56ch;
+}
+
+/* Card grid — three columns on desktop, two on tablet, one on phone. */
+.services-container {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  align-items: stretch !important;
+}
+
+@media (max-width: 960px) {
+  .services-container { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .services-container { grid-template-columns: 1fr !important; gap: 1rem !important; }
+}
+
+/* Icon container — overrides the earlier rule's margin so the column-gap
+   on .service-card controls spacing instead of double-stacking. */
+.service-card .services--icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 56px !important;
+  height: 56px !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  border-radius: 14px !important;
+  background: rgba(26, 107, 204, 0.10) !important;
+  color: var(--blue, #1a6bcc); /* cascades to <svg stroke="currentColor"> */
+}
+
+/* Inline SVG icons inherit the container's currentColor so they all render
+   in brand blue at the same visual weight — replaces the inconsistent PNGs. */
+.service-card .services--icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  fill: none;
+  flex: none;
+}
+
+/* Hover: icon container deepens slightly to add micro-feedback. */
+.service-card:hover .services--icon {
+  background: rgba(26, 107, 204, 0.16) !important;
+}
+
+/* Cards — equal height, hairline border, hover lift, monochrome accent. */
+.service-card,
+.service-card.visible {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  gap: 1rem;
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 2rem 1.75rem !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  color: #0a0a0a !important;
+  overflow: hidden;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out) !important;
+}
+
+.service-card::after {
+  /* Subtle accent line that appears on hover — a Vercel/Linear-style affordance. */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.75rem;
+  right: 1.75rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue, #1a6bcc), transparent);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.service-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(26, 107, 204, 0.30) !important;
+  box-shadow:
+    0 14px 32px rgba(15, 23, 42, 0.08),
+    0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.service-card h3,
+.service-card h3.black {
+  color: #0a0a0a !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem) !important;
+  line-height: 1.25 !important;
+  text-shadow: none !important;
+  letter-spacing: var(--ls-snug) !important;
+  margin: 0 !important;
+}
+
+.service-card p,
+.service-card p.black {
+  color: #475569 !important;
+  font-weight: 400 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  flex: 1 1 auto; /* push the CTA to the bottom on equal-height cards */
+}
+
+/* Card CTA — text + arrow, bottom-aligned, animates on hover. */
+.service-card .card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--blue, #1a6bcc);
+  letter-spacing: -0.005em;
+}
+
+.service-card .card-cta__arrow {
+  display: inline-block;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.service-card:hover .card-cta__arrow {
+  transform: translateX(4px);
+}
+
+/* Legacy icon-arrow rules — kept harmless in case any inner page still
+   uses .arrow with an img child. The homepage now uses .card-cta instead. */
+.service-card a.arrow img {
+  filter: invert(1) brightness(0);
+}
+.service-card:hover a.arrow img {
+  filter: invert(0) brightness(2);
+}
+
+/* Service card click overlay — full-card hit area. */
+.service-card .card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Critical mobile usability fixes (no redesign — purely structural)
+   Each rule maps to a specific blocker from the pre-launch audit. Scoped
+   tightly with `!important` because the legacy style.css uses !important
+   itself, so cascade alone is not enough.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Global safety net — prevent any rogue element from causing
+   horizontal page scroll on phones. Cheap and broadly safe. */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Hamburger button — 44×44 minimum touch target (WCAG AA).
+   Applies at every viewport because the button is always visible. */
+.navbar-toggler {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px !important;
+}
+
+/* Calendar day cells (contact.html) — guarantee a tappable size on
+   common phones. The grid is 7 cols + 4px gap; on 360px viewport with
+   16px card padding we get cells ≈45px, comfortably above the 44px floor. */
+#calendarCard .cal-dates-grid {
+  /* keep grid-template-columns from base style (repeat(7,1fr)) */
+  min-width: 0;
+}
+#calendarCard .cal-day {
+  min-height: 40px;
+}
+
+@media (max-width: 480px) {
+  /* 1) Navbar — kill the floating rounded design on phones.
+     Becomes a clean full-width sticky header pinned to the top edge. */
+  .navbar {
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    border-radius: 0 !important;
+    padding: 10px 14px !important;
+    opacity: 1 !important;
+  }
+
+  /* 2) Quote form — service-type grid collapses to single column.
+     Default uses minmax(140px,1fr) auto-fill which wraps inconsistently. */
+  .project-type-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* 3) Calendar widget container — shrink padding so all 7 day cells
+     remain comfortably clickable on phone-width viewports. */
+  #calendarCard.bk-card {
+    padding: 16px !important;
+  }
+  #calendarCard .cal-dates-grid {
+    gap: 3px !important;
+  }
+  #calendarCard .cal-day {
+    font-size: 0.8rem !important;
+    border-radius: 8px !important;
+  }
+  #calendarCard .cal-dow {
+    font-size: 0.6rem !important;
+  }
+}
+
+/* Very small phones — final guarantee on calendar tappability. */
+@media (max-width: 360px) {
+  #calendarCard.bk-card {
+    padding: 12px !important;
+  }
+  #calendarCard .cal-day {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Hero trust bar — clean 2×2 grid on mobile so all 4 items fit
+   above the fold. Default flex-wrap caused 3 unpredictable rows and
+   pushed the 4th item below initial viewport on phones.
+   ───────────────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Aggressively compact hero on phones so the full 2×2 trust bar fits
+     above the initial-viewport fold (no scroll needed to see all 4 items). */
+  .hero {
+    min-height: auto !important;
+    padding-top: clamp(4.5rem, 14vw, 5.5rem) !important;
+    /* Generous bottom padding so the trust bar always sits clearly INSIDE
+       the dark hero with breathing room before the next section. */
+    padding-bottom: 4rem !important;
+    overflow: visible !important; /* don't clip the trust bar even if hero collapses */
+  }
+  .hero h1 {
+    font-size: clamp(1.5rem, 6.4vw, 1.875rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.625rem !important;
+    max-width: none !important;
+  }
+  .hero p {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.875rem !important;
+  }
+  .hero__btn__area {
+    margin-bottom: 0.875rem !important;
+    gap: 0.5rem !important;
+  }
+  .btn-hero, .btn-hero-white {
+    padding: 0.625rem 1.125rem !important;
+    font-size: 0.875rem !important;
+  }
+  .hero-trust-bar {
+    margin-top: 0.625rem !important;
+    padding-top: 0.625rem !important;
+    width: 100%;
+  }
+  .trust-items-inline {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 12px !important;
+    justify-content: stretch !important;
+    align-items: start !important;
+  }
+  /* Allow the longer labels ("Enterprise & Government", "AI-Forward
+     Engineering") to WRAP onto two short lines instead of truncating
+     with an ellipsis. Each cell sizes to content; the icon stays inline. */
+  .trust-items-inline li {
+    font-size: 11.5px !important;
+    line-height: 1.35 !important;
+    gap: 5px !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    min-width: 0;
+    align-items: flex-start !important;
+  }
+  .trust-items-inline li i {
+    font-size: 11.5px !important;
+    flex-shrink: 0;
+    margin-top: 2px; /* nudge icon down to align with first text line */
+  }
+}
+
+@media (max-width: 360px) {
+  .trust-items-inline li {
+    font-size: 11px !important;
+  }
+  .trust-items-inline li i {
+    font-size: 11px !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Budget tile grid (request_quote.html) — predictable stacking 320–768px
+   The base rule uses `repeat(auto-fill, minmax(130px, 1fr))` which produces
+   orphan tiles at certain widths (e.g. 5 + 1, 4 + 2). For 6 tiles we want
+   a clean grid: 3×2 on tablet, 2×3 on phone. Desktop (≥ 768px) is untouched.
+   ───────────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .budget-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  .budget-tile {
+    padding: 14px 8px !important;
+    min-width: 0; /* allow flex/grid item to shrink below its content width */
+  }
+  .budget-tile .bt-amount {
+    font-size: 0.85rem !important;
+    word-break: keep-all;
+  }
+  .budget-tile .bt-note {
+    font-size: 0.6rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .budget-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .budget-tile {
+    padding: 16px 10px !important;
+  }
+  .budget-tile .bt-amount {
+    font-size: 0.9rem !important;
+  }
+  .budget-tile .bt-note {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Testimonials section (homepage) — Silicon Valley standard
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Override the old container — kill decorations + reset padding. */
+.testimonials-container.testimonials-section {
+  background: #f8fafc !important;
+  padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 4vw, 3rem) !important;
+  overflow: visible !important;
+}
+
+/* Kill the floating shape pseudo-elements that clutter the section. */
+.testimonials-container.testimonials-section::before,
+.testimonials-container.testimonials-section::after {
+  display: none !important;
+}
+
+/* Section header — same pattern as services section for visual rhythm. */
+.testimonials-section__head {
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem) !important;
+  text-align: center;
+}
+
+.testimonials-section__eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue, #1a6bcc);
+  margin-bottom: 1rem;
+}
+
+.testimonials-container.testimonials-section h2 {
+  text-align: center !important;
+  font-size: clamp(2rem, 4vw, 3.25rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: var(--ls-tight) !important;
+  color: #0a0a0a !important;
+  margin: 0 0 1rem !important;
+}
+
+.testimonials-section__lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: #475569;
+  margin: 0 auto !important;
+  max-width: 56ch;
+}
+
+/* Trust strip — real metrics, 4 columns of stat blocks. */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 920px;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1rem, 3vw, 2rem);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.trust-stat {
+  text-align: center;
+  position: relative;
+}
+
+.trust-stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: -0.5rem;
+  width: 1px;
+  height: 76%;
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.trust-stat__num {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: var(--ls-tight);
+  color: var(--blue, #1a6bcc);
+  line-height: 1;
+}
+
+.trust-stat__num span {
+  font-size: 0.7em;
+  vertical-align: super;
+  margin-left: 1px;
+  font-weight: 600;
+}
+
+.trust-stat__label {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: #475569;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+@media (max-width: 700px) {
+  .trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+  .trust-stat:nth-child(2)::after,
+  .trust-stat:nth-child(4)::after { display: none; }
+}
+
+/* Testimonial card grid — 3 cols / 2 / 1, equal height. */
+.testimonials.testimonials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem !important;
+  max-width: 1200px;
+  margin: 0 auto !important;
+  position: static !important;
+  z-index: auto !important;
+}
+
+@media (max-width: 960px) {
+  .testimonials.testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .testimonials.testimonials-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Testimonial card — white, hairline border, equal height, glyph + rating
+   + quote + attribution. Resets old .testimonial-1/-2/-3 negative margins. */
+.testimonial-card,
+.testimonial-card.testimonial-1,
+.testimonial-card.testimonial-2,
+.testimonial-card.testimonial-3 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: none;
+  transform: none !important;
+  margin: 0 !important;
+  align-self: stretch !important;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+  overflow: hidden;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(26, 107, 204, 0.30);
+  box-shadow:
+    0 14px 32px rgba(15, 23, 42, 0.08),
+    0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+/* Star rating */
+.testimonial-card__rating {
+  display: inline-flex;
+  gap: 2px;
+  color: #f59e0b; /* amber-500 — universally readable star rating */
+}
+
+.testimonial-card__rating svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Decorative double-quote glyph above the testimonial text. */
+.testimonial-card__glyph {
+  width: 28px;
+  height: 28px;
+  color: rgba(26, 107, 204, 0.18);
+  flex-shrink: 0;
+}
+
+/* The quote itself */
+.testimonial-card__quote {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #1e293b;
+  font-style: normal; /* override old italic */
+  font-weight: 400;
+  letter-spacing: -0.003em;
+  flex: 1 1 auto; /* push attribution to bottom for equal-height alignment */
+}
+
+/* Attribution footer: avatar + name + role */
+.testimonial-card__attrib {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.testimonial-card__avatar {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4a6cf7 0%, #6cbbf2 100%);
+}
+
+.testimonial-card__avatar picture,
+.testimonial-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  box-shadow: none;
+  background: transparent;
+  margin: 0;
+}
+
+.testimonial-card__person {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.testimonial-card__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+}
+
+.testimonial-card__role {
+  font-size: 0.8125rem;
+  color: #64748b;
+  letter-spacing: -0.003em;
+}
+
+/* Section CTA — replaces the old .view-more line+text affordance. */
+.testimonials-section__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.testimonials-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: #0a0a0a;
+  color: #ffffff !important;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    background var(--dur-base) var(--ease-out);
+}
+
+.testimonials-cta-link:hover {
+  background: var(--blue, #1a6bcc);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.testimonials-cta-link .card-cta__arrow {
+  display: inline-block;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.testimonials-cta-link:hover .card-cta__arrow {
+  transform: translateX(4px);
+}
+
+/* Hide the old .view-more line on the redesigned section — kept harmless
+   in case any inline JS still references it. */
+.testimonials-section .view-more { display: none !important; }
+
+/* ── testimonial-all.html — page-specific additions ──────────────────────── */
+
+/* The full testimonials page also uses .testimonials__container__all class.
+   Make sure its old bg/margin doesn't fight the new section design. */
+.testimonials-container.testimonials__container__all.testimonials-section {
+  margin: 0 auto !important;
+  background: #f8fafc !important;
+}
+
+/* Breadcrumb pill above the page header. */
+.ta-breadcrumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.ta-breadcrumb a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.ta-breadcrumb a:hover {
+  color: var(--blue, #1a6bcc);
+}
+
+.ta-breadcrumb span[aria-hidden="true"] {
+  color: rgba(15, 23, 42, 0.25);
+}
+
+/* Country flag chip in the testimonial card footer (right-aligned). */
+.testimonial-card__chip {
+  margin-left: auto;
+  font-size: 18px;
+  line-height: 1;
+  flex: 0 0 auto;
+  align-self: center;
+  opacity: 0.85;
+}
+
+/* ── Client logo wall ───────────────────────────────────────────────────── */
+.ta-logo-wall {
+  background: #ffffff;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem);
+}
+
+.ta-logo-wall__head {
+  max-width: 720px;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.ta-logo-wall__eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue, #1a6bcc);
+  margin-bottom: 0.75rem;
+}
+
+.ta-logo-wall__head h3 {
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: var(--ls-snug);
+  line-height: 1.25;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.ta-logo-wall__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  justify-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.ta-logo-wall__grid li { width: 100%; display: flex; justify-content: center; }
+
+.ta-logo-wall__grid a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 160px;
+  padding: 8px;
+  transition: filter var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+  /* Monochrome treatment so mixed-color brand logos read as one cohesive row. */
+  filter: grayscale(100%);
+  opacity: 0.65;
+}
+
+.ta-logo-wall__grid a:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.ta-logo-wall__grid img,
+.ta-logo-wall__grid picture {
+  max-width: 100%;
+  height: auto;
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 880px) {
+  .ta-logo-wall__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 520px) {
+  .ta-logo-wall__grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
+}
+
+/* ── Bottom CTA band ────────────────────────────────────────────────────── */
+.ta-cta-band {
+  background: linear-gradient(135deg, #0a0f1f 0%, #0a1628 45%, #0d3f8f 100%);
+  padding: clamp(4rem, 9vw, 7rem) clamp(1rem, 4vw, 3rem);
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.ta-cta-band::before {
+  /* Subtle radial glow for depth — Linear/Vercel pattern. */
+  content: "";
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(26, 107, 204, 0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ta-cta-band__inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ta-cta-band__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ta-cta-band h2 {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: var(--ls-tight);
+  line-height: 1.1;
+  margin: 0;
+  color: #ffffff;
+}
+
+.ta-cta-band p {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.ta-cta-band__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ta-cta-band__actions .btn-hero,
+.ta-cta-band__actions .btn-hero-white {
+  /* Inherit pill-button styling from theme.css base rules. */
+}
+
+.ta-cta-band__actions .btn-hero-white i {
+  color: #25D366; /* WhatsApp green icon */
+}
+
+/* Sidebar office blocks on request_quote.html — Melbourne + Kathmandu */
+.sidebar-offices {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.sidebar-office {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    background var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.sidebar-office:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(26, 107, 204, 0.45);
+  transform: translateY(-1px);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.sidebar-office__flag {
+  font-size: 24px;
+  line-height: 1;
+  flex: 0 0 28px;
+}
+
+.sidebar-office__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sidebar-office__label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sidebar-office__num {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-office__num i {
+  color: #25D366; /* WhatsApp green */
+}
+
+/* Instant-chat compound field (WhatsApp / Telegram + handle) on
+   request_quote.html — visually one field, two semantic inputs. */
+.im-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.im-row .im-select {
+  flex: 0 0 130px;
+  min-width: 110px;
+}
+
+.im-row .im-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 480px) {
+  .im-row { flex-direction: column; gap: 6px; }
+  .im-row .im-select { flex-basis: auto; }
+}
+
+.service-card .services--icon,
+.service-card h3,
+.service-card p,
+.service-card a.arrow {
+  position: relative;
+  z-index: 2; /* sit above the .card-link overlay so hovers still trigger arrow style */
+}
+
+/* ═════════════════════════════════════════════════════════════════════════
+   ACCESSIBILITY LAYER
+   Adds keyboard focus visibility, ARIA-friendly defaults, and touch-target
+   minimums WITHOUT changing the visual design. All rules use !important
+   to defeat the legacy `outline: none !important` declarations in style.css.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* Skip-link — visually hidden until keyboard focused */
+.a11y-skip-link {
+  position: absolute;
+  left: 8px;
+  top: -100px;
+  z-index: 9999;
+  background: #0a0a0a;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.18s ease-out;
+}
+.a11y-skip-link:focus,
+.a11y-skip-link:focus-visible {
+  top: 8px;
+  outline: 3px solid #ffffff !important;
+  outline-offset: 2px !important;
+}
+
+/* Screen-reader-only utility (for ARIA helpers we may need) */
+.a11y-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ── Focus-visible — global keyboard indicator ───────────────────────────
+   Uses :focus-visible so mouse clicks don't produce the ring. Strong brand
+   blue with 2px white inner gap for contrast on any background. */
+:focus { outline: none; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible,
+[role="button"]:focus-visible,
+.nav-link:focus-visible,
+.dropdown-item:focus-visible,
+.dropdown-toggle:focus-visible,
+.btn-hero:focus-visible,
+.btn-hero-white:focus-visible,
+.service-card:focus-visible,
+.service-card .card-link:focus-visible,
+.testimonial-card:focus-visible,
+.testimonials-cta-link:focus-visible,
+.navbar-toggler:focus-visible,
+.menu-close:focus-visible,
+.card-cta:focus-visible,
+.cal-day:focus-visible,
+.cal-nav-btn:focus-visible,
+.fi:focus-visible,
+.fi-select:focus-visible,
+.budget-tile:focus-visible,
+.pt-card:focus-visible,
+.im-row .im-select:focus-visible,
+.im-row .im-input:focus-visible,
+.emt-input:focus-visible,
+.emt-select:focus-visible {
+  outline: 2px solid #1a6bcc !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(26, 107, 204, 0.18) !important;
+  border-radius: 4px;
+}
+
+/* Form inputs already have a border-radius — keep their own shape on focus. */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.fi:focus-visible,
+.fi-select:focus-visible,
+.emt-input:focus-visible,
+.emt-select:focus-visible {
+  border-radius: inherit;
+}
+
+/* Pill buttons keep their pill shape on focus instead of the generic 4px */
+.btn-hero:focus-visible,
+.btn-hero-white:focus-visible,
+.testimonials-cta-link:focus-visible,
+.more-btn:focus-visible {
+  border-radius: 9999px !important;
+}
+
+/* Cards keep their card radius on focus */
+.service-card:focus-visible,
+.service-card .card-link:focus-visible,
+.testimonial-card:focus-visible {
+  border-radius: 16px !important;
+}
+
+/* ── Make the previously inaccessible Services dropdown link
+       look "focusable" so visible focus ring works on keyboard tab.
+       (header.js will add role/tabindex/aria — these styles support that.) */
+.dropdown-toggle[role="button"] { cursor: pointer; }
+
+/* ── Touch target floor — ensure ≥ 40-44px on the most-tapped controls
+       without changing visual size noticeably. Uses min-height only, so
+       text/icon centring stays unchanged. */
+.nav-link,
+.dropdown-item,
+.cal-nav-btn,
+.menu-close {
+  min-height: 44px;
+}
+
+.dropdown-item {
+  display: flex !important;
+  align-items: center;
+}
+
+.menu-close {
+  min-width: 44px;
+}
+
+/* ── Honor prefers-reduced-motion across all our motion ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-video { display: none !important; }
+}
+
+/* ── ARIA error state visibility on form fields (does not change layout) */
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #dc2626 !important;
+}
+
+/* ── Active page indicator for screen readers + visual subtle dot ──── */
+[aria-current="page"] {
+  font-weight: 600;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY NORMALIZATION LAYER
+   Maps the legacy fixed-px font-sizes in style.css to the existing fluid
+   tokens declared in :root above. Every rule uses !important to defeat the
+   inline `font-size: 28px` / `font-size: 18px` declarations in style.css.
+   No new tokens introduced. No new scales. Just the canonical six:
+     --fs-hero / --fs-h2 / --fs-h3 / --fs-lead / --fs-body / --fs-sm / --fs-xs
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* Mapping rules (px → token):
+     40-42 px  →  var(--fs-hero)   clamp(2.5rem, 5.5vw, 4.5rem)
+     30-36 px  →  var(--fs-h2)     clamp(2rem,   3.6vw, 3rem)
+     26-28 px  →  var(--fs-h3)     clamp(1.375rem, 2vw, 1.625rem)
+     22-24 px  →  var(--fs-h3)     same
+     18-20 px  →  var(--fs-lead)   clamp(1.0625rem, 1.4vw, 1.25rem)
+     16 px     →  var(--fs-body)   1rem
+     14-15 px  →  var(--fs-sm)     0.875rem
+     11-13 px  →  var(--fs-xs)     0.75rem
+*/
+
+/* ── HERO-SCALE legacy headings (40-42 px in style.css) ──────────────── */
+.hero h1,
+.casestudies--detail .page-title,
+.who-we-are h2,
+.auction__type__section .heading h2,
+.digital-marketing h2 {
+  font-size: var(--fs-hero) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--ls-tight) !important;
+}
+
+/* ── H2-SCALE legacy headings (30-36 px) ─────────────────────────────── */
+.quote__section,
+.we-turn-ai .intro h2,
+.strategy-wrapper .text h2,
+.flexible-container .card h2,
+.web__wrapper .text h2,
+.carousel-container-ourwork .card-ourwork h3 {
+  font-size: var(--fs-h2) !important;
+  line-height: var(--lh-snug) !important;
+  letter-spacing: var(--ls-snug) !important;
+}
+
+/* ── H3-SCALE legacy headings (22-28 px) ─────────────────────────────── */
+.service-card h3,
+.casestudies--detail .customer h3,
+.core__step__container .card h2,
+.business__impact .card h3,
+.software__wrapper .content h2,
+.info-box .phone,
+.company-logo-section h4,
+.contact-box h4,
+.view-more .line::after,
+.carousel-container-ourwork .card-ourwork p.greytext,
+.carousel-container-ourwork .arrow,
+.ai-solution-section .check-box::before,
+.auction__type__section .auction-icon {
+  font-size: var(--fs-h3) !important;
+  line-height: var(--lh-snug) !important;
+  letter-spacing: var(--ls-snug) !important;
+}
+
+/* ── LEAD text (18-20 px legacy) ─────────────────────────────────────── */
+.hero p,
+.contact-info,
+.menu-close,
+.dropdown-toggle::after,
+.dropdown-item,
+.service-card p,
+.testimonials__container__all p,
+.business__impact ul li,
+.footer-column h5,
+.form-section h3,
+.who-we-are p,
+.ai-solution-section .feature-text,
+.we-turn-ai .intro p,
+.we-turn-ai .feature h3,
+.we-turn-ai .feature p,
+.strategy-wrapper .text p,
+.strategy-wrapper .text ul li,
+.challenges__container ul li,
+.core__step__container .heading p,
+.software__container ul li,
+.business__impact .card h3,
+.web__wrapper .text p,
+.web__wrapper .text ul li,
+.software__wrapper .content p,
+.software__wrapper .content ul,
+.banner-develop .banner-content a,
+.step p,
+.text-section small,
+.casestudy-carousel-container .arrow,
+.our__works p,
+.case-studies .card-content h3 a,
+.realestate__container .feature-box i,
+.auction__type__section .arrow-icon,
+.our__works .tab-btn,
+.our__works .project-title,
+.trust-items-inline li i {
+  font-size: var(--fs-lead) !important;
+  line-height: var(--lh-normal) !important;
+}
+
+/* ── BODY text (16 px legacy) ────────────────────────────────────────── */
+.contact-box p,
+.footer-logo p,
+.footer-column ul li,
+.about-year h4,
+.auction-feature ul li,
+.core__step__container .card p,
+.casestudies--detail .info-text .info-head,
+.casestudies--detail .customer p {
+  font-size: var(--fs-body) !important;
+  line-height: var(--lh-normal) !important;
+}
+
+/* ── SMALL UI text (14-15 px legacy) ─────────────────────────────────── */
+.footer-bottom,
+.checkbox-group label,
+.case-studies .tags,
+.casestudies--detail .breadcrumb,
+.our__works .pill,
+.trust-items-inline li {
+  font-size: var(--fs-sm) !important;
+  line-height: var(--lh-normal) !important;
+}
+
+/* ── MICRO text (11-13 px legacy) ────────────────────────────────────── */
+.dropdown-subhead,
+.casestudies--detail .info-text .info-sub,
+.our__works .project-cats {
+  font-size: var(--fs-xs) !important;
+  line-height: var(--lh-normal) !important;
+}
+
+/* ── Generic element baselines for any unstyled heading on inner pages
+       that legacy CSS didn't cover. Lower specificity (just element) so
+       any explicit theme.css rule still wins. */
+main h1:not([class]) { font-size: var(--fs-hero); line-height: var(--lh-tight); letter-spacing: var(--ls-tight); }
+main h2:not([class]) { font-size: var(--fs-h2);   line-height: var(--lh-snug);  letter-spacing: var(--ls-snug); }
+main h3:not([class]) { font-size: var(--fs-h3);   line-height: var(--lh-snug);  letter-spacing: var(--ls-snug); }
+main h4:not([class]) { font-size: var(--fs-lead); line-height: var(--lh-snug); }
+main p:not([class])  { font-size: var(--fs-body); line-height: var(--lh-loose); }
+
+/* ── AGGRESSIVE FORCE — element-level overrides for any p/li/h that has
+       a legacy hardcoded px value not caught by the targeted rules above.
+       !important is used because many legacy class rules in style.css
+       (.faq__section .faq-answer p, .penny p, etc.) have higher specificity
+       than element-only selectors. */
+main p,
+main li,
+section p,
+section li,
+article p,
+article li {
+  font-size: var(--fs-body) !important;
+  line-height: var(--lh-loose) !important;
+}
+
+main h1,
+section h1,
+article h1 {
+  font-size: var(--fs-hero) !important;
+  line-height: var(--lh-tight) !important;
+  letter-spacing: var(--ls-tight) !important;
+}
+
+main h2,
+section h2,
+article h2 {
+  font-size: var(--fs-h2) !important;
+  line-height: var(--lh-snug) !important;
+  letter-spacing: var(--ls-snug) !important;
+}
+
+main h3,
+section h3,
+article h3 {
+  font-size: var(--fs-h3) !important;
+  line-height: var(--lh-snug) !important;
+  letter-spacing: var(--ls-snug) !important;
+}
+
+main h4,
+section h4,
+article h4 {
+  font-size: var(--fs-lead) !important;
+  line-height: var(--lh-snug) !important;
+}
+
+main h5,
+section h5,
+article h5 {
+  font-size: var(--fs-sm) !important;
+  line-height: var(--lh-snug) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+main h6,
+section h6,
+article h6 {
+  font-size: var(--fs-xs) !important;
+  line-height: var(--lh-snug) !important;
+  letter-spacing: 0.06em;
+}
+
+/* "Lead" or intro paragraph patterns — promote first p in a section/article
+       header to lead size for vertical rhythm consistency. */
+main section > .container > p:first-of-type,
+main section header p,
+main .lead,
+.lead,
+.intro p,
+.section__intro p {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-normal);
+}
+
+/* Buttons / form controls — keep their tap target but unify type with --fs-body */
+button:not(.navbar-toggler):not(.menu-close):not(.cal-day):not(.cal-nav-btn):not(.btn-hero):not(.btn-hero-white),
+input[type="submit"],
+input[type="button"],
+.btn:not(.btn-hero):not(.btn-hero-white) {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+
+/* Form text controls — unify to body size for legibility */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+input[type="url"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+textarea,
+select {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+
+/* Labels — small but readable */
+label:not(.budget-tile):not(.pt-card):not(.checkbox-group label) {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+}
+
+/* Common micro-text patterns across pages */
+small,
+.small,
+.meta,
+.caption,
+.label-small,
+.field-err,
+.field-hint {
+  font-size: var(--fs-xs);
+  line-height: var(--lh-normal);
+}
+
+/* ── Body/paragraph rhythm baseline (line-height harmony) ───────────── */
+body {
+  line-height: var(--lh-loose);
+}
+
+/* ── Mobile-specific px overrides that we already inserted intentionally
+       (hero h1 / hero p / trust-items-inline / cal-day) — these stay px
+       because they're media-query-scoped fine-tuning, not site-wide tokens.
+       Documented here so they're not flagged in a future audit. */
+
+/* ═════════════════════════════════════════════════════════════════════════
+   CRITICAL MOBILE FIXES (high-severity QA findings)
+   ═════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* ── 1A. Two-column .web__wrapper sections (auction, case-studies,
+         healthcare, dinepa, penny live-bid pages). The original grid uses
+         `grid-template-columns: 1fr 1fr` and an image background. On mobile
+         the right column was rendered off-screen because it never collapsed. */
+  .web__wrapper {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  .web__wrapper .col {
+    padding: 30px 20px !important;
+  }
+  .web__wrapper .col.img_2,
+  .web__wrapper .col.img1,
+  .web__wrapper .col.img3,
+  .web__wrapper .col.img7 {
+    min-height: 200px;
+  }
+
+  /* ── 1B. AOS horizontal slide animations (fade-left / fade-right) cause
+         the element to start at translateX(±100px), which on phones lands
+         it off the viewport edge. Neutralise the X transform on mobile so
+         only the fade remains; vertical fade-up/down still works. */
+  [data-aos="fade-left"],
+  [data-aos="fade-right"] {
+    transform: translate(0, 0) !important;
+  }
+  /* Same for AOS slide variants that ride horizontally. */
+  [data-aos="slide-left"],
+  [data-aos="slide-right"],
+  [data-aos="zoom-in-left"],
+  [data-aos="zoom-in-right"],
+  [data-aos="zoom-out-left"],
+  [data-aos="zoom-out-right"] {
+    transform: none !important;
+  }
+
+  /* ── 2. About-page philosophy cards — ensure the card respects the
+         container width and never overflows. The earlier 50px×40px padding
+         is fine, but we add a hard width clamp on phones. */
+  .philosophy-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .philosophy-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 32px 24px !important;
+    box-sizing: border-box;
+  }
+
+  /* ── 2B. Decorative .circle-illustration imagery on case-study pages
+         (auction-software, healthcare, dinepa). The img has hardcoded
+         width/height of 400 which exceeds the 375px viewport. Cap to
+         container width without changing aspect ratio. */
+  .circle-illustration,
+  .circle-illustration picture,
+  .circle-illustration img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  .circle-illustration {
+    margin: 0 auto !important;
+    max-width: 280px !important;
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════════════
+   Homepage logo strip (.company-logo-section.logo-strip)
+   Mixed photographic banners + vector marks at varied widths were rendering
+   inconsistently. Normalising height, applying grayscale by default with
+   color-on-hover (Stripe / Vercel pattern) so all 6 brands read as one
+   cohesive trust row. Eyebrow heading establishes context.
+   ═════════════════════════════════════════════════════════════════════════ */
+.company-logo-section.logo-strip {
+  background: #ffffff !important;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem) !important;
+}
+
+.logo-strip__eyebrow {
+  text-align: center;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase;
+  color: #64748b !important;
+  margin: 0 auto clamp(1.5rem, 3vw, 2.5rem) !important;
+  max-width: 720px;
+  line-height: 1.5 !important;
+}
+
+.logo-strip__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  justify-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.logo-strip__grid li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+}
+
+.logo-strip__grid a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 170px;
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  transition: transform var(--dur-base, 220ms) var(--ease-out, ease);
+  /* Show each brand in its natural colors and preserved aspect ratio. */
+}
+
+.logo-strip__grid a:hover,
+.logo-strip__grid a:focus-visible {
+  transform: translateY(-2px);
+}
+
+.logo-strip__grid picture,
+.logo-strip__grid img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 40px; /* normalize all 6 brands to the same visual weight */
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .logo-strip__grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem 1rem; }
+}
+@media (max-width: 480px) {
+  .logo-strip__grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 0.75rem; }
+  .logo-strip__grid li { height: 48px; }
+  .logo-strip__grid picture,
+  .logo-strip__grid img { max-height: 32px; }
+}
+
+/* ── 3. Form column rows (.col-6 First Name / Last Name pattern) must
+       stack to full width below 600px. Scoped to form contexts only so
+       non-form .col-6 layouts (logo grid etc.) stay unchanged. */
+@media (max-width: 600px) {
+  form .row > .col-6,
+  form .row > [class*="col-6"]:not([class*="col-md"]):not([class*="col-lg"]) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+

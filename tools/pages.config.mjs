@@ -1,0 +1,318 @@
+/**
+ * pages.config.mjs — single source of truth for per-page SEO metadata and
+ * structured data. Consumed by tools/build-seo.mjs.
+ *
+ * Edit the entries below, then re-run:
+ *     node tools/build-seo.mjs
+ *
+ * Each page entry supports:
+ *   title       — <title> and og:title. Aim for ~55-60 chars. Brand suffix added auto.
+ *   description — meta description, og:description, twitter:description. ~150-160 chars.
+ *   image       — relative to ROOT, becomes absolute og:image. Defaults to SITE.defaultImage.
+ *   type        — schema preset: 'home' | 'service' | 'about' | 'contact' | 'industry' |
+ *                 'case' | 'blog' | 'blogPost' | 'portfolio' | 'testimonial' | 'policy' |
+ *                 'auctionProduct' | 'clientShowcase' | 'page' (default)
+ *   noindex     — set true to add <meta name="robots" content="noindex,follow">
+ */
+
+export const SITE = {
+  url: 'https://emultitechsolution.com',
+  name: 'E Multitech Solution',
+  legalName: 'E Multitech Solution Pvt. Ltd.',
+  brandSuffix: ' | E Multitech Solution',
+  description:
+    'Custom software, SaaS, AI, and mobile development partner with 16+ years of global delivery experience.',
+  logo: 'images/logo.png',
+  defaultImage: 'images/logo.png',
+  twitter: '', // e.g. '@emultitech' — leave empty until you have a handle
+  founded: '2010',
+  locations: [
+    {
+      name: 'Kathmandu (HQ)',
+      streetAddress: 'Near UN Office, Kupondol',
+      addressLocality: 'Lalitpur',
+      addressRegion: 'Bagmati',
+      addressCountry: 'NP',
+      telephone: '+977-9851038796',
+    },
+    {
+      name: 'Melbourne',
+      addressLocality: 'Melbourne',
+      addressCountry: 'AU',
+      telephone: '+61-406-806-984',
+    },
+  ],
+  social: [
+    'https://www.facebook.com/emultitechsolutionnepal',
+    'https://www.linkedin.com/company/emultitechsolution',
+  ],
+};
+
+export const PAGES = {
+  // ─── Core ──────────────────────────────────────────────────────────────
+  'index.html': {
+    title: 'Custom Software, SaaS & AI Development',
+    description:
+      'We design and develop scalable web, mobile, and SaaS applications for startups, enterprises, and global businesses. 16+ years and 100+ deliveries worldwide.',
+    type: 'home',
+  },
+  'about.html': {
+    title: 'About — 16 Years Building Production Systems',
+    description:
+      '150+ engineers building production systems trusted by central banks and 100+ global companies. Meet the team behind 16 years of zero-failure deliveries.',
+    type: 'about',
+  },
+  'contact.html': {
+    title: 'Book a Strategy Call',
+    description:
+      'Book a free strategy call with the E Multitech engineering team. Pick a date and time slot — we confirm within 24 hours, no auto-responders.',
+    type: 'contact',
+  },
+  'request_quote.html': {
+    title: 'Get a Free Project Consultation',
+    description:
+      'Request a free project consultation. Tell us about your project, pick a discovery call slot, and get a response within 48 hours.',
+    type: 'contact',
+  },
+
+  // ─── Service pages ─────────────────────────────────────────────────────
+  'custom-software-development.html': {
+    title: 'Custom Software Development Services',
+    description:
+      'We architect transaction-heavy platforms — auction systems, live booking tools, fintech, and SaaS — engineered to perform under real-world production load.',
+    type: 'service',
+  },
+  'saas-development.html': {
+    title: 'SaaS Product Development Services',
+    description:
+      'Scalable, subscription-based SaaS platforms with automated billing and multi-tenant architecture. Built to generate and sustain real recurring revenue.',
+    type: 'service',
+  },
+  'mobile-development.html': {
+    title: 'iOS & Android Mobile App Development',
+    description:
+      'Native and cross-platform iOS/Android apps with push notifications, in-app payments, and offline support. Apps users return to daily — built to perform.',
+    type: 'service',
+  },
+  'ai-powered-solutions.html': {
+    title: 'AI Solutions & Agentic Automation',
+    description:
+      'AI-powered solutions that automate operations, predict outcomes, and personalize at scale. Built for environments where accuracy directly impacts revenue.',
+    type: 'service',
+  },
+  'devops-engineer.html': {
+    title: 'DevOps & Cloud Engineering Services',
+    description:
+      'Automated infrastructure, CI/CD, and SRE for businesses where uptime is revenue. Continuous deployment, disaster recovery, and cost optimization built in.',
+    type: 'service',
+  },
+  'product-engineering.html': {
+    title: 'Product Engineering Services',
+    description:
+      'End-to-end product engineering: from MVP to enterprise-grade SaaS. We design, build, and scale software products that drive consistent revenue growth.',
+    type: 'service',
+  },
+  'software-development.html': {
+    title: 'Software Development Services',
+    description:
+      'Secure, scalable, high-performance software that streamlines operations and elevates user experience. Web, mobile, SaaS, and enterprise systems.',
+    type: 'service',
+  },
+
+  // ─── Industries ────────────────────────────────────────────────────────
+  'industries.html': {
+    title: 'Industries We Serve — Healthcare, Fintech, Auctions & More',
+    description:
+      'Industry-specific software solutions for healthcare, real estate, auctions, procurement, fintech, and government — from startups to multinational enterprises.',
+    type: 'industry',
+  },
+  'healthcare.html': {
+    title: 'Healthcare Software Development',
+    description:
+      'EHR, telehealth, and hospital management systems for clinics, hospitals, and healthcare startups. HIPAA-aware, scalable, and built for real clinical workflows.',
+    type: 'industry',
+  },
+  'realestate.html': {
+    title: 'Real Estate Software Solutions',
+    description:
+      'Property listing platforms, CRM, MLS integrations, and custom real estate SaaS. Pay only for the features your business actually needs.',
+    type: 'industry',
+  },
+
+  // ─── Auction software hub + scripts ────────────────────────────────────
+  'auction-software.html': {
+    title: 'Custom Auction Software Development',
+    description:
+      'Penny, reverse, unique-bid, and Dutch auction software built since 2010 for clients in the US, UK, EU, and Asia. PHP, MySQL, Ajax — fully customizable.',
+    type: 'service',
+  },
+  'penny-live-auction-script-software.html': {
+    title: 'Penny Auction Software (Live Bidding)',
+    description:
+      'Live penny auction software with bid extensions, bidding fees, auto-bid, and full operator controls. Deployed for clients across the US, UK, and EU since 2010.',
+    type: 'auctionProduct',
+  },
+  'highest-unique-bids-auction-script-online-highest-bid-software-services.html': {
+    title: 'Highest Unique Bid Auction Script',
+    description:
+      'Highest Unique Bid auction software with secure scripts, full customization, and proven deployments. Built by E Multitech for global auction operators since 2010.',
+    type: 'auctionProduct',
+  },
+  'lowest-unique-bid-auction-script-online-software-reverse-auction-low-bid.html': {
+    title: 'Lowest Unique Bid Auction Script',
+    description:
+      'Customizable Lowest Unique Bid auction software for global operators. Reverse auction logic, secure scripts, and full operator control panel.',
+    type: 'auctionProduct',
+  },
+  'price-reveal-auction-script-express-auction-software-live-unique-bidding-system.html': {
+    title: 'Price Reveal Auction Script',
+    description:
+      'Customized Price Reveal Auction scripts — hand-crafted, fully featured, and built on the latest stack. Proven across South-East Asia and global operators.',
+    type: 'auctionProduct',
+  },
+  'ebay-auction-like-ebay-script.html': {
+    title: 'eBay-Style Marketplace Auction Script',
+    description:
+      'eBay-style marketplace auction script — 100% open-source, ready-built, fully customizable. Supports single and multi-seller marketplaces with one admin panel.',
+    type: 'auctionProduct',
+  },
+
+  // ─── Client showcases ──────────────────────────────────────────────────
+  'auctioncents.html': {
+    title: 'AuctionCents — US Penny Auction Platform',
+    description:
+      'AuctionCents is a leading US penny auction platform built by E Multitech: membership tiers, auto-bid, master auto-bid, 24h, free, and bonus auctions.',
+    type: 'clientShowcase',
+  },
+  'bidbid.html': {
+    title: 'BidBid.co.uk — Penny Auction Software',
+    description:
+      'BidBid.co.uk: a robust penny auction platform built with Node.js, PHP, MySQL, and jQuery. Auto-bid, CSV product upload, bonus auctions, 24h auctions.',
+    type: 'clientShowcase',
+  },
+  'bienbid.html': {
+    title: 'Bienbid — Multilingual Penny Auction (French)',
+    description:
+      'Bienbid: a multilingual penny auction website with full French language support, a pre-bid booking system, auto-bid, and a flexible operator feature set.',
+    type: 'clientShowcase',
+  },
+  'eodbox.html': {
+    title: 'EodBox — Unique Bid Auction Platform',
+    description:
+      'EodBox: a Unique Bid auction with two-decimal-place bids, multi-currency, multi-language, PayTM / CCAvenue / PayPal, and push notifications, built on MVC.',
+    type: 'clientShowcase',
+  },
+  'onlinealku.html': {
+    title: 'OnlineAlku — B2B Reverse Auction Platform',
+    description:
+      'OnlineAlku is a multi-seller, multi-buyer B2B reverse auction platform. Tender-style procurement where buyers post needs and suppliers compete with live quotes.',
+    type: 'clientShowcase',
+  },
+  'pigeononnet.html': {
+    title: 'PigeonOnNet — Live Video Streaming Auction',
+    description:
+      'PigeonOnNet: a Dutch-style auction platform with live video streaming and simulcast for selling pigeons, plus forward and price-reveal auction support.',
+    type: 'clientShowcase',
+  },
+  'rubids.html': {
+    title: 'Rubids — Multi-Type Live Auction Marketplace',
+    description:
+      'Rubids is a live auction marketplace with daily auctions across many categories — iOS, Android, and web — with coupons, games, and earning opportunities.',
+    type: 'clientShowcase',
+  },
+  'smgbids.html': {
+    title: 'SMG Bids — Lowest Unique Bid Auction (UK)',
+    description:
+      'SMG Bids: a Lowest Unique Bid auction platform built for a UK client. Smartphone-ready, fast, with a user-friendly operator control panel.',
+    type: 'clientShowcase',
+  },
+  'ubidbuy.html': {
+    title: 'uBiduBuy.sg — Lowest Bid + Price Reveal Auction',
+    description:
+      'uBiduBuy: a Singapore-based luxury auction marketplace combining Lowest Unique Bid and Price Reveal formats with credit refund options for participants.',
+    type: 'clientShowcase',
+  },
+
+  // ─── Case studies ──────────────────────────────────────────────────────
+  'case-studies.html': {
+    title: 'Case Studies — Software Delivered Worldwide',
+    description:
+      'Real-world case studies from E Multitech: SaaS, AI, fintech, healthcare, auction platforms, and enterprise systems deployed for clients across 4 continents.',
+    type: 'page',
+  },
+  'case-studies-detail.html': {
+    title: 'SaaS EHR Case Study — Multi-Hospital',
+    description:
+      'How we built a SaaS EHR for a US healthcare institution: 25% improvement in regulatory compliance and 50% faster access to patient records. Approach and outcomes.',
+    type: 'case',
+  },
+  'dinepa-case-study.html': {
+    title: 'DiNePa Case Study — Multi-Tenant Reverse Auction SaaS',
+    description:
+      'How E Multitech built DiNePa: a multi-tenant reverse auction SaaS that processes 100K+ procurement events for public agencies across Europe.',
+    type: 'case',
+  },
+  'litigation-management-system-nepal-rastra-bank.html': {
+    title: 'Litigation Management System for Nepal Rastra Bank',
+    description:
+      'Enterprise legal workflow platform built for Nepal Rastra Bank — central-bank-grade compliance, case tracking, document management, and audit logs.',
+    type: 'case',
+  },
+
+  // ─── Blog ──────────────────────────────────────────────────────────────
+  'blog.html': {
+    title: 'Engineering Blog — Software, SaaS & AI',
+    description:
+      'Engineering insights on custom software, SaaS, AI, and product strategy from the E Multitech team. Articles for founders, CTOs, and product leaders.',
+    type: 'blog',
+  },
+  'blog-detail.html': {
+    title: 'Crypto Exchange Fees in Australia: A Comprehensive Guide',
+    description:
+      'Understand how Australian crypto exchange fees work, what to look out for, and how to choose the right exchange. A comprehensive guide for Aussie traders.',
+    type: 'blogPost',
+  },
+
+  // ─── Other ─────────────────────────────────────────────────────────────
+  'works.html': {
+    title: 'Our Portfolio of Software Projects',
+    description:
+      'Portfolio of web, mobile, SaaS, and AI projects from E Multitech Solution: 100+ global deployments built by 150+ engineers over 16 years.',
+    type: 'portfolio',
+  },
+  'testimonial-all.html': {
+    title: 'Client Testimonials',
+    description:
+      'What our clients say about working with E Multitech Solution — from US-based founders to enterprise project leads across Europe and Asia.',
+    type: 'testimonial',
+  },
+
+  // ─── Legal ─────────────────────────────────────────────────────────────
+  'privacy-policy.html': {
+    title: 'Privacy Policy',
+    description:
+      'How E Multitech Solution collects, uses, and protects your personal information when you use this website or engage with our team.',
+    type: 'policy',
+  },
+  'terms-of-condition.html': {
+    title: 'Terms & Conditions',
+    description:
+      'Terms and conditions governing your use of the E Multitech Solution website and services. Please read before engaging our team.',
+    type: 'policy',
+  },
+  'cookie-policy.html': {
+    title: 'Cookie Policy',
+    description:
+      'How E Multitech Solution uses cookies on this website, what each category is for, and how you can manage your cookie preferences.',
+    type: 'policy',
+  },
+
+  // ─── 404 ───────────────────────────────────────────────────────────────
+  '404.html': {
+    title: 'Page Not Found',
+    description:
+      "The page you're looking for doesn't exist. Try the homepage, browse our services, or contact us.",
+    type: 'page',
+    noindex: true,
+  },
+};
