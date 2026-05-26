@@ -20,7 +20,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 - [DevOps & Cloud Engineering Services](https://emultitechsolution.com/devops-engineer.html): Automated infrastructure, CI/CD, and SRE for businesses where uptime is revenue. Continuous deployment, disaster recovery, and cost optimization built in.
 - [Product Engineering Services](https://emultitechsolution.com/product-engineering.html): End-to-end product engineering: from MVP to enterprise-grade SaaS. We design, build, and scale software products that drive consistent revenue growth.
 - [Software Development Services](https://emultitechsolution.com/software-development.html): Secure, scalable, high-performance software that streamlines operations and elevates user experience. Web, mobile, SaaS, and enterprise systems.
-- [Custom Auction Software Development](https://emultitechsolution.com/auction-software.html): Penny, reverse, unique-bid, and Dutch auction software built since 2010 for clients in the US, UK, EU, and Asia. PHP, MySQL, Ajax — fully customizable.
+- [Auction Software Development Services](https://emultitechsolution.com/auction-software.html): Penny, reverse, unique-bid, Dutch, price-reveal, eBay-style auction software. Built since 2010 for operators across the US, UK, EU, Asia & Australia. 4.8★ Capterra.
 
 ## Industries
 

@@ -2246,4 +2246,272 @@ body {
   }
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   PILLAR PAGE LAYOUT — used by auction-software.html and the 7
+   service pillar pages that follow. Self-contained design system
+   so service pages don't depend on legacy style.css patterns.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* shared container offset for the fixed-top navbar */
+.pillar-hero,
+.pillar-trust,
+.pillar-section,
+.pillar-cta {
+  position: relative;
+}
+
+/* Hero ────────────────────────────────────────────────────────────── */
+.pillar-hero {
+  padding: clamp(7rem, 12vw, 9rem) 0 clamp(3rem, 6vw, 5rem);
+  background:
+    radial-gradient(ellipse at top right, rgba(59, 130, 246, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+    #fafbfc;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+.pillar-hero .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+.pillar-hero .breadcrumb {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.875rem; color: rgba(15, 23, 42, 0.55);
+  margin-bottom: 2rem; padding: 0; background: transparent;
+}
+.pillar-hero .breadcrumb a { color: rgba(15, 23, 42, 0.65); text-decoration: none; }
+.pillar-hero .breadcrumb a:hover { color: #2563eb; text-decoration: underline; }
+.pillar-hero .breadcrumb span[aria-current] { color: rgba(15, 23, 42, 0.85); font-weight: 500; }
+.pillar-hero__eyebrow {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+  color: #2563eb; text-transform: uppercase; margin: 0 0 1rem;
+}
+.pillar-hero__h1 {
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem) !important;
+  font-weight: 700 !important; line-height: 1.1 !important;
+  color: #0f172a; margin: 0 0 1.25rem; letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+.pillar-hero__sub {
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  line-height: 1.6; color: rgba(15, 23, 42, 0.7); max-width: 60ch;
+  margin: 0 0 2rem;
+}
+.pillar-hero__sub strong { color: #0f172a; font-weight: 600; }
+.pillar-hero__cta {
+  display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;
+}
+.pillar-hero .cta-reassurance {
+  font-size: 0.875rem; color: rgba(15, 23, 42, 0.55); margin: 0;
+}
+
+/* Trust strip ─────────────────────────────────────────────────────── */
+.pillar-trust { padding: 2.5rem 0; background: #ffffff; border-bottom: 1px solid rgba(15, 23, 42, 0.06); }
+.pillar-trust .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+.pillar-trust__grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; list-style: none; padding: 0; margin: 0;
+}
+.pillar-trust__grid li {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding: 0.5rem 0; border-left: 3px solid #2563eb; padding-left: 1rem;
+}
+.pillar-trust__grid strong {
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.6rem); font-weight: 700;
+  color: #0f172a; letter-spacing: -0.01em;
+}
+.pillar-trust__grid span { font-size: 0.85rem; color: rgba(15, 23, 42, 0.6); line-height: 1.45; }
+@media (max-width: 768px) { .pillar-trust__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .pillar-trust__grid { grid-template-columns: 1fr; } }
+
+/* Generic pillar section ──────────────────────────────────────────── */
+.pillar-section { padding: clamp(3rem, 6vw, 5rem) 0; background: #ffffff; }
+.pillar-section--alt { background: #f7f9fc; }
+.pillar-section .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+.pillar-section__head { max-width: 740px; margin: 0 auto 2.5rem; text-align: center; }
+.pillar-section__eyebrow {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+  color: #2563eb; text-transform: uppercase; margin: 0 0 0.75rem;
+}
+.pillar-section h2 {
+  font-size: clamp(1.6rem, 1.1rem + 2vw, 2.4rem) !important;
+  font-weight: 700 !important; line-height: 1.2 !important;
+  color: #0f172a !important; margin: 0 0 0.75rem !important;
+  letter-spacing: -0.02em;
+}
+.pillar-section__lead {
+  font-size: 1.05rem; color: rgba(15, 23, 42, 0.65);
+  line-height: 1.55; margin: 0;
+}
+.pillar-section__body { max-width: 760px; margin: 0 auto; }
+.pillar-section__body p {
+  font-size: 1.05rem; line-height: 1.7;
+  color: rgba(15, 23, 42, 0.78); margin: 0 0 1.25rem;
+}
+.pillar-section__body strong { color: #0f172a; font-weight: 600; }
+
+/* 4-phase ordered list ────────────────────────────────────────────── */
+.pillar-phases {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: 1.25rem; max-width: 880px; margin-inline: auto;
+}
+.pillar-phases li {
+  display: grid; grid-template-columns: 56px 1fr; gap: 1.25rem;
+  padding: 1.5rem; background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+.pillar-phases__num {
+  font-size: 1.4rem; font-weight: 700; color: #2563eb;
+  background: rgba(37, 99, 235, 0.08); border-radius: 10px;
+  width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
+}
+.pillar-phases h3 {
+  font-size: 1.15rem !important; font-weight: 600 !important;
+  color: #0f172a !important; margin: 0 0 0.5rem !important;
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.75rem;
+}
+.pillar-phases__when {
+  font-size: 0.8rem; font-weight: 500; color: rgba(15, 23, 42, 0.55);
+  background: rgba(15, 23, 42, 0.05); padding: 0.15rem 0.55rem; border-radius: 999px;
+}
+.pillar-phases p {
+  font-size: 0.95rem; line-height: 1.6;
+  color: rgba(15, 23, 42, 0.7); margin: 0;
+}
+@media (max-width: 600px) {
+  .pillar-phases li { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.25rem; }
+  .pillar-phases__num { width: 44px; height: 44px; font-size: 1.1rem; }
+}
+
+/* Case study deep-dive ───────────────────────────────────────────── */
+.pillar-deepdive { max-width: 760px; margin: 0 auto; }
+.pillar-deepdive h3 {
+  font-size: 1.15rem !important; font-weight: 600 !important;
+  color: #2563eb !important; margin: 1.75rem 0 0.5rem !important;
+  letter-spacing: 0;
+}
+.pillar-deepdive h3:first-child { margin-top: 0 !important; }
+.pillar-deepdive p {
+  font-size: 1.02rem; line-height: 1.7;
+  color: rgba(15, 23, 42, 0.78); margin: 0 0 1rem;
+}
+.pillar-deepdive__cta { margin-top: 2rem !important; text-align: center; }
+.pillar-deepdive .more-btn {
+  display: inline-block; padding: 0.7rem 1.4rem;
+  background: #0f172a; color: #ffffff !important; border-radius: 8px;
+  text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  transition: background 0.15s ease;
+}
+.pillar-deepdive .more-btn:hover { background: #2563eb; }
+
+/* Tech stack list ─────────────────────────────────────────────────── */
+.pillar-stack {
+  list-style: none; padding: 0; margin: 0; max-width: 820px; margin-inline: auto;
+  display: grid; gap: 0.85rem;
+}
+.pillar-stack li {
+  padding: 1rem 1.25rem; background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 10px;
+  font-size: 0.98rem; line-height: 1.6; color: rgba(15, 23, 42, 0.78);
+  border-left: 3px solid #2563eb;
+}
+.pillar-stack strong { color: #0f172a; font-weight: 600; }
+
+/* Engagement model grid ──────────────────────────────────────────── */
+.pillar-engagement {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  max-width: 1000px; margin: 0 auto;
+}
+.pillar-engagement article {
+  padding: 1.75rem; background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+.pillar-engagement h3 {
+  font-size: 1.2rem !important; font-weight: 600 !important;
+  color: #0f172a !important; margin: 0 0 0.35rem !important;
+}
+.pillar-engagement__when {
+  font-size: 0.82rem !important; color: #2563eb !important;
+  font-weight: 600; margin: 0 0 0.85rem !important;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.pillar-engagement article p:not(.pillar-engagement__when) {
+  font-size: 0.95rem; line-height: 1.6;
+  color: rgba(15, 23, 42, 0.72); margin: 0;
+}
+.pillar-engagement__terms {
+  max-width: 1000px; margin: 1.75rem auto 0 !important; padding: 1.25rem;
+  background: rgba(37, 99, 235, 0.04); border-radius: 10px;
+  font-size: 0.93rem; line-height: 1.6; color: rgba(15, 23, 42, 0.72);
+  text-align: center;
+}
+.pillar-engagement__terms strong { color: #0f172a; }
+@media (max-width: 768px) { .pillar-engagement { grid-template-columns: 1fr; } }
+
+/* FAQ details/summary ────────────────────────────────────────────── */
+.pillar-faq { max-width: 820px; margin: 0 auto; }
+.pillar-faq details {
+  background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+.pillar-faq details[open] { border-color: rgba(37, 99, 235, 0.35); }
+.pillar-faq summary {
+  padding: 1.1rem 1.4rem; cursor: pointer; list-style: none;
+  font-weight: 600; font-size: 1rem; color: #0f172a;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  user-select: none;
+}
+.pillar-faq summary::-webkit-details-marker { display: none; }
+.pillar-faq summary::after {
+  content: '+'; font-size: 1.4rem; font-weight: 400;
+  color: #2563eb; transition: transform 0.2s ease;
+  line-height: 1; flex-shrink: 0;
+}
+.pillar-faq details[open] summary::after { content: '\2212'; }
+.pillar-faq details p {
+  padding: 0 1.4rem 1.2rem; margin: 0;
+  font-size: 0.97rem; line-height: 1.65; color: rgba(15, 23, 42, 0.75);
+}
+.pillar-faq details p a { color: #2563eb; }
+
+/* Final CTA section ──────────────────────────────────────────────── */
+.pillar-cta {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: #ffffff;
+}
+.pillar-cta .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+.pillar-cta h2 {
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem) !important;
+  font-weight: 700 !important; color: #ffffff !important;
+  text-align: center; margin: 0 0 2.5rem !important;
+}
+.pillar-cta__grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem; max-width: 900px; margin: 0 auto;
+}
+.pillar-cta__grid article {
+  padding: 2rem; background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+.pillar-cta__grid h3 {
+  font-size: 1.15rem !important; font-weight: 600 !important;
+  color: #ffffff !important; margin: 0 0 0.75rem !important;
+}
+.pillar-cta__grid p {
+  font-size: 0.95rem; line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78); margin: 0 0 1.25rem;
+}
+.pillar-cta__grid .btn-hero,
+.pillar-cta__grid .btn-hero-white { font-size: 0.95rem; padding: 0.7rem 1.4rem; }
+.pillar-cta__direct {
+  max-width: 900px; margin: 2rem auto 0 !important; text-align: center;
+  font-size: 0.95rem; color: rgba(255, 255, 255, 0.8);
+}
+.pillar-cta__direct strong { color: #ffffff; }
+.pillar-cta__direct a { color: #93c5fd; text-decoration: underline; }
+@media (max-width: 600px) {
+  .pillar-cta__grid { grid-template-columns: 1fr; }
+  .pillar-cta__grid article { padding: 1.5rem; }
+}
+
 

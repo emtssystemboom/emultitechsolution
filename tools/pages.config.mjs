@@ -155,9 +155,9 @@ export const PAGES = {
 
   // ─── Auction software hub + scripts ────────────────────────────────────
   'auction-software.html': {
-    title: 'Custom Auction Software Development',
+    title: 'Auction Software Development Services',
     description:
-      'Penny, reverse, unique-bid, and Dutch auction software built since 2010 for clients in the US, UK, EU, and Asia. PHP, MySQL, Ajax — fully customizable.',
+      'Penny, reverse, unique-bid, Dutch, price-reveal, eBay-style auction software. Built since 2010 for operators across the US, UK, EU, Asia & Australia. 4.8★ Capterra.',
     type: 'service',
     image: 'images/auction.jpg',
   },
