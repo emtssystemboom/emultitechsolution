@@ -6,7 +6,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 
 ## Company
 
-- [Custom Software, SaaS & AI Partner](https://emultitechsolution.com/): We design and develop scalable web, mobile, and SaaS applications for startups, enterprises, and global businesses. 16+ years and 100+ deliveries worldwide.
+- [Custom Software, SaaS & AI Partner](https://emultitechsolution.com/): Founder-led software engineering since 2010. 70+ production platforms shipped for clients across 108 countries. 4.8★ on Capterra across 25 verified client reviews.
 - [About — 16 Years of Production Eng.](https://emultitechsolution.com/about.html): 150+ engineers building production systems trusted by central banks and 100+ global companies. Meet the team behind 16 years of zero-failure deliveries.
 - [Book a Strategy Call](https://emultitechsolution.com/contact.html): Book a free strategy call with the E Multitech engineering team. Pick a date and time slot — we confirm within 24 hours, no auto-responders.
 - [Get a Free Project Consultation](https://emultitechsolution.com/request_quote.html): Request a free project consultation. Tell us about your project, pick a discovery call slot, and get a response within 48 hours.

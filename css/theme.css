@@ -2226,4 +2226,24 @@ body {
   }
 }
 
+/* ── 4. "Why founders pick us" section — supporting lead paragraph
+       under the H2. Keeps existing why-us-container layout intact
+       and adds a tightly-styled lead line for the new differentiation copy. */
+.why-us-container .why-us-lead {
+  max-width: 760px;
+  margin: -0.5rem auto 2.25rem !important;
+  text-align: center;
+  font-size: var(--fs-lead, clamp(1.05rem, 0.95rem + 0.4vw, 1.2rem)) !important;
+  line-height: 1.55 !important;
+  color: rgba(15, 23, 42, 0.72) !important;
+  font-weight: 500 !important;
+  padding: 0 1rem;
+}
+@media (max-width: 600px) {
+  .why-us-container .why-us-lead {
+    margin-bottom: 1.5rem !important;
+    font-size: 1rem !important;
+  }
+}
+
 

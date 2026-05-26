@@ -53,7 +53,7 @@ export const PAGES = {
   'index.html': {
     title: 'Custom Software, SaaS & AI Partner',
     description:
-      'We design and develop scalable web, mobile, and SaaS applications for startups, enterprises, and global businesses. 16+ years and 100+ deliveries worldwide.',
+      'Founder-led software engineering since 2010. 70+ production platforms shipped for clients across 108 countries. 4.8★ on Capterra across 25 verified client reviews.',
     type: 'home',
     image: 'images/banner-bg-img.png',
   },
