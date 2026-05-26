@@ -222,21 +222,23 @@
         <!-- ════ LEFT: CALENDAR ════ -->
         <div class="bk-card" id="calendarCard">
           <!-- Progress Steps -->
-          <div class="booking-steps" id="progressSteps">
-            <div class="bk-step active" id="step1">
-              <div class="step-bubble active">1</div>
+          <div class="booking-steps" id="progressSteps" role="group" aria-label="Booking progress">
+            <div class="bk-step active" id="step1" aria-current="step">
+              <div class="step-bubble active" aria-hidden="true">1</div>
               <span class="step-label">Pick Date</span>
             </div>
-            <div class="step-line" id="line1"></div>
+            <div class="step-line" id="line1" aria-hidden="true"></div>
             <div class="bk-step" id="step2">
-              <div class="step-bubble">2</div>
+              <div class="step-bubble" aria-hidden="true">2</div>
               <span class="step-label">Time Slot</span>
             </div>
-            <div class="step-line" id="line2"></div>
+            <div class="step-line" id="line2" aria-hidden="true"></div>
             <div class="bk-step" id="step3">
-              <div class="step-bubble">3</div>
+              <div class="step-bubble" aria-hidden="true">3</div>
               <span class="step-label">Confirm</span>
             </div>
+          </div>
+          <div class="a11y-sr-only" role="status" aria-live="polite" aria-atomic="true" id="stepAnnouncer">Step 1 of 3: Pick Date
           </div>
 
           <!-- Calendar Header -->
@@ -368,7 +370,7 @@
             </div>
 
             <!-- Submit -->
-            <button type="submit" class="btn-submit-emt" id="submitBtn" disabled>
+            <button type="submit" class="btn-submit-emt" id="submitBtn" disabled aria-disabled="true">
               <span class="btn-spinner" id="btnSpinner"></span>
               <i class="fa-solid fa-lock" id="btnIcon"></i>
               <span id="btnText">Select a Date &amp; Time to Continue</span>
@@ -571,41 +573,79 @@ function renderCalendar() {
   const display = document.getElementById('monthDisplay');
   grid.innerHTML = '';
   display.textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+  // ARIA grid semantics so screen readers announce it as a date picker
+  grid.setAttribute('role', 'grid');
+  grid.setAttribute('aria-label', `Available dates in ${MONTHS[currentMonth]} ${currentYear}`);
 
   const firstDow  = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMon = new Date(currentYear, currentMonth + 1, 0).getDate();
   const todayObj  = new Date(); todayObj.setHours(0,0,0,0);
 
-  // empty cells
+  // empty cells (spacers before the 1st of month)
   for (let i = 0; i < firstDow; i++) {
     const empty = document.createElement('div');
     empty.className = 'cal-day empty';
+    empty.setAttribute('role', 'presentation');
     grid.appendChild(empty);
   }
 
   for (let d = 1; d <= daysInMon; d++) {
-    const cell   = document.createElement('div');
-    const dStr   = toDateStr(currentYear, currentMonth, d);
-    const dayObj = new Date(currentYear, currentMonth, d);
-    const past   = isPast(currentYear, currentMonth, d);
+    const dStr    = toDateStr(currentYear, currentMonth, d);
+    const dayObj  = new Date(currentYear, currentMonth, d);
+    const past    = isPast(currentYear, currentMonth, d);
     const blocked = isBlocked(currentYear, currentMonth, d);
 
+    // Selectable days are real <button>s — keyboard-operable by default.
+    // Past/blocked days stay as <div> (non-interactive).
+    const cell = document.createElement(past || blocked ? 'div' : 'button');
     cell.className = 'cal-day';
     cell.textContent = d;
+    cell.setAttribute('role', 'gridcell');
+    const longLabel = dayObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 
     if (past || blocked) {
       cell.classList.add('disabled');
+      cell.setAttribute('aria-disabled', 'true');
+      cell.setAttribute('aria-label', `${longLabel} — unavailable`);
     } else {
+      cell.type = 'button'; // prevent submit if inside a form
       cell.classList.add('has-slots');
       cell.setAttribute('data-date', dStr);
+      cell.setAttribute('aria-label', longLabel);
       cell.addEventListener('click', () => selectDate(dStr, cell));
+      cell.addEventListener('keydown', e => handleCalKey(e, dStr));
     }
 
     if (dayObj.getTime() === todayObj.getTime()) cell.classList.add('today');
-    if (dStr === selectedDate) cell.classList.add('selected');
+    if (dStr === selectedDate) {
+      cell.classList.add('selected');
+      cell.setAttribute('aria-selected', 'true');
+    }
 
     grid.appendChild(cell);
   }
+}
+
+/* Arrow-key navigation between day cells. ←↑→↓ move focus, Home/End jump
+   to row boundaries, PageUp/PageDown change month. */
+function handleCalKey(e, currentDStr) {
+  const moves = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7, Home: -10000, End: 10000 };
+  if (!(e.key in moves) && e.key !== 'PageUp' && e.key !== 'PageDown') return;
+  e.preventDefault();
+  if (e.key === 'PageUp')   { currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; } renderCalendar(); return; }
+  if (e.key === 'PageDown') { currentMonth++; if (currentMonth > 11) { currentMonth = 0;  currentYear++; } renderCalendar(); return; }
+  const [y, m, d] = currentDStr.split('-').map(Number);
+  let next = new Date(y, m - 1, d + moves[e.key]);
+  // Home → first of the same week; End → last of the same week
+  if (e.key === 'Home') next = new Date(y, m - 1, d - new Date(y, m - 1, d).getDay());
+  if (e.key === 'End')  next = new Date(y, m - 1, d + (6 - new Date(y, m - 1, d).getDay()));
+  if (next.getMonth() !== m - 1 || next.getFullYear() !== y) {
+    currentYear = next.getFullYear();
+    currentMonth = next.getMonth();
+    renderCalendar();
+  }
+  const target = document.querySelector(`.cal-day[data-date="${toDateStr(next.getFullYear(), next.getMonth(), next.getDate())}"]`);
+  if (target) target.focus();
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -688,19 +728,24 @@ function selectTime(slot, btnEl) {
    PROGRESS STEPS
    ═══════════════════════════════════════════════════════════ */
 function setStep(n) {
+  const STEP_LABELS = { 1: 'Pick Date', 2: 'Time Slot', 3: 'Confirm' };
   [1,2,3].forEach(i => {
     const step   = document.getElementById(`step${i}`);
     const bubble = step.querySelector('.step-bubble');
     step.classList.remove('active','done');
     bubble.classList.remove('active','done');
-    if (i < n)       { step.classList.add('done');   bubble.classList.add('done');   bubble.innerHTML = '<i class="fa-solid fa-check" style="font-size:.65rem;"></i>'; }
-    else if (i === n){ step.classList.add('active'); bubble.classList.add('active'); bubble.textContent = i; }
+    step.removeAttribute('aria-current');
+    if (i < n)       { step.classList.add('done');   bubble.classList.add('done');   bubble.innerHTML = '<i class="fa-solid fa-check" style="font-size:.65rem;" aria-hidden="true"></i>'; }
+    else if (i === n){ step.classList.add('active'); bubble.classList.add('active'); bubble.textContent = i; step.setAttribute('aria-current', 'step'); }
     else             { bubble.textContent = i; }
   });
   if (document.getElementById('line1'))
     document.getElementById('line1').classList.toggle('done', n >= 2);
   if (document.getElementById('line2'))
     document.getElementById('line2').classList.toggle('done', n >= 3);
+  // Announce the current step to screen readers
+  const announcer = document.getElementById('stepAnnouncer');
+  if (announcer) announcer.textContent = `Step ${n} of 3: ${STEP_LABELS[n] || ''}`;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -731,6 +776,7 @@ function updateSubmitBtn() {
   const icon = document.getElementById('btnIcon');
   const ready = !!(selectedDate && selectedTime);
   btn.disabled = !ready;
+  btn.setAttribute('aria-disabled', String(!ready));
   if (ready) {
     txt.textContent  = 'Confirm & Book This Slot';
     icon.className   = 'fa-solid fa-rocket';
@@ -771,6 +817,7 @@ document.getElementById('project-form').addEventListener('submit', async functio
   const txt     = document.getElementById('btnText');
 
   btn.disabled       = true;
+  btn.setAttribute('aria-disabled', 'true');
   spinner.style.display = 'block';
   icon.style.display    = 'none';
   txt.textContent       = 'Booking your slot…';
@@ -802,6 +849,7 @@ document.getElementById('project-form').addEventListener('submit', async functio
     }
   } catch (err) {
     btn.disabled       = false;
+    btn.setAttribute('aria-disabled', 'false');
     spinner.style.display = 'none';
     icon.style.display    = 'inline';
     txt.textContent       = 'Something went wrong — please try again';

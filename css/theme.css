@@ -286,21 +286,39 @@ h1 {
 }
 
 /* ── About-section type refresh ──────────────────────────────────────────── */
-.about-section .content h2 {
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--blue, #1a6bcc);
-  margin-bottom: 0.5rem;
+/* Semantic upgrade: the eyebrow was an <h2> and the headline was an <h1> —
+   both wrong (page already has a hero h1). They're now <p class="about-eyebrow">
+   and <h2 class="about-headline">. Visual styling preserved 1:1 below. */
+.about-section .content h2,
+.about-section .content .about-eyebrow {
+  font-size: var(--fs-sm) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  color: var(--blue, #1a6bcc) !important;
+  line-height: var(--lh-snug) !important;
+  margin-bottom: 0.5rem !important;
 }
 
-.about-section .content h1 {
+.about-section .content h1,
+.about-section .content .about-headline {
   font-size: var(--fs-h2);
   font-weight: 700;
   letter-spacing: var(--ls-snug);
   line-height: 1.1;
   margin-bottom: 1.25rem;
+  max-width: 22ch;
+}
+
+/* The headline h2 must NOT pick up the eyebrow styling above. */
+.about-section .content h2.about-headline {
+  font-size: var(--fs-h2) !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  letter-spacing: var(--ls-snug) !important;
+  color: inherit !important;
+  line-height: 1.1 !important;
+  margin-bottom: 1.25rem !important;
   max-width: 22ch;
 }
 
@@ -770,6 +788,21 @@ html, body {
 }
 #calendarCard .cal-day {
   min-height: 40px;
+}
+/* When .cal-day is a <button> (selectable days) it inherits browser button
+   defaults — reset them so it visually matches the original <div> rendering. */
+#calendarCard button.cal-day {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 1px solid transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  /* keep aspect ratio so it looks like the div version */
+  aspect-ratio: 1;
 }
 
 @media (max-width: 480px) {
@@ -1661,6 +1694,20 @@ textarea:focus-visible,
     scroll-behavior: auto !important;
   }
   .hero-video { display: none !important; }
+
+  /* AOS uses inline transforms (translateX/translateY/scale) that the
+     wildcard rule above doesn't touch. Neutralise them explicitly so users
+     with motion sensitivity don't see slide-in or fade-up effects. */
+  [data-aos] {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ── ARIA error state visibility on form fields (does not change layout) */

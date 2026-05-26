@@ -51,13 +51,13 @@ export const SITE = {
 export const PAGES = {
   // ─── Core ──────────────────────────────────────────────────────────────
   'index.html': {
-    title: 'Custom Software, SaaS & AI Development',
+    title: 'Custom Software, SaaS & AI Partner',
     description:
       'We design and develop scalable web, mobile, and SaaS applications for startups, enterprises, and global businesses. 16+ years and 100+ deliveries worldwide.',
     type: 'home',
   },
   'about.html': {
-    title: 'About — 16 Years Building Production Systems',
+    title: 'About — 16 Years of Production Eng.',
     description:
       '150+ engineers building production systems trusted by central banks and 100+ global companies. Meet the team behind 16 years of zero-failure deliveries.',
     type: 'about',
@@ -121,7 +121,7 @@ export const PAGES = {
 
   // ─── Industries ────────────────────────────────────────────────────────
   'industries.html': {
-    title: 'Industries We Serve — Healthcare, Fintech, Auctions & More',
+    title: 'Industries — Healthcare & Fintech',
     description:
       'Industry-specific software solutions for healthcare, real estate, auctions, procurement, fintech, and government — from startups to multinational enterprises.',
     type: 'industry',
@@ -179,7 +179,7 @@ export const PAGES = {
 
   // ─── Client showcases ──────────────────────────────────────────────────
   'auctioncents.html': {
-    title: 'AuctionCents — US Penny Auction Platform',
+    title: 'AuctionCents — US Penny Auction',
     description:
       'AuctionCents is a leading US penny auction platform built by E Multitech: membership tiers, auto-bid, master auto-bid, 24h, free, and bonus auctions.',
     type: 'clientShowcase',
@@ -191,7 +191,7 @@ export const PAGES = {
     type: 'clientShowcase',
   },
   'bienbid.html': {
-    title: 'Bienbid — Multilingual Penny Auction (French)',
+    title: 'Bienbid — French Penny Auction',
     description:
       'Bienbid: a multilingual penny auction website with full French language support, a pre-bid booking system, auto-bid, and a flexible operator feature set.',
     type: 'clientShowcase',
@@ -203,31 +203,31 @@ export const PAGES = {
     type: 'clientShowcase',
   },
   'onlinealku.html': {
-    title: 'OnlineAlku — B2B Reverse Auction Platform',
+    title: 'OnlineAlku — B2B Reverse Auction',
     description:
       'OnlineAlku is a multi-seller, multi-buyer B2B reverse auction platform. Tender-style procurement where buyers post needs and suppliers compete with live quotes.',
     type: 'clientShowcase',
   },
   'pigeononnet.html': {
-    title: 'PigeonOnNet — Live Video Streaming Auction',
+    title: 'PigeonOnNet — Live Video Auction',
     description:
       'PigeonOnNet: a Dutch-style auction platform with live video streaming and simulcast for selling pigeons, plus forward and price-reveal auction support.',
     type: 'clientShowcase',
   },
   'rubids.html': {
-    title: 'Rubids — Multi-Type Live Auction Marketplace',
+    title: 'Rubids — Live Auction Marketplace',
     description:
       'Rubids is a live auction marketplace with daily auctions across many categories — iOS, Android, and web — with coupons, games, and earning opportunities.',
     type: 'clientShowcase',
   },
   'smgbids.html': {
-    title: 'SMG Bids — Lowest Unique Bid Auction (UK)',
+    title: 'SMG Bids — Lowest Unique Bid (UK)',
     description:
       'SMG Bids: a Lowest Unique Bid auction platform built for a UK client. Smartphone-ready, fast, with a user-friendly operator control panel.',
     type: 'clientShowcase',
   },
   'ubidbuy.html': {
-    title: 'uBiduBuy.sg — Lowest Bid + Price Reveal Auction',
+    title: 'uBiduBuy.sg — Low Bid + Reveal',
     description:
       'uBiduBuy: a Singapore-based luxury auction marketplace combining Lowest Unique Bid and Price Reveal formats with credit refund options for participants.',
     type: 'clientShowcase',
@@ -235,7 +235,7 @@ export const PAGES = {
 
   // ─── Case studies ──────────────────────────────────────────────────────
   'case-studies.html': {
-    title: 'Case Studies — Software Delivered Worldwide',
+    title: 'Case Studies — Software We Shipped',
     description:
       'Real-world case studies from E Multitech: SaaS, AI, fintech, healthcare, auction platforms, and enterprise systems deployed for clients across 4 continents.',
     type: 'page',
@@ -247,13 +247,13 @@ export const PAGES = {
     type: 'case',
   },
   'dinepa-case-study.html': {
-    title: 'DiNePa Case Study — Multi-Tenant Reverse Auction SaaS',
+    title: 'DiNePa — Multi-Tenant eAuction SaaS',
     description:
       'How E Multitech built DiNePa: a multi-tenant reverse auction SaaS that processes 100K+ procurement events for public agencies across Europe.',
     type: 'case',
   },
   'litigation-management-system-nepal-rastra-bank.html': {
-    title: 'Litigation Management System for Nepal Rastra Bank',
+    title: 'Litigation System — Nepal Rastra Bank',
     description:
       'Enterprise legal workflow platform built for Nepal Rastra Bank — central-bank-grade compliance, case tracking, document management, and audit logs.',
     type: 'case',
@@ -261,13 +261,13 @@ export const PAGES = {
 
   // ─── Blog ──────────────────────────────────────────────────────────────
   'blog.html': {
-    title: 'Engineering Blog — Software, SaaS & AI',
+    title: 'Engineering Blog — SaaS & AI',
     description:
       'Engineering insights on custom software, SaaS, AI, and product strategy from the E Multitech team. Articles for founders, CTOs, and product leaders.',
     type: 'blog',
   },
   'blog-detail.html': {
-    title: 'Crypto Exchange Fees in Australia: A Comprehensive Guide',
+    title: 'Crypto Exchange Fees in Australia',
     description:
       'Understand how Australian crypto exchange fees work, what to look out for, and how to choose the right exchange. A comprehensive guide for Aussie traders.',
     type: 'blogPost',

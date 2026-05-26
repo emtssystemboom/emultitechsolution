@@ -199,22 +199,23 @@
 
     <!-- Wizard progress -->
     <div class="wizard-wrap" data-aos="fade-up" data-aos-delay="100">
-      <div class="wizard-progress">
-        <div class="wp-step active" id="wp1">
-          <div class="wp-bubble active" id="wb1">1</div>
+      <div class="wizard-progress" role="group" aria-label="Quote request progress">
+        <div class="wp-step active" id="wp1" aria-current="step">
+          <div class="wp-bubble active" id="wb1" aria-hidden="true">1</div>
           <span class="wp-label">Project Details</span>
         </div>
-        <div class="wp-line" id="wl1"></div>
+        <div class="wp-line" id="wl1" aria-hidden="true"></div>
         <div class="wp-step" id="wp2">
-          <div class="wp-bubble" id="wb2">2</div>
+          <div class="wp-bubble" id="wb2" aria-hidden="true">2</div>
           <span class="wp-label">Book a Call</span>
         </div>
-        <div class="wp-line" id="wl2"></div>
+        <div class="wp-line" id="wl2" aria-hidden="true"></div>
         <div class="wp-step" id="wp3">
-          <div class="wp-bubble" id="wb3">3</div>
+          <div class="wp-bubble" id="wb3" aria-hidden="true">3</div>
           <span class="wp-label">Review &amp; Submit</span>
         </div>
       </div>
+      <div class="a11y-sr-only" role="status" aria-live="polite" aria-atomic="true" id="wizardAnnouncer">Step 1 of 3: Project Details</div>
 
       <!-- Outer layout: wizard + sidebar -->
       <div class="rq-layout">
@@ -244,14 +245,14 @@
                 <div class="col-md-6">
                   <div class="fl">
                     <label for="rq-firstname">First Name <span>*required</span></label>
-                    <input type="text" name="firstName" class="fi" placeholder="Rajesh" required autocomplete="given-name" id="rq-firstname" aria-required="true">
+                    <input type="text" name="firstName" class="fi" placeholder="Rajesh" required autocomplete="given-name" id="rq-firstname" aria-required="true" aria-describedby="err-firstName">
                     <span class="field-err" id="err-firstName">Please enter your first name.</span>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="fl">
                     <label for="rq-lastname">Last Name <span>*required</span></label>
-                    <input type="text" name="lastName" class="fi" placeholder="Sharma" required autocomplete="family-name" id="rq-lastname" aria-required="true">
+                    <input type="text" name="lastName" class="fi" placeholder="Sharma" required autocomplete="family-name" id="rq-lastname" aria-required="true" aria-describedby="err-lastName">
                     <span class="field-err" id="err-lastName">Please enter your last name.</span>
                   </div>
                 </div>
@@ -262,7 +263,7 @@
                 <div class="col-md-6">
                   <div class="fl">
                     <label for="rq-email">Work Email <span>*required</span></label>
-                    <input type="email" name="email" class="fi" placeholder="you@company.com" required autocomplete="email" id="rq-email" aria-required="true">
+                    <input type="email" name="email" class="fi" placeholder="you@company.com" required autocomplete="email" id="rq-email" aria-required="true" aria-describedby="err-email">
                     <span class="field-err" id="err-email">Please enter a valid email address.</span>
                   </div>
                 </div>
@@ -271,7 +272,7 @@
                     <label for="rq-company">Mobile / WhatsApp <span>*required</span></label>
                     <div class="phone-row">
                       <span class="phone-prefix">📞</span>
-                      <input type="tel" name="mobileNo" class="fi" placeholder="+977 98XXXXXXXX" required autocomplete="tel" id="rq-mobileno" aria-required="true">
+                      <input type="tel" name="mobileNo" class="fi" placeholder="+977 98XXXXXXXX" required autocomplete="tel" id="rq-mobileno" aria-required="true" aria-describedby="err-mobileNo">
                     </div>
                     <span class="field-err" id="err-mobileNo">Please enter your mobile number.</span>
                   </div>
@@ -303,7 +304,7 @@
               <!-- Country -->
               <div class="fl">
                 <label for="rq-country">Country <span>*required</span></label>
-                <select name="country" class="fi-select" required id="rq-country" aria-required="true">
+                <select name="country" class="fi-select" required id="rq-country" aria-required="true" aria-describedby="err-country">
                   <option value="">Select your country</option>
                   <optgroup label="Primary markets">
                     <option>Australia</option><option>USA</option><option>United Kingdom</option>
@@ -341,37 +342,37 @@
                 <label for="rq-projecttype">What type of project do you need? <span>*select all that apply</span></label>
                 <div class="project-type-grid">
                   <label class="pt-card" id="ptc-website">
-                    <input type="checkbox" name="projectType[]" value="Website" id="rq-projecttype-1">
+                    <input type="checkbox" name="projectType[]" value="Website" id="rq-projecttype-1" aria-describedby="err-projectType">
                     <div class="check-tick"><i class="fa-solid fa-check"></i></div>
                     <span class="pt-icon">🌐</span>
                     <span class="pt-label">Website</span>
                   </label>
                   <label class="pt-card" id="ptc-mobile" for="rq-projecttype">
-                    <input type="checkbox" name="projectType[]" value="Mobile App" id="rq-projecttype-2">
+                    <input type="checkbox" name="projectType[]" value="Mobile App" id="rq-projecttype-2" aria-describedby="err-projectType">
                     <div class="check-tick"><i class="fa-solid fa-check"></i></div>
                     <span class="pt-icon">📱</span>
                     <span class="pt-label">Mobile App</span>
                   </label>
                   <label class="pt-card" id="ptc-software">
-                    <input type="checkbox" name="projectType[]" value="Custom Software" id="rq-projecttype-3">
+                    <input type="checkbox" name="projectType[]" value="Custom Software" id="rq-projecttype-3" aria-describedby="err-projectType">
                     <div class="check-tick"><i class="fa-solid fa-check"></i></div>
                     <span class="pt-icon">⚙️</span>
                     <span class="pt-label">Custom Software</span>
                   </label>
                   <label class="pt-card" id="ptc-ai" for="rq-projecttype">
-                    <input type="checkbox" name="projectType[]" value="AI / Automation" id="rq-projecttype-4">
+                    <input type="checkbox" name="projectType[]" value="AI / Automation" id="rq-projecttype-4" aria-describedby="err-projectType">
                     <div class="check-tick"><i class="fa-solid fa-check"></i></div>
                     <span class="pt-icon">🤖</span>
                     <span class="pt-label">AI / Automation</span>
                   </label>
                   <label class="pt-card" id="ptc-api">
-                    <input type="checkbox" name="projectType[]" value="API & Backend" id="rq-projecttype-5">
+                    <input type="checkbox" name="projectType[]" value="API & Backend" id="rq-projecttype-5" aria-describedby="err-projectType">
                     <div class="check-tick"><i class="fa-solid fa-check"></i></div>
                     <span class="pt-icon">🔌</span>
                     <span class="pt-label">API &amp; Backend</span>
                   </label>
                   <label class="pt-card" id="ptc-other" for="rq-budgetrange">
-                    <input type="checkbox" name="projectType[]" value="Other" id="rq-projecttype-6">
+                    <input type="checkbox" name="projectType[]" value="Other" id="rq-projecttype-6" aria-describedby="err-projectType">
                     <div class="check-tick"><i class="fa-solid fa-check"></i></div>
                     <span class="pt-icon">💡</span>
                     <span class="pt-label">Other</span>
@@ -387,32 +388,32 @@
                 <label>Estimated Budget Range <span>*required</span></label>
                 <div class="budget-grid">
                   <label class="budget-tile">
-                    <input type="radio" name="budgetRange" value="Under $1,000" id="rq-budgetrange-1">
+                    <input type="radio" name="budgetRange" value="Under $1,000" id="rq-budgetrange-1" aria-describedby="err-budget">
                     <div class="bt-amount">Under $1K</div>
                     <div class="bt-note">Small project</div>
                   </label>
                   <label class="budget-tile" for="rq-budgetrange">
-                    <input type="radio" name="budgetRange" value="$1,000 – $5,000" id="rq-budgetrange-2">
+                    <input type="radio" name="budgetRange" value="$1,000 – $5,000" id="rq-budgetrange-2" aria-describedby="err-budget">
                     <div class="bt-amount">$1K–$5K</div>
                     <div class="bt-note">Starter build</div>
                   </label>
                   <label class="budget-tile">
-                    <input type="radio" name="budgetRange" value="$5,000 – $10,000" id="rq-budgetrange-3">
+                    <input type="radio" name="budgetRange" value="$5,000 – $10,000" id="rq-budgetrange-3" aria-describedby="err-budget">
                     <div class="bt-amount">$5K–$10K</div>
                     <div class="bt-note">Mid-size</div>
                   </label>
                   <label class="budget-tile" for="rq-budgetrange">
-                    <input type="radio" name="budgetRange" value="$10,000 – $25,000" id="rq-budgetrange-4">
+                    <input type="radio" name="budgetRange" value="$10,000 – $25,000" id="rq-budgetrange-4" aria-describedby="err-budget">
                     <div class="bt-amount">$10K–$25K</div>
                     <div class="bt-note">Enterprise</div>
                   </label>
                   <label class="budget-tile">
-                    <input type="radio" name="budgetRange" value="Above $25,000" id="rq-budgetrange-5">
+                    <input type="radio" name="budgetRange" value="Above $25,000" id="rq-budgetrange-5" aria-describedby="err-budget">
                     <div class="bt-amount">$25K+</div>
                     <div class="bt-note">Large scale</div>
                   </label>
                   <label class="budget-tile" for="rq-timeframe">
-                    <input type="radio" name="budgetRange" value="Not sure yet" id="rq-budgetrange-6">
+                    <input type="radio" name="budgetRange" value="Not sure yet" id="rq-budgetrange-6" aria-describedby="err-budget">
                     <div class="bt-amount">Not sure</div>
                     <div class="bt-note">We'll advise</div>
                   </label>
@@ -844,14 +845,19 @@ document.getElementById('calNext').onclick=()=>{ calM++; if(calM>11){calM=0;calY
 
 /* ── Progress updater ────────────────────────────────── */
 function setProgress(n) {
+  const LABELS = { 1: 'Project Details', 2: 'Book a Call', 3: 'Review & Submit' };
   [1,2,3].forEach(i=>{
     const b=document.getElementById(`wb${i}`); const s=document.getElementById(`wp${i}`);
     b.classList.remove('active','done'); s.classList.remove('active','done');
-    if(i<n){ b.classList.add('done'); s.classList.add('done'); b.innerHTML='<i class="fa-solid fa-check" style="font-size:.6rem;"></i>'; }
-    else if(i===n){ b.classList.add('active'); s.classList.add('active'); b.textContent=i; }
+    s.removeAttribute('aria-current');
+    if(i<n){ b.classList.add('done'); s.classList.add('done'); b.innerHTML='<i class="fa-solid fa-check" style="font-size:.6rem;" aria-hidden="true"></i>'; }
+    else if(i===n){ b.classList.add('active'); s.classList.add('active'); b.textContent=i; s.setAttribute('aria-current','step'); }
     else { b.textContent=i; }
   });
   ['wl1','wl2'].forEach((id,idx)=>{ document.getElementById(id).classList.toggle('done',n>idx+1); });
+  // Announce current step to screen readers
+  const announcer = document.getElementById('wizardAnnouncer');
+  if (announcer) announcer.textContent = `Step ${n} of 3: ${LABELS[n] || ''}`;
 }
 
 function showPanel(n) {
@@ -955,7 +961,7 @@ document.getElementById('quote-form').addEventListener('submit', async function(
   const ico=document.getElementById('btnIco');
   const txt=document.getElementById('btnTxt');
 
-  btn.disabled=true; spin.style.display='block'; ico.style.display='none';
+  btn.disabled=true; btn.setAttribute('aria-disabled','true'); spin.style.display='block'; ico.style.display='none';
   txt.textContent='Sending your request…';
 
   try {
@@ -975,7 +981,7 @@ document.getElementById('quote-form').addEventListener('submit', async function(
       setProgress(3);
     } else { throw new Error(data.message); }
   } catch(err) {
-    btn.disabled=false; spin.style.display='none'; ico.style.display='inline';
+    btn.disabled=false; btn.setAttribute('aria-disabled','false'); spin.style.display='none'; ico.style.display='inline';
     txt.textContent='Something went wrong — please try again';
     btn.style.background='linear-gradient(135deg,#c0392b,#922b21)';
     setTimeout(()=>{ btn.style.background=''; txt.textContent='Send Request & Confirm Booking'; },3500);
