@@ -1457,6 +1457,24 @@ html, body {
   color: #25D366; /* WhatsApp green icon */
 }
 
+/* Multi-step form progress — sticky-pin to top on mobile so the user
+   always sees which step they're on while scrolling the long form.
+   Desktop unchanged (wizard sits at top of layout already). */
+@media (max-width: 768px) {
+  .wizard-progress,
+  .booking-steps {
+    position: sticky !important;
+    top: 56px; /* below the fixed navbar */
+    z-index: 50;
+    background: var(--bg-dark, #0d1b2e) !important;
+    padding: 12px 8px !important;
+    margin: 0 -8px 16px !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.35);
+  }
+}
+
 /* Sidebar office blocks on request_quote.html — Melbourne + Kathmandu */
 .sidebar-offices {
   display: grid;
@@ -2086,9 +2104,24 @@ body {
   letter-spacing: 0.14em !important;
   text-transform: uppercase;
   color: #64748b !important;
-  margin: 0 auto clamp(1.5rem, 3vw, 2.5rem) !important;
+  margin: 0 auto 0.5rem !important;
   max-width: 720px;
   line-height: 1.5 !important;
+}
+
+/* "Including Nepal Rastra Bank" marquee-client line beneath the eyebrow */
+.logo-strip__marquee {
+  text-align: center;
+  font-size: 0.9375rem !important;
+  font-weight: 400 !important;
+  color: #475569 !important;
+  margin: 0 auto clamp(1.5rem, 3vw, 2.5rem) !important;
+  max-width: 640px;
+  line-height: 1.5 !important;
+}
+.logo-strip__marquee strong {
+  color: #0a0a0a;
+  font-weight: 600;
 }
 
 .logo-strip__grid {

@@ -50,13 +50,15 @@ function canonicalFor(filename) {
 
 // ─── Breadcrumb derivation ───────────────────────────────────────────────────
 
+/* Intermediate breadcrumb segments per page-type. EVERY segment now has a
+   URL — Google's BreadcrumbList structured-data spec recommends including
+   `item` on every position (only the leaf may omit it). "Services" points
+   to the services strip on the homepage (#services-section anchor). */
 const BREADCRUMB_TRAILS = {
-  // Mapping by page type → breadcrumb intermediate segments.
-  // The final segment (the page itself) is appended automatically.
-  service: [{ name: 'Services', file: null }],
+  service: [{ name: 'Services', file: 'index.html#services-section' }],
   industry: [{ name: 'Industries', file: 'industries.html' }],
   auctionProduct: [
-    { name: 'Services', file: null },
+    { name: 'Services', file: 'index.html#services-section' },
     { name: 'Auction Software', file: 'auction-software.html' },
   ],
   clientShowcase: [{ name: 'Our Works', file: 'works.html' }],
@@ -83,7 +85,10 @@ function buildBreadcrumbs(filename, page) {
       '@type': 'ListItem',
       position: i + 2,
       name: seg.name,
-      ...(seg.file ? { item: `${baseUrl}/${seg.file}` } : {}),
+      // All intermediate segments must have an `item` URL per Google's
+      // BreadcrumbList guidelines. If a future trail entry forgets this,
+      // fall back to the homepage so we never emit a URL-less intermediate.
+      item: `${baseUrl}/${seg.file || ''}`,
     });
   });
   items.push({
