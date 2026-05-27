@@ -149,16 +149,16 @@ export const PAGES = {
   'healthcare.html': {
     title: 'Healthcare Software Development',
     description:
-      'EHR, telehealth, and hospital management systems for clinics, hospitals, and healthcare startups. HIPAA-aware, scalable, and built for real clinical workflows.',
+      'EHR, telehealth, clinical workflow, and hospital management software — engineered with HIPAA-architected isolation. Anchored by Adult Home Care SaaS case study.',
     type: 'industry',
-    image: 'images/health-industries.jpg',
+    image: 'images/og-default.png',
   },
   'realestate.html': {
-    title: 'Real Estate Software Solutions',
+    title: 'Real Estate Software Development',
     description:
-      'Property listing platforms, CRM, MLS integrations, and custom real estate SaaS. Pay only for the features your business actually needs.',
+      'Property marketplaces, multi-class listing engines, MLS/IDX integrations, agent CMS, mortgage-ready lead capture. Anchored by MSG Homes — live in the Philippines.',
     type: 'industry',
-    image: 'images/banner-bg-img.png',
+    image: 'images/og-default.png',
   },
 
   // ─── Auction software hub + scripts ────────────────────────────────────
@@ -312,6 +312,13 @@ export const PAGES = {
       'How E Multitech built Upkeep.pro: dual-sided iOS, Android & web service-booking marketplace doing 500K+ daily appointments for 10K+ professionals worldwide.',
     type: 'case',
     image: 'images/upkeep.png',
+  },
+  'banking-fintech-software-development.html': {
+    title: 'Banking & Fintech Software Development',
+    description:
+      'Central-bank-grade enterprise software development — case tracking, audit logs, document management, regulatory workflow. Anchored by Nepal Rastra Bank litigation system in production.',
+    type: 'service',
+    image: 'images/og-default.png',
   },
   'msg-homes-realty-case-study.html': {
     title: 'MSG Homes — Multi-Region Real Estate Marketplace',
