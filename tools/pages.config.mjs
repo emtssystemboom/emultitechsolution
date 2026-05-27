@@ -278,9 +278,9 @@ export const PAGES = {
     image: 'images/health-industries.jpg',
   },
   'dinepa-case-study.html': {
-    title: 'DiNePa — Multi-Tenant eAuction SaaS',
+    title: 'DiNePa — Digital Negotiation SaaS',
     description:
-      'How E Multitech built DiNePa: a multi-tenant reverse auction SaaS that processes 100K+ procurement events for public agencies across Europe.',
+      'How E Multitech built DiNePa: a multi-tenant real-time digital negotiation platform for European enterprise procurement. Reverse, forward & hybrid bidding.',
     type: 'case',
     image: 'images/dinepa.jpg',
   },

@@ -51,7 +51,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 ## Case studies
 
 - [SaaS EHR Case Study — Multi-Hospital](https://emultitechsolution.com/case-studies-detail.html): How we built a SaaS EHR for a US healthcare institution: 25% improvement in regulatory compliance and 50% faster access to patient records. Approach and outcomes.
-- [DiNePa — Multi-Tenant eAuction SaaS](https://emultitechsolution.com/dinepa-case-study.html): How E Multitech built DiNePa: a multi-tenant reverse auction SaaS that processes 100K+ procurement events for public agencies across Europe.
+- [DiNePa — Digital Negotiation SaaS](https://emultitechsolution.com/dinepa-case-study.html): How E Multitech built DiNePa: a multi-tenant real-time digital negotiation platform for European enterprise procurement. Reverse, forward & hybrid bidding.
 - [Litigation System — Nepal Rastra Bank](https://emultitechsolution.com/litigation-management-system-nepal-rastra-bank.html): Enterprise legal workflow platform built for Nepal Rastra Bank — central-bank-grade compliance, case tracking, document management, and audit logs.
 
 ## Portfolio & social proof

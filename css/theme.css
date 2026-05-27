@@ -2324,10 +2324,16 @@ body {
 .pillar-section { padding: clamp(3rem, 6vw, 5rem) 0; background: #ffffff; }
 .pillar-section--alt { background: #f7f9fc; }
 .pillar-section .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
-.pillar-section__head { max-width: 740px; margin: 0 auto 2.5rem; text-align: center; }
+.pillar-section__head {
+  max-width: 740px !important; margin: 0 auto 2.5rem !important;
+  text-align: center !important; padding: 0 1rem;
+}
+.pillar-section__head > * { text-align: center !important; }
 .pillar-section__eyebrow {
-  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
-  color: #2563eb; text-transform: uppercase; margin: 0 0 0.75rem;
+  display: block !important;
+  font-size: 0.78rem !important; font-weight: 600 !important; letter-spacing: 0.08em !important;
+  color: #2563eb !important; text-transform: uppercase !important; margin: 0 0 0.75rem !important;
+  text-align: center !important;
 }
 .pillar-section h2 {
   font-size: clamp(1.6rem, 1.1rem + 2vw, 2.4rem) !important;

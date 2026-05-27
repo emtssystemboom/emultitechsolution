@@ -285,15 +285,15 @@
       <div class="container">
         <header class="pillar-section__head" data-reveal>
           <p class="pillar-section__eyebrow">CASE STUDY DEEP-DIVE</p>
-          <h2 id="dinepa-deepdive">DiNePa &mdash; multi-tenant reverse-auction SaaS for European public procurement.</h2>
+          <h2 id="dinepa-deepdive">DiNePa &mdash; real-time digital negotiation SaaS for European enterprise procurement.</h2>
         </header>
 
         <div class="pillar-deepdive" data-reveal data-reveal-delay="1">
           <h3>The challenge</h3>
-          <p>A public-sector consortium needed a procurement platform that multiple government agencies could each run as their own isolated tenant &mdash; same software, separate data, separate branding, separate regulatory reporting per jurisdiction. Existing off-the-shelf procurement tools required either one installation per agency (expensive, unmaintainable) or shared tenancy with weak data isolation (regulatory non-starter). They needed a real multi-tenant SaaS, built for the specific event-stream behaviour of reverse auctions, with audit-grade event logs that would survive a regulatory review.</p>
+          <p>A European enterprise client needed a digital negotiation platform that multiple buyer organizations could each run as their own isolated tenant &mdash; same software, separate data, separate branding, separate reporting per jurisdiction. Their customers run live competitive procurement events with reverse, forward and hybrid bidding across the same platform. Existing off-the-shelf tools required either one installation per buyer (expensive, unmaintainable) or shared tenancy with weak data isolation. They needed a real multi-tenant SaaS, built for the specific event-stream behaviour of live negotiation across multiple bidding formats, with audit-grade event logs that would survive a regulatory review.</p>
 
           <h3>What we shipped</h3>
-          <p>A Node.js + WebSocket multi-tenant SaaS with tenant-isolated databases, real-time bid streaming, automated tender lifecycle (publish &rarr; bidding window &rarr; close &rarr; award &rarr; audit export), per-tenant branding and language packs, and full event-sourced audit logs. Buyers post procurement requirements; pre-qualified suppliers submit live competitive quotes within the bidding window; the system handles tie-breakers, withdrawal rules, and award notifications automatically.</p>
+          <p>A Node.js + WebSocket multi-tenant SaaS with tenant-isolated databases, real-time bid streaming, automated event lifecycle (publish &rarr; live bidding window &rarr; close &rarr; award &rarr; audit export), per-tenant branding and language packs, and full event-sourced audit logs. The same engine drives reverse, forward, and hybrid bidding formats &mdash; buyers post procurement requirements; pre-qualified suppliers submit live competitive quotes within the bidding window; the system handles tie-breakers, withdrawal rules, weighted multi-factor evaluation, and award notifications automatically.</p>
 
           <h3>What we learned</h3>
           <p>Multi-tenant SaaS for regulated sectors is 30% engine, 70% the audit trail. Anyone can build a reverse auction. The defensible moat is the immutable event log, the per-tenant data isolation, and the operator-facing audit export tooling. We over-invested in those three from day one and it has paid back in zero compliance incidents across years of operation. DiNePa is now our most-referenced deployment for any client evaluating multi-tenant SaaS architecture &mdash; auction or otherwise.</p>
