@@ -104,7 +104,7 @@ export const PAGES = {
   'ai-powered-solutions.html': {
     title: 'AI Solutions & Agentic Automation',
     description:
-      'AI-powered solutions that automate operations, predict outcomes, and personalize at scale. Built for environments where accuracy directly impacts revenue.',
+      'AI engineered into production systems — document intelligence, voice-to-text, risk detection, predictive ops. Built for regulated industries. 4.8★ Capterra.',
     type: 'service',
     image: 'images/ai-solution.jpg',
   },
