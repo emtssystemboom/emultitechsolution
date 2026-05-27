@@ -188,26 +188,62 @@
 
   <main id="main">
 
-    <!-- About Hero -->
-    <section class="pillar-hero">
-      <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
+    <!-- Elite editorial hero -->
+    <section class="about-hero-elite">
+      <div class="about-hero-elite__aurora" aria-hidden="true"></div>
+      <div class="about-hero-elite__grid" aria-hidden="true"></div>
+
+      <div class="about-hero-elite__inner">
+        <nav class="about-hero-elite__breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a> <span aria-hidden="true">&rsaquo;</span>
           <span aria-current="page">About</span>
         </nav>
 
-        <p class="pillar-hero__eyebrow" data-reveal>FOUNDER-LED &middot; SINCE OCTOBER 2010 &middot; KATHMANDU &amp; MELBOURNE</p>
-        <h1 class="pillar-hero__h1" data-reveal data-reveal-delay="1">We&rsquo;re not the cheapest engineering team. We&rsquo;re the team you call when the cheapest one shipped something that&rsquo;s losing you money.</h1>
-        <p class="pillar-hero__sub" data-reveal data-reveal-delay="2">E Multitech Solution Pvt. Ltd. is a founder-led software engineering team based in Kathmandu, Nepal, with a presence in Melbourne, Australia. Since October 2010 we&rsquo;ve shipped <strong>70+ production platforms</strong> for clients across <strong>108 countries</strong> &mdash; from <strong>Nepal&rsquo;s central bank</strong> to <strong>European enterprise procurement</strong> to <strong>service-booking marketplaces processing 500K+ daily transactions</strong>. We&rsquo;re Capterra-verified at <strong>4.8&#9733; across 25 third-party client reviews</strong>.</p>
-        <div class="pillar-hero__cta" data-reveal data-reveal-delay="3">
-          <a href="contact.html" class="btn btn-hero">Book a call with the team</a>
-          <a href="case-studies.html" class="btn btn-hero-white">See what we&rsquo;ve shipped</a>
+        <div class="about-hero-elite__mark">
+          <span class="elite-cta__pulse" aria-hidden="true"></span>
+          <span>Founder-led since October 2010 &middot; Kathmandu &amp; Melbourne</span>
         </div>
-        <p class="cta-reassurance" data-reveal data-reveal-delay="3">48-hour response &middot; NDA on request &middot; Your first call is with an engineer, not a sales rep</p>
+
+        <h1 class="about-hero-elite__title">
+          <span class="about-hero-elite__line1">We&rsquo;re not the</span>
+          <span class="about-hero-elite__line2">cheapest engineering team.</span>
+          <span class="about-hero-elite__line3">We&rsquo;re the team you call when the cheapest one shipped something that&rsquo;s losing you money.</span>
+        </h1>
+
+        <div class="about-hero-elite__people">
+          <a href="#leadership" class="about-hero-elite__person">
+            <div class="about-hero-elite__avatar" data-initials="RS">
+              <picture data-built><source srcset="images/roshan.webp" type="image/webp"><img src="images/roshan.png" alt="Roshan Subedi, Founder &amp; MD" loading="lazy" width="64" height="64" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('about-hero-elite__avatar--initials');"></picture>
+            </div>
+            <div class="about-hero-elite__person-text">
+              <span class="about-hero-elite__person-name">Roshan Subedi</span>
+              <span class="about-hero-elite__person-role">Founder &amp; MD &middot; Kathmandu</span>
+            </div>
+          </a>
+          <a href="#leadership" class="about-hero-elite__person">
+            <div class="about-hero-elite__avatar about-hero-elite__avatar--initials" data-initials="SB">
+              <picture data-built><source srcset="images/santosh-bhattarai.webp" type="image/webp"><img src="images/santosh-bhattarai.jpg" alt="Santosh Bhattarai, Marketing Partner" loading="lazy" width="64" height="64" decoding="async" onerror="this.style.display='none';"></picture>
+            </div>
+            <div class="about-hero-elite__person-text">
+              <span class="about-hero-elite__person-name">Santosh Bhattarai</span>
+              <span class="about-hero-elite__person-role">APAC Partner &middot; Melbourne</span>
+            </div>
+          </a>
+        </div>
+
+        <p class="about-hero-elite__sub">E Multitech Solution Pvt. Ltd. is a founder-led software engineering team based in Kathmandu, Nepal, with an Asia-Pacific marketing partner in Melbourne, Australia. Since October 2010 we&rsquo;ve shipped <strong>70+ production platforms</strong> for clients across <strong>108 countries</strong> &mdash; from <strong>Nepal&rsquo;s central bank</strong> to <strong>European enterprise procurement</strong> to <strong>service-booking marketplaces processing 500K+ daily transactions</strong>.</p>
+
+        <div class="about-hero-elite__cta">
+          <a href="contact.html" class="elite-cta__btn">
+            <span>Book a call with the team</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="case-studies.html" class="about-hero-elite__secondary">See 4 production case studies &rarr;</a>
+        </div>
       </div>
     </section>
 
-    <!-- Trust strip -->
+    <!-- Trust strip (light) -->
     <section class="pillar-trust">
       <div class="container">
         <ul class="pillar-trust__grid" data-reveal>
@@ -219,65 +255,139 @@
       </div>
     </section>
 
-    <!-- Founder section -->
-    <section class="pillar-section pillar-section--alt">
+    <!-- Leadership section — premium founder cards -->
+    <section class="pillar-section pillar-section--alt" id="leadership">
       <div class="container">
         <header class="pillar-section__head" data-reveal>
-          <p class="pillar-section__eyebrow">FOUNDER &amp; MD</p>
-          <h2>The team is the founder, the engineers, the offices, the work.</h2>
+          <p class="pillar-section__eyebrow">LEADERSHIP</p>
+          <h2>The team is the founder, the partner, the engineers, the work.</h2>
+          <p class="pillar-section__lead">Two named, LinkedIn-verifiable humans you can reach directly. No agency-shaped wall between you and the people who run the engagements.</p>
         </header>
 
-        <div class="founder-card" data-reveal data-reveal-delay="1">
-          <div class="founder-card__photo" data-initials="RS">
-            <picture data-built><source srcset="images/roshan-subedi.webp" type="image/webp"><img src="images/roshan-subedi.jpg" alt="Roshan Subedi, Founder &amp; MD" loading="lazy" width="220" height="220" decoding="async" onerror="this.style.display='none';this.parentNode.parentNode.classList.add('founder-card__photo--initials');"></picture>
+        <!-- Roshan — Founder card (premium) -->
+        <article class="leader-card" data-reveal data-reveal-delay="1">
+          <div class="leader-card__media">
+            <div class="leader-card__photo" data-initials="RS">
+              <picture data-built><source srcset="images/roshan.webp" type="image/webp"><img src="images/roshan.png" alt="Roshan Subedi, Founder &amp; MD of E Multitech Solution" loading="lazy" width="320" height="320" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('leader-card__photo--initials');"></picture>
+            </div>
+            <div class="leader-card__verified">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0L9.5 3.5L5.5 3L3 6L5 9.5L3 13L5.5 16L9.5 15.5L12 19L14.5 15.5L18.5 16L21 13L19 9.5L21 6L18.5 3L14.5 3.5L12 0zM10 14L6 10L7.41 8.59L10 11.17L16.59 4.58L18 6L10 14z"/></svg>
+              Verified on LinkedIn
+            </div>
           </div>
-          <div class="founder-card__body">
-            <p class="founder-card__role">Founder &amp; Managing Director</p>
-            <h3 class="founder-card__name">Roshan Subedi</h3>
-            <p class="founder-card__bio">Founded E Multitech Solution in Kathmandu in October 2010 with a single thesis: regulated and operations-critical software should be engineered, not assembled. Sixteen years later, he still personally reviews every architecture engagement, signs off on every commercial proposal, and stays on a direct WhatsApp line with active clients across the US, UK, EU, Australia, and Asia.</p>
-            <div class="founder-card__links">
-              <a href="https://www.linkedin.com/in/roshan-subedi-7285b614/" target="_blank" rel="noopener noreferrer" class="founder-card__link">
+          <div class="leader-card__body">
+            <p class="leader-card__role">Founder &amp; Managing Director</p>
+            <h3 class="leader-card__name">Roshan Subedi</h3>
+            <p class="leader-card__location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Kathmandu, Nepal &middot; UTC+5:45
+            </p>
+            <blockquote class="leader-card__quote">
+              &ldquo;Regulated and operations-critical software should be engineered, not assembled.&rdquo;
+            </blockquote>
+            <p class="leader-card__bio">Founded E Multitech Solution in Kathmandu in October 2010. Sixteen years later, Roshan still personally reviews every architecture engagement, signs off on every commercial proposal, and stays on a direct WhatsApp line with active clients across the US, UK, EU, Australia, and Asia. The reason Nepal Rastra Bank&rsquo;s litigation system is still running in year five &mdash; and DiNePa hits 99.4% uptime, and Upkeep.pro can do 500K bookings a day &mdash; is that the team that built them is still here, with Roshan at the architecture table.</p>
+            <div class="leader-card__links">
+              <a href="https://www.linkedin.com/in/roshan-subedi-7285b614/" target="_blank" rel="noopener noreferrer" class="leader-card__link leader-card__link--primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-                LinkedIn
+                Connect on LinkedIn
               </a>
-              <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer" class="founder-card__link">
+              <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer" class="leader-card__link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.4-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5s-.6-1.4-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4s.2-1.2.2-1.3c0-.1-.2-.2-.5-.3zM12 2A10 10 0 0 0 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.3A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/></svg>
-                WhatsApp
+                WhatsApp +977 9851038796
               </a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="founder-card founder-card--reverse" data-reveal data-reveal-delay="2">
-          <div class="founder-card__photo">
-            <picture data-built><source srcset="images/santosh-bhattarai.webp" type="image/webp"><img src="images/santosh-bhattarai.jpg" alt="Santosh Bhattarai, Marketing Partner (Australia)" loading="lazy" width="220" height="220" decoding="async" onerror="this.style.display='none';this.parentNode.parentNode.classList.add('founder-card__photo--initials');this.parentNode.parentNode.setAttribute('data-initials','SB');"></picture>
+        <!-- Santosh — APAC Partner card (premium, reverse layout) -->
+        <article class="leader-card leader-card--reverse" data-reveal data-reveal-delay="2">
+          <div class="leader-card__media">
+            <div class="leader-card__photo leader-card__photo--initials" data-initials="SB">
+              <picture data-built><source srcset="images/santosh-bhattarai.webp" type="image/webp"><img src="images/santosh-bhattarai.jpg" alt="Santosh Bhattarai, APAC Marketing Partner, Melbourne" loading="lazy" width="320" height="320" decoding="async" onerror="this.style.display='none';"></picture>
+            </div>
+            <div class="leader-card__verified">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0L9.5 3.5L5.5 3L3 6L5 9.5L3 13L5.5 16L9.5 15.5L12 19L14.5 15.5L18.5 16L21 13L19 9.5L21 6L18.5 3L14.5 3.5L12 0zM10 14L6 10L7.41 8.59L10 11.17L16.59 4.58L18 6L10 14z"/></svg>
+              Verified on LinkedIn
+            </div>
           </div>
-          <div class="founder-card__body">
-            <p class="founder-card__role">Marketing Partner &middot; Melbourne, Australia (UTC+10/+11)</p>
-            <h3 class="founder-card__name">Santosh Bhattarai</h3>
-            <p class="founder-card__bio">Santosh is our Australia-based marketing partner, covering Asia-Pacific client relations and regional market development from Melbourne. He provides local Australian time-zone coverage, regional contracting context, and APAC sales relationships that complement the in-house engineering team in Kathmandu. For Australian and Asia-Pacific clients, your first point of contact is often Santosh &mdash; with engineering follow-up from Roshan and the Kathmandu team.</p>
-            <div class="founder-card__links">
-              <a href="https://www.linkedin.com/in/santosh-bhattarai-654184b4/" target="_blank" rel="noopener noreferrer" class="founder-card__link">
+          <div class="leader-card__body">
+            <p class="leader-card__role">APAC Marketing Partner</p>
+            <h3 class="leader-card__name">Santosh Bhattarai</h3>
+            <p class="leader-card__location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Melbourne, Australia &middot; UTC+10/+11
+            </p>
+            <blockquote class="leader-card__quote">
+              &ldquo;Local presence, regional context, no international-number friction for Australia &amp; APAC clients.&rdquo;
+            </blockquote>
+            <p class="leader-card__bio">Australia-based marketing partner covering Asia-Pacific client relations and regional market development from Melbourne. Santosh provides local Australian time-zone coverage, regional contracting context, and APAC sales relationships that complement the in-house engineering team in Kathmandu. For Australian and Asia-Pacific clients, your first point of contact is often Santosh &mdash; with engineering follow-up from Roshan and the Kathmandu team within the same business day.</p>
+            <div class="leader-card__links">
+              <a href="https://www.linkedin.com/in/santosh-bhattarai-654184b4/" target="_blank" rel="noopener noreferrer" class="leader-card__link leader-card__link--primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-                LinkedIn
+                Connect on LinkedIn
               </a>
-              <a href="https://wa.me/61406806984" target="_blank" rel="noopener noreferrer" class="founder-card__link">
+              <a href="https://wa.me/61406806984" target="_blank" rel="noopener noreferrer" class="leader-card__link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.4-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5s-.6-1.4-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4s.2-1.2.2-1.3c0-.1-.2-.2-.5-.3zM12 2A10 10 0 0 0 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.3A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/></svg>
                 WhatsApp +61 406 806 984
               </a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="pillar-section__body" data-reveal data-reveal-delay="3" style="margin-top:2.5rem;">
-          <p>Below the leadership is an in-house engineering team in Kathmandu that bridges back-end, mobile, AI, SaaS, and DevOps practices. The same engineer who appears in discovery is the engineer who ships the code &mdash; not a bait-and-switch onto juniors after the contract signs. We don&rsquo;t use subcontractors. We don&rsquo;t outsource to a freelancer pool. The team is the team.</p>
-          <p>We&rsquo;ve been at this since 2010 &mdash; before the App Store had a search bar, before SaaS was the default architecture, before AI was a marketing word. That tenure isn&rsquo;t a slogan. It&rsquo;s the reason Nepal Rastra Bank&rsquo;s litigation system is still running in year five of production. It&rsquo;s why DiNePa hits 99.4% uptime on its EU procurement SaaS. It&rsquo;s why Upkeep.pro can do 500,000+ bookings a day on the mobile architecture we shipped. These outcomes don&rsquo;t happen by accident &mdash; they happen because the team that built them is still here.</p>
-        </div>
+        <p class="leader-card__footnote" data-reveal data-reveal-delay="3">Below the leadership is an in-house engineering team in Kathmandu that bridges back-end, mobile, AI, SaaS, and DevOps practices. The same engineer who appears in discovery is the engineer who ships the code &mdash; not a bait-and-switch onto juniors after the contract signs. <strong>We don&rsquo;t use subcontractors. We don&rsquo;t outsource to a freelancer pool. The team is the team.</strong></p>
+      </div>
+    </section>
+
+    <!-- Our Story Timeline (NEW — visual narrative) -->
+    <section class="pillar-section">
+      <div class="container">
+        <header class="pillar-section__head" data-reveal>
+          <p class="pillar-section__eyebrow">OUR STORY</p>
+          <h2>Sixteen years of production software, in five chapters.</h2>
+        </header>
+
+        <ol class="about-timeline">
+          <li class="about-timeline__item" data-reveal data-reveal-delay="1">
+            <div class="about-timeline__year">2010</div>
+            <div class="about-timeline__body">
+              <h3>Founded in Kathmandu</h3>
+              <p>Roshan Subedi founds E Multitech Solution Pvt. Ltd. with a single thesis: regulated and operations-critical software should be engineered, not assembled. First production deployment ships before the App Store has a search bar.</p>
+            </div>
+          </li>
+          <li class="about-timeline__item" data-reveal data-reveal-delay="2">
+            <div class="about-timeline__year">2010&ndash;2018</div>
+            <div class="about-timeline__body">
+              <h3>The auction software era</h3>
+              <p>Built six auction formats (penny, lowest unique bid, highest unique bid, price reveal, Dutch, B2B reverse) deployed for operators across the US, UK, EU, Singapore, Australia, and Asia. The transactional-software depth that later became the foundation for SaaS and marketplace work.</p>
+            </div>
+          </li>
+          <li class="about-timeline__item" data-reveal data-reveal-delay="3">
+            <div class="about-timeline__year">2019&ndash;2020</div>
+            <div class="about-timeline__body">
+              <h3>Enterprise &amp; central-bank-grade</h3>
+              <p>DiNePa goes live: multi-tenant real-time digital negotiation SaaS for European enterprise procurement, still at 99.4% uptime in year five. Nepal Rastra Bank litigation system goes live on isolated intranet &mdash; central-bank-grade compliance, still running in year five with no rebuild.</p>
+            </div>
+          </li>
+          <li class="about-timeline__item" data-reveal data-reveal-delay="4">
+            <div class="about-timeline__year">2021&ndash;2024</div>
+            <div class="about-timeline__body">
+              <h3>Marketplace scale + AI integration</h3>
+              <p>Upkeep.pro grows to 500,000+ daily appointments on the native iOS + Android + web marketplace we shipped. Cross-vertical engineering proves the model: same team, banking + procurement + marketplace + mobile.</p>
+            </div>
+          </li>
+          <li class="about-timeline__item" data-reveal data-reveal-delay="5">
+            <div class="about-timeline__year">2025&ndash;2026</div>
+            <div class="about-timeline__body">
+              <h3>Healthcare moat + AI-engineered platforms</h3>
+              <p>AI-powered adult home care SaaS in production-ready development for a US healthcare operator under NDA: HIPAA-architected 3-module ecosystem with 6 embedded AI capabilities. Capterra rating reaches <strong>4.8&#9733; across 25 verified third-party client reviews</strong>.</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- What we ship — case study highlights -->
-    <section class="pillar-section">
+    <section class="pillar-section pillar-section--alt">
       <div class="container">
         <header class="pillar-section__head" data-reveal>
           <p class="pillar-section__eyebrow">WHAT WE SHIP</p>
@@ -326,7 +436,7 @@
     </section>
 
     <!-- What we believe — principles -->
-    <section class="pillar-section pillar-section--alt">
+    <section class="pillar-section">
       <div class="container">
         <header class="pillar-section__head" data-reveal>
           <p class="pillar-section__eyebrow">WHAT WE BELIEVE</p>
@@ -368,17 +478,17 @@
     </section>
 
     <!-- Where we work -->
-    <section class="pillar-section">
+    <section class="pillar-section pillar-section--alt">
       <div class="container">
         <header class="pillar-section__head" data-reveal>
           <p class="pillar-section__eyebrow">WHERE WE WORK</p>
-          <h2>Two timezones. One in-house team.</h2>
+          <h2>Two timezones. One in-house team. One marketing partner in Melbourne.</h2>
         </header>
         <div class="pillar-engagement" data-reveal data-reveal-delay="1">
           <article>
             <h3>Kathmandu (HQ)</h3>
             <p class="pillar-engagement__when">UTC+5:45 &middot; In-house engineering</p>
-            <p>The engineering team lives here. Back-end, mobile, AI, SaaS, and DevOps practices under one roof in Lalitpur. Registered as <strong>E Multitech Solution Pvt. Ltd.</strong> in Nepal since October 2010. Most production work, code review, and architecture decisions happen on this timezone.</p>
+            <p>The engineering team lives here. Back-end, mobile, AI, SaaS, and DevOps practices under one roof in Lalitpur. Registered as <strong>E Multitech Solution Pvt. Ltd.</strong> in Nepal since October 2010. Most production work, code review, and architecture decisions happen on this timezone. <strong>Direct line:</strong> <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer" style="color:#2563eb;">+977 9851038796</a> (Roshan, Founder &amp; MD).</p>
           </article>
           <article>
             <h3>Melbourne (Asia-Pacific)</h3>
@@ -448,7 +558,7 @@
         <p class="elite-cta__signature">
           <span class="elite-cta__signature-label">Direct WhatsApp to the founder</span>
           <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer">+977 9851038796</a>
-          <span class="elite-cta__signature-name">&mdash; Roshan Subedi, Founder &amp; MD &middot; 48-hour reply, engineer-only</span>
+          <span class="elite-cta__signature-name">&mdash; <a href="https://www.linkedin.com/in/roshan-subedi-7285b614/" target="_blank" rel="noopener noreferrer" class="founder-linkedin-inline">Roshan Subedi</a>, Founder &amp; MD &middot; 48-hour reply, engineer-only</span>
         </p>
       </div>
     </section>
