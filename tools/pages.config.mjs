@@ -328,6 +328,13 @@ export const PAGES = {
     type: 'blogPost',
   },
 
+  'team.html': {
+    title: 'Our Team — Engineering & Leadership',
+    description:
+      'Meet the team behind 70+ production platforms. Founder-led in-house engineering in Kathmandu since October 2010, APAC partner in Melbourne. No subcontractors.',
+    type: 'page',
+    image: 'images/about.png',
+  },
   'security.html': {
     title: 'Security & Compliance Posture',
     description:
