@@ -83,7 +83,7 @@ export const PAGES = {
   'custom-software-development.html': {
     title: 'Custom Software Development Services',
     description:
-      'We architect transaction-heavy platforms — auction systems, live booking tools, fintech, and SaaS — engineered to perform under real-world production load.',
+      'Custom software built for production load since 2010. Litigation system for Nepal Rastra Bank, EU procurement SaaS, 70+ shipped platforms. 4.8★ on Capterra.',
     type: 'service',
     image: 'images/custom-software.jpg',
   },
