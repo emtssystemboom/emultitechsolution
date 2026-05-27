@@ -328,6 +328,14 @@ export const PAGES = {
     type: 'blogPost',
   },
 
+  'security.html': {
+    title: 'Security & Compliance Posture',
+    description:
+      'Our security architecture, compliance posture & vendor due-diligence summary. HIPAA-aligned, BAA available, multi-tenant isolation. For US, EU & enterprise clients.',
+    type: 'page',
+    image: 'images/banner-bg-img.png',
+  },
+
   // ─── Other ─────────────────────────────────────────────────────────────
   'works.html': {
     title: 'Our Portfolio of Software Projects',
