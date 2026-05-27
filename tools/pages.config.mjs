@@ -90,7 +90,7 @@ export const PAGES = {
   'saas-development.html': {
     title: 'SaaS Product Development Services',
     description:
-      'Scalable, subscription-based SaaS platforms with automated billing and multi-tenant architecture. Built to generate and sustain real recurring revenue.',
+      'Multi-tenant SaaS built to survive years in production. DiNePa: 100K+ procurement events, 99.4% uptime, 5+ years live for EU enterprise. 4.8★ Capterra.',
     type: 'service',
     image: 'images/data-marketing.jpg',
   },
