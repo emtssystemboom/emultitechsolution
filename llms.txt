@@ -25,7 +25,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 
 ## Industries
 
-- [Industries — Healthcare & Fintech](https://emultitechsolution.com/industries.html): Industry-specific software solutions for healthcare, real estate, auctions, procurement, fintech, and government — from startups to multinational enterprises.
+- [Industries We Ship Production Software For](https://emultitechsolution.com/industries.html): Healthcare HIPAA SaaS · banking & compliance · procurement · real estate · on-demand marketplaces · IoT — every vertical anchored by a named production case study. 16+ years, 70+ platforms.
 - [Healthcare Software Development](https://emultitechsolution.com/healthcare.html): EHR, telehealth, and hospital management systems for clinics, hospitals, and healthcare startups. HIPAA-aware, scalable, and built for real clinical workflows.
 - [Real Estate Software Solutions](https://emultitechsolution.com/realestate.html): Property listing platforms, CRM, MLS integrations, and custom real estate SaaS. Pay only for the features your business actually needs.
 

@@ -140,11 +140,11 @@ export const PAGES = {
 
   // ─── Industries ────────────────────────────────────────────────────────
   'industries.html': {
-    title: 'Industries — Healthcare & Fintech',
+    title: 'Industries We Ship Production Software For',
     description:
-      'Industry-specific software solutions for healthcare, real estate, auctions, procurement, fintech, and government — from startups to multinational enterprises.',
+      'Healthcare HIPAA SaaS · banking & compliance · procurement · real estate · on-demand marketplaces · IoT — every vertical anchored by a named production case study. 16+ years, 70+ platforms.',
     type: 'industry',
-    image: 'images/banner-bg-img.png',
+    image: 'images/og-default.png',
   },
   'healthcare.html': {
     title: 'Healthcare Software Development',
