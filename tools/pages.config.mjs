@@ -58,9 +58,9 @@ export const PAGES = {
     image: 'images/banner-bg-img.png',
   },
   'about.html': {
-    title: 'About — 16 Years of Production Eng.',
+    title: 'About — Founder-Led Since October 2010',
     description:
-      '150+ engineers building production systems trusted by central banks and 100+ global companies. Meet the team behind 16 years of zero-failure deliveries.',
+      'Founder-led engineering team since October 2010. 70+ production platforms across 108 countries. Trusted by Nepal Rastra Bank, DiNePa & Upkeep.pro. 4.8★ Capterra.',
     type: 'about',
     image: 'images/about.png',
   },
@@ -128,6 +128,14 @@ export const PAGES = {
       'Secure, scalable, high-performance software that streamlines operations and elevates user experience. Web, mobile, SaaS, and enterprise systems.',
     type: 'service',
     image: 'images/custom-software.jpg',
+  },
+
+  'healthcare-saas-development.html': {
+    title: 'Healthcare SaaS Development Services',
+    description:
+      'HIPAA-architected healthcare SaaS for US home care, EVV & AI document intelligence. 4.8★ Capterra · founder-led since 2010 · in-house engineering team.',
+    type: 'service',
+    image: 'images/health-industries.jpg',
   },
 
   // ─── Industries ────────────────────────────────────────────────────────
