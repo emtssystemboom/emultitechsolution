@@ -90,7 +90,7 @@ export const PAGES = {
   'saas-development.html': {
     title: 'SaaS Product Development Services',
     description:
-      'Multi-tenant SaaS built to survive years in production. DiNePa: 100K+ procurement events, 99.4% uptime, 5+ years live for EU enterprise. 4.8★ Capterra.',
+      'Multi-tenant SaaS built to survive years in production. DiNePa: 99.4% uptime over 5+ years, sub-500ms latency for EU enterprise procurement. 4.8★ Capterra.',
     type: 'service',
     image: 'images/data-marketing.jpg',
   },

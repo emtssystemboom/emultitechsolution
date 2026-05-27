@@ -14,7 +14,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 ## Services
 
 - [Custom Software Development Services](https://emultitechsolution.com/custom-software-development.html): Custom software built for production load since 2010. Litigation system for Nepal Rastra Bank, EU procurement SaaS, 70+ shipped platforms. 4.8★ on Capterra.
-- [SaaS Product Development Services](https://emultitechsolution.com/saas-development.html): Multi-tenant SaaS built to survive years in production. DiNePa: 100K+ procurement events, 99.4% uptime, 5+ years live for EU enterprise. 4.8★ Capterra.
+- [SaaS Product Development Services](https://emultitechsolution.com/saas-development.html): Multi-tenant SaaS built to survive years in production. DiNePa: 99.4% uptime over 5+ years, sub-500ms latency for EU enterprise procurement. 4.8★ Capterra.
 - [iOS & Android Mobile App Development](https://emultitechsolution.com/mobile-development.html): Native and cross-platform iOS/Android apps with push notifications, in-app payments, and offline support. Apps users return to daily — built to perform.
 - [AI Solutions & Agentic Automation](https://emultitechsolution.com/ai-powered-solutions.html): AI-powered solutions that automate operations, predict outcomes, and personalize at scale. Built for environments where accuracy directly impacts revenue.
 - [DevOps & Cloud Engineering Services](https://emultitechsolution.com/devops-engineer.html): Automated infrastructure, CI/CD, and SRE for businesses where uptime is revenue. Continuous deployment, disaster recovery, and cost optimization built in.
