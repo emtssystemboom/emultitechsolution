@@ -2358,19 +2358,29 @@ body {
   display: grid; gap: 1.25rem; max-width: 880px; margin-inline: auto;
 }
 .pillar-phases li {
-  display: grid; grid-template-columns: 56px 1fr; gap: 1.25rem;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1.25rem;
+  row-gap: 0.5rem;
   padding: 1.5rem; background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 14px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
 }
 .pillar-phases__num {
+  grid-column: 1; grid-row: 1 / span 2;
   font-size: 1.4rem; font-weight: 700; color: #2563eb;
   background: rgba(37, 99, 235, 0.08); border-radius: 10px;
   width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
 }
-.pillar-phases h3 {
+.pillar-phases li > h3 {
+  grid-column: 2; grid-row: 1;
   font-size: 1.15rem !important; font-weight: 600 !important;
-  color: #0f172a !important; margin: 0 0 0.5rem !important;
+  color: #0f172a !important; margin: 0 0 0.25rem !important;
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.75rem;
+  text-align: left !important;
+}
+.pillar-phases li > p {
+  grid-column: 2; grid-row: 2;
 }
 .pillar-phases__when {
   font-size: 0.8rem; font-weight: 500; color: rgba(15, 23, 42, 0.55);
@@ -2381,8 +2391,17 @@ body {
   color: rgba(15, 23, 42, 0.7); margin: 0;
 }
 @media (max-width: 600px) {
-  .pillar-phases li { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.25rem; }
-  .pillar-phases__num { width: 44px; height: 44px; font-size: 1.1rem; }
+  .pillar-phases li {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap: 0.5rem; padding: 1.25rem;
+  }
+  .pillar-phases__num {
+    grid-column: 1; grid-row: 1;
+    width: 44px; height: 44px; font-size: 1.1rem;
+  }
+  .pillar-phases li > h3 { grid-column: 1; grid-row: 2; }
+  .pillar-phases li > p { grid-column: 1; grid-row: 3; }
 }
 
 /* Case study deep-dive ───────────────────────────────────────────── */
@@ -2518,6 +2537,106 @@ body {
 @media (max-width: 600px) {
   .pillar-cta__grid { grid-template-columns: 1fr; }
   .pillar-cta__grid article { padding: 1.5rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   AI CAPABILITIES SECTION — used on adult-home-care-saas-case-study
+   and reusable for any future AI-differentiation showcase. Fully
+   self-contained so legacy style.css cannot break the colors or
+   layout.
+   ══════════════════════════════════════════════════════════════════ */
+.ai-capabilities-section {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem) 1.25rem !important;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%) !important;
+  color: #ffffff !important;
+  overflow: hidden;
+}
+.ai-capabilities-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.25) 0%, transparent 35%),
+    radial-gradient(circle at 85% 80%, rgba(59, 130, 246, 0.25) 0%, transparent 35%);
+  pointer-events: none;
+}
+.ai-capabilities-section__inner {
+  position: relative; z-index: 1;
+  max-width: 1180px; margin: 0 auto;
+}
+.ai-capabilities-section__eyebrow {
+  display: block !important;
+  text-align: center !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  color: #93c5fd !important;
+  text-transform: uppercase !important;
+  margin: 0 0 0.85rem !important;
+}
+.ai-capabilities-section__title {
+  text-align: center !important;
+  font-size: clamp(1.7rem, 1.1rem + 2.2vw, 2.55rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  color: #ffffff !important;
+  margin: 0 auto 1.25rem !important;
+  max-width: 900px;
+  letter-spacing: -0.02em;
+}
+.ai-capabilities-section__lead {
+  text-align: center !important;
+  max-width: 820px;
+  margin: 0 auto 2.75rem !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 960px) { .ai-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .ai-grid { grid-template-columns: 1fr; gap: 1rem; } }
+
+.ai-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.ai-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(147, 197, 253, 0.45) !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+}
+.ai-card__num {
+  display: inline-block !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 1.45rem !important;
+  font-weight: 800 !important;
+  color: #93c5fd !important;
+  margin-bottom: 0.6rem !important;
+  letter-spacing: 0.02em;
+}
+.ai-card__title {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: #ffffff !important;
+  margin: 0 0 0.6rem !important;
+  letter-spacing: -0.005em;
+}
+.ai-card__body {
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  margin: 0 !important;
 }
 
 

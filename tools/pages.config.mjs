@@ -291,6 +291,13 @@ export const PAGES = {
     type: 'case',
     image: 'images/custom-software.jpg',
   },
+  'adult-home-care-saas-case-study.html': {
+    title: 'AI-Powered Home Care SaaS — HIPAA Build',
+    description:
+      'AI-powered, HIPAA-architected multi-tenant home care SaaS for a US healthcare operator. Document intelligence, voice-to-text notes, predictive scheduling, risk detection.',
+    type: 'case',
+    image: 'images/health-industries.jpg',
+  },
 
   // ─── Blog ──────────────────────────────────────────────────────────────
   'blog.html': {
