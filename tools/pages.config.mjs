@@ -109,16 +109,16 @@ export const PAGES = {
     image: 'images/ai-solution.jpg',
   },
   'devops-engineer.html': {
-    title: 'DevOps & Cloud Engineering Services',
+    title: 'DevOps & Cloud Engineering',
     description:
-      'Automated infrastructure, CI/CD, and SRE for businesses where uptime is revenue. Continuous deployment, disaster recovery, and cost optimization built in.',
+      'Cloud, CI/CD, Kubernetes, IaC & SRE. DiNePa: 99.4% uptime over 5+ years. NRB: central-bank-grade intranet deployment. 4.8★ Capterra · founder-led since 2010.',
     type: 'service',
     image: 'images/devops.jpg',
   },
   'product-engineering.html': {
     title: 'Product Engineering Services',
     description:
-      'End-to-end product engineering: from MVP to enterprise-grade SaaS. We design, build, and scale software products that drive consistent revenue growth.',
+      'End-to-end product engineering — discovery, design, build, ship, scale. For founders without a CTO. 70+ platforms shipped, 4 verticals, 4.8★ Capterra.',
     type: 'service',
     image: 'images/banner-bg-img.png',
   },
