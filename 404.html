@@ -14,12 +14,12 @@
   <meta property="og:title" content="Page Not Found | E Multitech Solution">
   <meta property="og:description" content="The page you're looking for doesn't exist. Try the homepage, browse our services, or contact us.">
   <meta property="og:url" content="https://emultitechsolution.com/404.html">
-  <meta property="og:image" content="https://emultitechsolution.com/images/logo.png">
+  <meta property="og:image" content="https://emultitechsolution.com/images/og-default.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Page Not Found | E Multitech Solution">
   <meta name="twitter:description" content="The page you're looking for doesn't exist. Try the homepage, browse our services, or contact us.">
-  <meta name="twitter:image" content="https://emultitechsolution.com/images/logo.png">
+  <meta name="twitter:image" content="https://emultitechsolution.com/images/og-default.png">
 
   <script type="application/ld+json">
   {
@@ -110,7 +110,16 @@
   </aside>
 <!-- HEADER:END -->
 
-  <link rel="shortcut icon" href="images/favicon.png">
+  <!-- FAVICONS:START — managed by tools/build-head.mjs -->
+  <link rel="icon" type="image/svg+xml" href="images/icon-master.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0d3f8f">
+  <meta name="msapplication-TileColor" content="#0d3f8f">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <!-- FAVICONS:END -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,12 +172,46 @@
       align-items: center;
       gap: 1.25rem;
     }
+    .nf-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1a6bcc 0%, #0d3f8f 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(13, 63, 143, 0.45),
+                  inset 0 1px 0 rgba(255,255,255,0.18);
+      margin-bottom: 0.25rem;
+    }
+    .nf-mark span {
+      font-weight: 800;
+      font-size: 1.85rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
     .nf-eyebrow {
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.55);
+    }
+    .nf-hint {
+      margin-top: 1rem;
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 46ch;
+    }
+    .nf-hint a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.25);
+      text-underline-offset: 3px;
+    }
+    .nf-hint a:hover {
+      color: #ffffff;
+      text-decoration-color: rgba(255, 255, 255, 0.7);
     }
     .nf-code {
       font-size: clamp(5rem, 18vw, 9rem);
@@ -254,6 +297,7 @@
 
   <main id="main">
     <div class="nf-wrap" data-reveal>
+      <span class="nf-mark" aria-hidden="true"><span>e</span></span>
       <span class="nf-eyebrow">Error 404</span>
       <h1 class="nf-code" aria-hidden="true">404</h1>
       <h2 class="nf-title">We couldn't find that page.</h2>
@@ -275,6 +319,10 @@
         <a href="testimonial-all.html">Testimonials</a>
         <a href="request_quote.html">Get a Quote</a>
       </nav>
+
+      <p class="nf-hint">
+        Still stuck? The full <a href="sitemap.xml">sitemap</a> lists every page, or message the founder directly on <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer">WhatsApp</a> &mdash; 48-hour reply, engineer-only.
+      </p>
     </div>
   </main>
 
@@ -310,6 +358,29 @@
             </p>
           </div>
         </div>
+      </div>
+
+      <!-- Trust strip — elite credentials row above the link columns -->
+      <div class="footer-trust" aria-label="Company credentials">
+        <a class="footer-trust__item" href="https://www.capterra.com/p/130933/E-Multitech-Auction/" target="_blank" rel="noopener noreferrer" aria-label="4.8 stars on Capterra from 25 verified reviews">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
+          <span><strong>4.8</strong> on Capterra <span class="footer-trust__meta">(25 verified reviews)</span></span>
+        </a>
+        <span class="footer-trust__sep" aria-hidden="true">·</span>
+        <span class="footer-trust__item" aria-label="16 plus years in production">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span><strong>16+ years</strong> shipping production software</span>
+        </span>
+        <span class="footer-trust__sep" aria-hidden="true">·</span>
+        <span class="footer-trust__item" aria-label="70 plus platforms shipped">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span><strong>70+ platforms</strong> shipped across 108 countries</span>
+        </span>
+        <span class="footer-trust__sep" aria-hidden="true">·</span>
+        <a class="footer-trust__item" href="security.html" aria-label="Security and compliance practices">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span><strong>HIPAA-architected</strong> &middot; GDPR &middot; SOC 2 in 2026</span>
+        </a>
       </div>
 
       <div class="footer-middle">

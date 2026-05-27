@@ -23,7 +23,7 @@ export const SITE = {
   description:
     'Custom software, SaaS, AI, and mobile development partner with 16+ years of global delivery experience.',
   logo: 'images/logo.png',
-  defaultImage: 'images/logo.png',
+  defaultImage: 'images/og-default.png',
   twitter: '', // e.g. '@emultitech' — leave empty until you have a handle
   founded: '2010',
   locations: [

@@ -1098,5 +1098,45 @@
     "w": 1300,
     "h": 816,
     "webp": true
+  },
+  "apple-touch-icon.png": {
+    "w": 180,
+    "h": 180,
+    "webp": true
+  },
+  "favicon-16.png": {
+    "w": 16,
+    "h": 16,
+    "webp": true
+  },
+  "favicon-32.png": {
+    "w": 32,
+    "h": 32,
+    "webp": true
+  },
+  "favicon-48.png": {
+    "w": 48,
+    "h": 48,
+    "webp": true
+  },
+  "icon-192.png": {
+    "w": 192,
+    "h": 192,
+    "webp": true
+  },
+  "icon-512.png": {
+    "w": 512,
+    "h": 512,
+    "webp": true
+  },
+  "icon-maskable-512.png": {
+    "w": 512,
+    "h": 512,
+    "webp": true
+  },
+  "og-default.png": {
+    "w": 1200,
+    "h": 630,
+    "webp": true
   }
 }

@@ -1490,6 +1490,72 @@ html, body {
   }
 }
 
+/* Footer trust strip — elite credentials row above the link columns.
+   Single horizontal flex row with dot separators on desktop; stacks to a
+   tidy column on mobile so each credential sits on its own line. */
+.footer-trust {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem 0.85rem !important;
+  padding: 1.1rem clamp(1rem, 3vw, 1.75rem) !important;
+  margin: 0 0 1.75rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 14px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%) !important;
+  backdrop-filter: blur(4px);
+  font-size: 0.875rem !important;
+  line-height: 1.35 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+.footer-trust__item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  text-decoration: none !important;
+  transition: color 220ms ease, transform 220ms ease;
+  white-space: nowrap;
+}
+a.footer-trust__item:hover {
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+.footer-trust__item svg {
+  flex: 0 0 auto;
+  color: #7cb6ff;
+  opacity: 0.92;
+}
+.footer-trust__item strong {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+.footer-trust__meta {
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-weight: 400;
+}
+.footer-trust__sep {
+  color: rgba(255, 255, 255, 0.25) !important;
+  font-weight: 400;
+  user-select: none;
+}
+@media (max-width: 820px) {
+  .footer-trust {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.7rem !important;
+    padding: 1rem 1.1rem !important;
+  }
+  .footer-trust__item {
+    white-space: normal;
+  }
+  .footer-trust__sep {
+    display: none;
+  }
+}
+
 /* Multi-step form progress — sticky-pin to top on mobile so the user
    always sees which step they're on while scrolling the long form.
    Desktop unchanged (wizard sits at top of layout already). */

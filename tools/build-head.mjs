@@ -50,6 +50,24 @@ const FA_BLOCKING_RE =
 // Match closing </body>.
 const BODY_END_RE = /<\/body>/i;
 
+// Modern favicon block — full set, matches the WCAG / Apple / Android / PWA spec.
+// Marked with FAVICONS:START/END so we can re-emit idempotently.
+const FAVICON_BLOCK = `<!-- FAVICONS:START — managed by tools/build-head.mjs -->
+  <link rel="icon" type="image/svg+xml" href="images/icon-master.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0d3f8f">
+  <meta name="msapplication-TileColor" content="#0d3f8f">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <!-- FAVICONS:END -->`;
+
+// Match either a managed FAVICONS block (for idempotent re-write) or a legacy
+// single <link rel="shortcut icon" …> line we want to upgrade.
+const FAVICON_BLOCK_RE = /<!-- FAVICONS:START[\s\S]*?<!-- FAVICONS:END -->/;
+const LEGACY_FAVICON_RE = /<link\s+rel=["'](?:shortcut )?icon["']\s+href=["']images\/favicon\.(?:png|ico)["'][^>]*>/i;
+
 // Match Bootstrap bundle <script> (CDN).
 const BOOTSTRAP_SCRIPT_RE =
   /<script\s+src=["']https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@[^"']+["'](?!\s*[^>]*\bdefer\b)([^>]*)>\s*<\/script>/i;
@@ -118,6 +136,22 @@ function ensureFontAwesomeAsync(html) {
   return html;
 }
 
+function ensureFaviconSet(html) {
+  // Already managed — re-emit so any updates to FAVICON_BLOCK propagate.
+  if (FAVICON_BLOCK_RE.test(html)) {
+    return html.replace(FAVICON_BLOCK_RE, FAVICON_BLOCK);
+  }
+  // Legacy single-link form — upgrade in place.
+  if (LEGACY_FAVICON_RE.test(html)) {
+    return html.replace(LEGACY_FAVICON_RE, FAVICON_BLOCK);
+  }
+  // No favicon at all — insert before </head>.
+  if (/<\/head>/i.test(html)) {
+    return html.replace(/<\/head>/i, `  ${FAVICON_BLOCK}\n</head>`);
+  }
+  return html;
+}
+
 function ensureDeferredScripts(html) {
   let out = html;
   // Add defer to Bootstrap bundle if missing.
@@ -152,6 +186,7 @@ for (const file of htmlFiles) {
   next = ensureRevealScript(next);
   next = ensureFontAwesomeAsync(next);
   next = ensureDeferredScripts(next);
+  next = ensureFaviconSet(next);
 
   if (next === original) {
     unchanged++;

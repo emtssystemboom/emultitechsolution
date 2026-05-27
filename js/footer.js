@@ -41,6 +41,29 @@
         </div>
       </div>
 
+      <!-- Trust strip — elite credentials row above the link columns -->
+      <div class="footer-trust" aria-label="Company credentials">
+        <a class="footer-trust__item" href="https://www.capterra.com/p/130933/E-Multitech-Auction/" target="_blank" rel="noopener noreferrer" aria-label="4.8 stars on Capterra from 25 verified reviews">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
+          <span><strong>4.8</strong> on Capterra <span class="footer-trust__meta">(25 verified reviews)</span></span>
+        </a>
+        <span class="footer-trust__sep" aria-hidden="true">·</span>
+        <span class="footer-trust__item" aria-label="16 plus years in production">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span><strong>16+ years</strong> shipping production software</span>
+        </span>
+        <span class="footer-trust__sep" aria-hidden="true">·</span>
+        <span class="footer-trust__item" aria-label="70 plus platforms shipped">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span><strong>70+ platforms</strong> shipped across 108 countries</span>
+        </span>
+        <span class="footer-trust__sep" aria-hidden="true">·</span>
+        <a class="footer-trust__item" href="security.html" aria-label="Security and compliance practices">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span><strong>HIPAA-architected</strong> &middot; GDPR &middot; SOC 2 in 2026</span>
+        </a>
+      </div>
+
       <div class="footer-middle">
         <div class="footer-logo fade-slide">
           <img src="images/footer-logo.png" alt="eMultiTechSolutions Logo" loading="lazy">
