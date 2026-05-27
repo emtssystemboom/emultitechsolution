@@ -2683,6 +2683,140 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════════════
+   HOMEPAGE HERO — eyebrow + elite trust bar with 16+ Years feature
+   The trust bar now has a hero element (big "16+" numeral) plus
+   4 supporting trust items, all inside a glass-morphism container.
+   ══════════════════════════════════════════════════════════════════ */
+.hero-eyebrow {
+  display: inline-block !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  color: #93c5fd !important;
+  text-transform: uppercase !important;
+  margin: 0 0 1.25rem !important;
+  padding: 0.45rem 1rem !important;
+  background: rgba(147, 197, 253, 0.08) !important;
+  border: 1px solid rgba(147, 197, 253, 0.25) !important;
+  border-radius: 999px !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Elite trust bar with hero "16+ Years" feature */
+.hero-trust-bar--elite {
+  display: grid !important;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem !important;
+  padding: 1.5rem 1.75rem !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 18px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  max-width: 920px;
+}
+
+.hero-trust-bar__feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 1.75rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+.hero-trust-bar__big-number {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(3rem, 5vw + 0.5rem, 4.5rem);
+  font-weight: 800;
+  line-height: 0.85;
+  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 55%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: baseline;
+}
+.hero-trust-bar__big-plus {
+  font-size: 0.55em;
+  color: #93c5fd;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  background: none;
+  margin-left: 0.05em;
+  font-weight: 700;
+}
+.hero-trust-bar__big-label {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.005em;
+  min-width: 130px;
+}
+.hero-trust-bar__big-label strong {
+  display: inline-block;
+  margin-top: 0.15rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.92em;
+  letter-spacing: 0.02em;
+}
+
+.hero-trust-bar__supporting {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1.5rem;
+}
+.hero-trust-bar__supporting li {
+  font-size: 0.86rem !important;
+  line-height: 1.4 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0.6rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.hero-trust-bar__supporting li::before { display: none !important; }
+.hero-trust-bar__supporting li i {
+  color: #93c5fd !important;
+  font-size: 0.9rem !important;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.hero-trust-bar__supporting li span { display: block; }
+.hero-trust-bar__supporting li strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .hero-trust-bar__supporting { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .hero-trust-bar--elite {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+    padding: 1.25rem !important;
+  }
+  .hero-trust-bar__feature {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-right: 0;
+    padding-bottom: 1.25rem;
+    justify-content: center;
+    text-align: left;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
    ABOUT PAGE — Elite editorial hero + premium leader cards + timeline
    The About page is the credibility-verification page; this design
    gives it the visual gravity to match.
