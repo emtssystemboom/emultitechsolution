@@ -15,7 +15,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 
 - [Custom Software Development Services](https://emultitechsolution.com/custom-software-development.html): Custom software built for production load since 2010. Litigation system for Nepal Rastra Bank, EU procurement SaaS, 70+ shipped platforms. 4.8★ on Capterra.
 - [SaaS Product Development Services](https://emultitechsolution.com/saas-development.html): Multi-tenant SaaS built to survive years in production. DiNePa: 99.4% uptime over 5+ years, sub-500ms latency for EU enterprise procurement. 4.8★ Capterra.
-- [iOS & Android Mobile App Development](https://emultitechsolution.com/mobile-development.html): Native and cross-platform iOS/Android apps with push notifications, in-app payments, and offline support. Apps users return to daily — built to perform.
+- [Mobile App Development Services](https://emultitechsolution.com/mobile-development.html): iOS, Android, Flutter & React Native apps for marketplaces, logistics, healthcare EVV. Upkeep.pro: 500K+ daily appointments, 10K+ pros worldwide. 4.8★ Capterra.
 - [AI Solutions & Agentic Automation](https://emultitechsolution.com/ai-powered-solutions.html): AI-powered solutions that automate operations, predict outcomes, and personalize at scale. Built for environments where accuracy directly impacts revenue.
 - [DevOps & Cloud Engineering Services](https://emultitechsolution.com/devops-engineer.html): Automated infrastructure, CI/CD, and SRE for businesses where uptime is revenue. Continuous deployment, disaster recovery, and cost optimization built in.
 - [Product Engineering Services](https://emultitechsolution.com/product-engineering.html): End-to-end product engineering: from MVP to enterprise-grade SaaS. We design, build, and scale software products that drive consistent revenue growth.
@@ -54,6 +54,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 - [DiNePa — Digital Negotiation SaaS](https://emultitechsolution.com/dinepa-case-study.html): How E Multitech built DiNePa: a multi-tenant real-time digital negotiation platform for European enterprise procurement. Reverse, forward & hybrid bidding.
 - [Litigation System — Nepal Rastra Bank](https://emultitechsolution.com/litigation-management-system-nepal-rastra-bank.html): Enterprise legal workflow platform built for Nepal Rastra Bank — central-bank-grade compliance, case tracking, document management, and audit logs.
 - [AI-Powered Home Care SaaS — HIPAA Build](https://emultitechsolution.com/adult-home-care-saas-case-study.html): AI-powered, HIPAA-architected multi-tenant home care SaaS for a US healthcare operator. Document intelligence, voice-to-text notes, predictive scheduling, risk detection.
+- [Upkeep.pro Marketplace App Case Study](https://emultitechsolution.com/upkeep-service-booking-case-study.html): How E Multitech built Upkeep.pro: dual-sided iOS, Android & web service-booking marketplace doing 500K+ daily appointments for 10K+ professionals worldwide.
 
 ## Portfolio & social proof
 

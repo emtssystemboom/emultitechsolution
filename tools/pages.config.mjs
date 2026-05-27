@@ -95,9 +95,9 @@ export const PAGES = {
     image: 'images/data-marketing.jpg',
   },
   'mobile-development.html': {
-    title: 'iOS & Android Mobile App Development',
+    title: 'Mobile App Development Services',
     description:
-      'Native and cross-platform iOS/Android apps with push notifications, in-app payments, and offline support. Apps users return to daily — built to perform.',
+      'iOS, Android, Flutter & React Native apps for marketplaces, logistics, healthcare EVV. Upkeep.pro: 500K+ daily appointments, 10K+ pros worldwide. 4.8★ Capterra.',
     type: 'service',
     image: 'images/top-bg.png',
   },
@@ -297,6 +297,13 @@ export const PAGES = {
       'AI-powered, HIPAA-architected multi-tenant home care SaaS for a US healthcare operator. Document intelligence, voice-to-text notes, predictive scheduling, risk detection.',
     type: 'case',
     image: 'images/health-industries.jpg',
+  },
+  'upkeep-service-booking-case-study.html': {
+    title: 'Upkeep.pro Marketplace App Case Study',
+    description:
+      'How E Multitech built Upkeep.pro: dual-sided iOS, Android & web service-booking marketplace doing 500K+ daily appointments for 10K+ professionals worldwide.',
+    type: 'case',
+    image: 'images/upkeep.png',
   },
 
   // ─── Blog ──────────────────────────────────────────────────────────────

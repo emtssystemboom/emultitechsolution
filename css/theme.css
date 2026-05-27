@@ -2540,6 +2540,525 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════════════
+   PILLAR CARDS — modern styling for the .auction-grid / .auction-card
+   pattern used on auction-software, custom-software-development,
+   saas-development, and mobile-development pillar pages.
+
+   Legacy style.css scopes .auction-card / .auction-icon to
+   .auction__type__section parent; without that wrapper the cards
+   render unstyled. These rules apply only inside .pillar-section
+   (the modern pillar pattern) so they don't affect legacy auction
+   pages that still use the old parent wrapper.
+   ══════════════════════════════════════════════════════════════════ */
+.pillar-section .auction-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.5rem !important;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+@media (max-width: 960px) {
+  .pillar-section .auction-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .pillar-section .auction-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+}
+
+.pillar-section .auction-card {
+  position: relative;
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 1.75rem 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  min-height: 100%;
+}
+.pillar-section .auction-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.1) !important;
+}
+.pillar-section--alt .auction-card {
+  background: #ffffff !important;
+}
+
+.pillar-section .auction-icon {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(99, 102, 241, 0.12) 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #2563eb !important;
+  margin: 0 0 1.1rem 0 !important;
+  flex-shrink: 0;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  font-size: inherit !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+.pillar-section .auction-icon i {
+  color: #2563eb !important;
+  font-size: 1.6rem !important;
+  line-height: 1 !important;
+}
+.pillar-section .auction-icon svg {
+  color: #2563eb !important;
+  stroke: #2563eb !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: block !important;
+}
+.pillar-section .auction-icon img {
+  width: 32px !important;
+  height: auto !important;
+  max-height: 32px !important;
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+}
+.pillar-section .auction-icon picture {
+  display: flex; align-items: center; justify-content: center;
+}
+
+.pillar-section .auction-card h3 {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  margin: 0 0 0.75rem !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.01em;
+}
+.pillar-section .auction-card h3 a {
+  color: #0f172a !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: inherit !important;
+}
+.pillar-section .auction-card h3 a:hover {
+  color: #2563eb !important;
+}
+.pillar-section .auction-card p {
+  font-size: 0.93rem !important;
+  line-height: 1.6 !important;
+  color: rgba(15, 23, 42, 0.7) !important;
+  margin: 0 0 1rem !important;
+}
+.pillar-section .auction-card p:last-of-type {
+  margin-bottom: 1rem !important;
+}
+.pillar-section .auction-card p strong {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+.pillar-section .auction-card p br + strong,
+.pillar-section .auction-card p strong:first-child {
+  color: #2563eb !important;
+  font-weight: 600 !important;
+}
+
+.pillar-section .auction-card > a:last-child {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: auto;
+  align-self: flex-end;
+  text-decoration: none !important;
+  padding-top: 0.5rem;
+}
+.pillar-section .auction-card .arrow-icon {
+  color: #2563eb !important;
+  font-size: 1rem !important;
+  transition: transform 0.18s ease !important;
+}
+.pillar-section .auction-card:hover .arrow-icon {
+  transform: translateX(4px) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ELITE CTA — editorial / stat-as-hero design used on case study
+   pages. Inspired by Linear / Vercel / Stripe end-of-page CTAs:
+   massive headline, stats as design hero, single confident button,
+   founder signature. Aurora gradient + grid texture for depth.
+   ══════════════════════════════════════════════════════════════════ */
+.elite-cta {
+  position: relative;
+  background: #05070d;
+  color: #ffffff;
+  padding: clamp(4.5rem, 9vw, 7.5rem) 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+.elite-cta__aurora {
+  position: absolute; inset: -20% -10%;
+  background:
+    radial-gradient(60% 50% at 20% 30%, rgba(99, 102, 241, 0.45) 0%, transparent 60%),
+    radial-gradient(50% 40% at 80% 70%, rgba(59, 130, 246, 0.45) 0%, transparent 60%),
+    radial-gradient(40% 30% at 50% 90%, rgba(168, 85, 247, 0.30) 0%, transparent 60%);
+  filter: blur(60px);
+  opacity: 0.55;
+  z-index: 0;
+  animation: elite-aurora 18s ease-in-out infinite alternate;
+}
+@keyframes elite-aurora {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(2%, -2%) scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .elite-cta__aurora { animation: none; }
+}
+.elite-cta__grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  z-index: 0;
+}
+.elite-cta__inner {
+  position: relative; z-index: 1;
+  max-width: 1080px; margin: 0 auto;
+  text-align: center;
+}
+
+/* Brand mark row */
+.elite-cta__mark {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.elite-cta__mark picture { display: inline-flex; align-items: center; }
+.elite-cta__mark img {
+  height: 22px !important; width: auto !important;
+  max-width: 120px;
+  filter: brightness(0) invert(1) opacity(0.95);
+  display: block;
+}
+.elite-cta__pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5);
+  display: inline-block;
+  animation: elite-pulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes elite-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+}
+.elite-cta__sep { opacity: 0.4; }
+.elite-cta__status {
+  font-weight: 500; letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Editorial headline */
+.elite-cta__headline {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: clamp(2.4rem, 1.4rem + 5vw, 5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.045em !important;
+  margin: 0 auto 2.75rem !important;
+  max-width: 900px;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+.elite-cta__h-line1,
+.elite-cta__h-line2,
+.elite-cta__h-line3 { display: block; }
+.elite-cta__h-line1 {
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  letter-spacing: -0.03em !important;
+}
+.elite-cta__h-line2 {
+  background: linear-gradient(95deg, #ffffff 0%, #93c5fd 45%, #c4b5fd 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.05em !important;
+}
+.elite-cta__h-line3 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Hairline rules above/below stat band */
+.elite-cta__rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.16) 20%, rgba(255, 255, 255, 0.16) 80%, transparent 100%);
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+/* Stat band (the visual hero) */
+.elite-cta__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 2.25rem 0;
+  margin: 0 auto;
+  max-width: 900px;
+  list-style: none;
+}
+.elite-cta__stats > div {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+.elite-cta__stats dt {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.85rem, 1rem + 3vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 0.6rem;
+  display: inline-flex; align-items: baseline; gap: 0.05em;
+}
+.elite-cta__stats dt span {
+  font-size: 0.6em;
+  color: #93c5fd;
+  font-weight: 600;
+}
+.elite-cta__stats dd {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.005em;
+}
+@media (max-width: 720px) {
+  .elite-cta__stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding: 2rem 0; }
+}
+
+/* Lede + button */
+.elite-cta__lede {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem) !important;
+  line-height: 1.55 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  max-width: 580px;
+  margin: 2rem auto 2rem !important;
+  text-align: center;
+}
+.elite-cta__action { text-align: center; margin-bottom: 2.5rem; }
+.elite-cta__btn {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  padding: 1.05rem 1.85rem;
+  background: #ffffff;
+  color: #05070d !important;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none !important;
+  letter-spacing: -0.005em;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 12px 32px -8px rgba(99, 102, 241, 0.5);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.elite-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 20px 40px -8px rgba(99, 102, 241, 0.65);
+  color: #05070d !important;
+}
+.elite-cta__btn svg {
+  transition: transform 0.18s ease;
+  color: #2563eb;
+}
+.elite-cta__btn:hover svg { transform: translateX(3px); }
+
+/* Founder signature line */
+.elite-cta__signature {
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  text-align: center;
+  margin: 0 auto !important;
+  max-width: 640px;
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center;
+  gap: 0.55rem;
+}
+.elite-cta__signature-label {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+.elite-cta__signature a {
+  color: #93c5fd !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.93rem;
+}
+.elite-cta__signature a:hover {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+}
+.elite-cta__signature-name {
+  display: block; width: 100%;
+  margin-top: 0.4rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CASE STUDY MODERN CTA — replaces the legacy cartoon
+   .web__wrapper > .img_2 section on case study pages with an
+   elite dark-navy CTA band that uses the actual client brand
+   logo as the visual element (real, not cartoon art).
+   ══════════════════════════════════════════════════════════════════ */
+.case-study-cta {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%);
+  padding: clamp(3.5rem, 6vw, 5.5rem) 1.5rem;
+  color: #ffffff;
+  overflow: hidden;
+}
+.case-study-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 18% 25%, rgba(99, 102, 241, 0.28) 0%, transparent 42%),
+    radial-gradient(circle at 82% 75%, rgba(59, 130, 246, 0.28) 0%, transparent 42%);
+  pointer-events: none;
+}
+.case-study-cta__inner {
+  position: relative; z-index: 1;
+  max-width: 820px; margin: 0 auto;
+  text-align: center;
+}
+.case-study-cta__brand {
+  display: inline-flex; align-items: center; gap: 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  margin-bottom: 1.75rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.case-study-cta__brand picture { display: inline-flex; align-items: center; }
+.case-study-cta__brand img {
+  height: 28px !important; width: auto !important;
+  max-width: 168px;
+  filter: brightness(0) invert(1) opacity(0.95);
+  display: block;
+}
+.case-study-cta__badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.06em; color: #93c5fd;
+  text-transform: uppercase;
+}
+.case-study-cta__badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
+  display: inline-block;
+}
+.case-study-cta h2 {
+  font-size: clamp(1.8rem, 1.2rem + 2.4vw, 2.6rem) !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 1.1rem !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+}
+.case-study-cta p {
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  max-width: 640px;
+  margin: 0 auto 2rem !important;
+}
+.case-study-cta__buttons {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  justify-content: center; margin-bottom: 1.75rem;
+}
+.case-study-cta__buttons .btn-hero,
+.case-study-cta__buttons .btn-hero-white {
+  font-size: 0.95rem !important;
+  padding: 0.8rem 1.5rem !important;
+}
+.case-study-cta__direct {
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  margin: 0 auto !important;
+  max-width: 600px;
+}
+.case-study-cta__direct strong { color: #ffffff !important; }
+.case-study-cta__direct a {
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+}
+.case-study-cta__direct a:hover { color: #ffffff !important; }
+
+/* ══════════════════════════════════════════════════════════════════
+   HOMEPAGE CASE STUDY CAROUSEL — convert to grid so all 4 cards
+   are visible at once (was a 2-card flex carousel with scroll
+   arrows hiding cards 3+4). Hides the prev/next buttons; cards
+   wrap to grid responsively.
+   ══════════════════════════════════════════════════════════════════ */
+.casestudy-carousel-container .card-section {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1.25rem !important;
+  overflow: visible !important;
+  padding: 2rem 0 1rem !important;
+  scroll-snap-type: none !important;
+}
+.casestudy-carousel-container .card {
+  flex: none !important;
+  width: 100% !important;
+  height: 300px !important;
+}
+.casestudy-carousel-container .arrow {
+  display: none !important;
+}
+@media (max-width: 1199px) {
+  .casestudy-carousel-container .card-section {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .casestudy-carousel-container .card { height: 280px !important; }
+}
+@media (max-width: 600px) {
+  .casestudy-carousel-container .card-section {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .casestudy-carousel-container .card { height: 240px !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
    AI CAPABILITIES SECTION — used on adult-home-care-saas-case-study
    and reusable for any future AI-differentiation showcase. Fully
    self-contained so legacy style.css cannot break the colors or
