@@ -55,7 +55,7 @@ export const PAGES = {
     description:
       'Founder-led software engineering since 2010. 70+ production platforms shipped for clients across 108 countries. 4.8★ on Capterra across 25 verified client reviews.',
     type: 'home',
-    image: 'images/banner-bg-img.png',
+    image: 'images/og-default.png',
   },
   'about.html': {
     title: 'About — Founder-Led Since October 2010',
@@ -120,7 +120,7 @@ export const PAGES = {
     description:
       'End-to-end product engineering — discovery, design, build, ship, scale. For founders without a CTO. 70+ platforms shipped, 4 verticals, 4.8★ Capterra.',
     type: 'service',
-    image: 'images/banner-bg-img.png',
+    image: 'images/og-default.png',
   },
   'software-development.html': {
     title: 'Software Development Services',
@@ -276,7 +276,7 @@ export const PAGES = {
     description:
       'Real-world case studies from E Multitech: SaaS, AI, fintech, healthcare, auction platforms, and enterprise systems deployed for clients across 4 continents.',
     type: 'page',
-    image: 'images/banner-bg-img.png',
+    image: 'images/og-default.png',
   },
   'case-studies-detail.html': {
     title: 'SaaS EHR Case Study — Multi-Hospital',
@@ -354,7 +354,7 @@ export const PAGES = {
     description:
       'Our security architecture, compliance posture & vendor due-diligence summary. HIPAA-aligned, BAA available, multi-tenant isolation. For US, EU & enterprise clients.',
     type: 'page',
-    image: 'images/banner-bg-img.png',
+    image: 'images/og-default.png',
   },
 
   // ─── Other ─────────────────────────────────────────────────────────────
@@ -363,7 +363,7 @@ export const PAGES = {
     description:
       'Portfolio of web, mobile, SaaS, and AI projects from E Multitech Solution: 100+ global deployments built by 150+ engineers over 16 years.',
     type: 'portfolio',
-    image: 'images/banner-bg-img.png',
+    image: 'images/og-default.png',
   },
   'testimonial-all.html': {
     title: 'Client Testimonials',

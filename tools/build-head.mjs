@@ -47,6 +47,23 @@ const STYLE_CSS_RE = /<link[^>]*href=["']css\/style\.css["'][^>]*>/i;
 const FA_BLOCKING_RE =
   /<link\s+href=["']https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/font-awesome\/[^"']+["']\s+rel=["']stylesheet["']\s*\/?>/i;
 
+// Bootstrap CSS: load async via the preload-swap pattern so it doesn't block
+// first paint. We only use Bootstrap for grid utilities, so the FOUC window is
+// invisible to users — the layout reflows once but the content doesn't shift.
+const BOOTSTRAP_ASYNC_LINK =
+  '<link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' +
+  '<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></noscript>';
+const BOOTSTRAP_CSS_BLOCKING_RE =
+  /<link\s+href=["']https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@[^"']+\/dist\/css\/bootstrap\.min\.css["']\s+rel=["']stylesheet["']\s*\/?>/i;
+
+// AOS CSS: same async pattern. AOS animations are below-the-fold, so a 50ms
+// flash is invisible. The lib itself stays sync (see AOS_LIB note).
+const AOS_CSS_ASYNC_LINK =
+  '<link rel="preload" href="css/aos.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' +
+  '<noscript><link rel="stylesheet" href="css/aos.css"></noscript>';
+const AOS_CSS_BLOCKING_RE =
+  /<link\s+href=["']css\/aos\.css["']\s+rel=["']stylesheet["']\s*\/?>/i;
+
 // Match closing </body>.
 const BODY_END_RE = /<\/body>/i;
 
@@ -136,6 +153,22 @@ function ensureFontAwesomeAsync(html) {
   return html;
 }
 
+function ensureBootstrapCssAsync(html) {
+  if (/rel=["']preload["'][^>]*bootstrap@[^"']+\/dist\/css\/bootstrap\.min\.css/i.test(html)) return html;
+  if (BOOTSTRAP_CSS_BLOCKING_RE.test(html)) {
+    return html.replace(BOOTSTRAP_CSS_BLOCKING_RE, BOOTSTRAP_ASYNC_LINK);
+  }
+  return html;
+}
+
+function ensureAosCssAsync(html) {
+  if (/rel=["']preload["'][^>]*css\/aos\.css/i.test(html)) return html;
+  if (AOS_CSS_BLOCKING_RE.test(html)) {
+    return html.replace(AOS_CSS_BLOCKING_RE, AOS_CSS_ASYNC_LINK);
+  }
+  return html;
+}
+
 function ensureFaviconSet(html) {
   // Already managed — re-emit so any updates to FAVICON_BLOCK propagate.
   if (FAVICON_BLOCK_RE.test(html)) {
@@ -185,6 +218,8 @@ for (const file of htmlFiles) {
   next = ensureThemeAfterStyle(next);
   next = ensureRevealScript(next);
   next = ensureFontAwesomeAsync(next);
+  next = ensureBootstrapCssAsync(next);
+  next = ensureAosCssAsync(next);
   next = ensureDeferredScripts(next);
   next = ensureFaviconSet(next);
 

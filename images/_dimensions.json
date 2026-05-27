@@ -1138,5 +1138,10 @@
     "w": 1200,
     "h": 630,
     "webp": true
+  },
+  "hero-poster.jpg": {
+    "w": 1920,
+    "h": 1080,
+    "webp": true
   }
 }
