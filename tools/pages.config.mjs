@@ -313,6 +313,13 @@ export const PAGES = {
     type: 'case',
     image: 'images/upkeep.png',
   },
+  'msg-homes-realty-case-study.html': {
+    title: 'MSG Homes — Multi-Region Real Estate Marketplace',
+    description:
+      'How E Multitech built msg-homes.com for My Saving Grace Realty & Development Corporation — multi-region real estate marketplace covering 6 property types across the Philippines, integrated with major Filipino banks.',
+    type: 'case',
+    image: 'images/urban.png',
+  },
 
   // ─── Blog ──────────────────────────────────────────────────────────────
   'blog.html': {

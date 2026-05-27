@@ -56,6 +56,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 - [Litigation System — Nepal Rastra Bank](https://emultitechsolution.com/litigation-management-system-nepal-rastra-bank.html): Enterprise legal workflow platform built for Nepal Rastra Bank — central-bank-grade compliance, case tracking, document management, and audit logs.
 - [AI-Powered Home Care SaaS — HIPAA Build](https://emultitechsolution.com/adult-home-care-saas-case-study.html): AI-powered, HIPAA-architected multi-tenant home care SaaS for a US healthcare operator. Document intelligence, voice-to-text notes, predictive scheduling, risk detection.
 - [Upkeep.pro Marketplace App Case Study](https://emultitechsolution.com/upkeep-service-booking-case-study.html): How E Multitech built Upkeep.pro: dual-sided iOS, Android & web service-booking marketplace doing 500K+ daily appointments for 10K+ professionals worldwide.
+- [MSG Homes — Multi-Region Real Estate Marketplace](https://emultitechsolution.com/msg-homes-realty-case-study.html): How E Multitech built msg-homes.com for My Saving Grace Realty & Development Corporation — multi-region real estate marketplace covering 6 property types across the Philippines, integrated with major Filipino banks.
 
 ## Portfolio & social proof
 
