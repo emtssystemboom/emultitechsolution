@@ -361,7 +361,7 @@ export const PAGES = {
   'works.html': {
     title: 'Our Portfolio of Software Projects',
     description:
-      'Portfolio of web, mobile, SaaS, and AI projects from E Multitech Solution: 100+ global deployments built by 150+ engineers over 16 years.',
+      'Portfolio of web, mobile, SaaS, AI, and auction platforms from E Multitech Solution — 70+ production deployments across 108 countries, founder-led and built in-house since 2010.',
     type: 'portfolio',
     image: 'images/og-default.png',
   },

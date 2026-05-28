@@ -10,6 +10,9 @@ Use this file to discover the site's structure and the canonical URL for each pa
 - [About — Founder-Led Since October 2010](https://emultitechsolution.com/about.html): Founder-led engineering team since October 2010. 70+ production platforms across 108 countries. Trusted by Nepal Rastra Bank, DiNePa & Upkeep.pro. 4.8★ Capterra.
 - [Book a Strategy Call](https://emultitechsolution.com/contact.html): Book a free strategy call with the E Multitech engineering team. Pick a date and time slot — we confirm within 24 hours, no auto-responders.
 - [Get a Free Project Consultation](https://emultitechsolution.com/request_quote.html): Request a free project consultation. Tell us about your project, pick a discovery call slot, and get a response within 48 hours.
+- [Case Studies — Software We Shipped](https://emultitechsolution.com/case-studies.html): Real-world case studies from E Multitech: SaaS, AI, fintech, healthcare, auction platforms, and enterprise systems deployed for clients across 4 continents.
+- [Our Team — Engineering & Leadership](https://emultitechsolution.com/team.html): Meet the team behind 70+ production platforms. Founder-led in-house engineering in Kathmandu since October 2010, APAC partner in Melbourne. No subcontractors.
+- [Security & Compliance Posture](https://emultitechsolution.com/security.html): Our security architecture, compliance posture & vendor due-diligence summary. HIPAA-aligned, BAA available, multi-tenant isolation. For US, EU & enterprise clients.
 
 ## Services
 
@@ -61,7 +64,7 @@ Use this file to discover the site's structure and the canonical URL for each pa
 
 ## Portfolio & social proof
 
-- [Our Portfolio of Software Projects](https://emultitechsolution.com/works.html): Portfolio of web, mobile, SaaS, and AI projects from E Multitech Solution: 100+ global deployments built by 150+ engineers over 16 years.
+- [Our Portfolio of Software Projects](https://emultitechsolution.com/works.html): Portfolio of web, mobile, SaaS, AI, and auction platforms from E Multitech Solution — 70+ production deployments across 108 countries, founder-led and built in-house since 2010.
 - [Client Testimonials](https://emultitechsolution.com/testimonial-all.html): What our clients say about working with E Multitech Solution — from US-based founders to enterprise project leads across Europe and Asia.
 
 ## Blog

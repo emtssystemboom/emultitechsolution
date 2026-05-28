@@ -111,7 +111,9 @@ const llmsLines = [
   '',
   '## Company',
   '',
-  group((f, p) => ['home', 'about', 'contact'].includes(p.type)),
+  // 'page' captures Team and Security & Compliance — company/trust pages that
+  // would otherwise silently drop out of llms.txt.
+  group((f, p) => ['home', 'about', 'contact', 'page'].includes(p.type)),
   '',
   '## Services',
   '',
