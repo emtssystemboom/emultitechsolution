@@ -1607,6 +1607,14 @@ a.footer-trust__item:hover {
 .industries-hero__crumb a:hover { color: #ffffff; }
 .industries-hero__crumb span:not([aria-hidden]) { color: rgba(255, 255, 255, 0.55); }
 .industries-hero__crumb [aria-hidden] { margin: 0 0.4rem; color: rgba(255, 255, 255, 0.25); }
+/* When the breadcrumb is dropped inside a light-background .pillar-hero
+   (as the refreshed auction/banking/healthcare/realestate pages do),
+   override the dark-mode whites so it's legible on light backgrounds. */
+.pillar-hero .industries-hero__crumb { color: rgba(15, 23, 42, 0.5); }
+.pillar-hero .industries-hero__crumb a { color: rgba(15, 23, 42, 0.7); }
+.pillar-hero .industries-hero__crumb a:hover { color: #2563eb; }
+.pillar-hero .industries-hero__crumb span:not([aria-hidden]) { color: rgba(15, 23, 42, 0.6); }
+.pillar-hero .industries-hero__crumb [aria-hidden] { color: rgba(15, 23, 42, 0.3); }
 .industries-hero__status {
   display: inline-flex;
   align-items: center;
@@ -1705,7 +1713,10 @@ a.footer-trust__item:hover {
 
 .industry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  /* minmax(min(100%, 340px), 1fr) lets columns shrink below 340px when the
+     container is narrower than that — prevents horizontal overflow on
+     viewports under ~370px (small phones in portrait, narrow zoom). */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: clamp(1rem, 1.8vw, 1.5rem);
   max-width: 1240px;
   margin: 0 auto;
@@ -2700,6 +2711,16 @@ body {
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 }
 .pillar-hero .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+/* BEM-style inner container — mirrors .container above so newer pages don't
+   overflow horizontally on mobile. Without this rule, content inside
+   .pillar-hero__inner has zero padding and butts against the viewport edge. */
+.pillar-hero__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.75rem);
+  position: relative;
+  z-index: 1;
+}
 .pillar-hero .breadcrumb {
   display: flex; align-items: center; gap: 0.4rem;
   font-size: 0.875rem; color: rgba(15, 23, 42, 0.55);
@@ -2754,6 +2775,36 @@ body {
 .pillar-section { padding: clamp(3rem, 6vw, 5rem) 0; background: #ffffff; }
 .pillar-section--alt { background: #f7f9fc; }
 .pillar-section .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+/* BEM-style inner container — mirrors .container above. */
+.pillar-section__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.75rem);
+}
+/* Safety net: any content directly inside the pillar inner containers must
+   not exceed the container width. Prevents long unbroken strings (URLs,
+   client names like "MySaving-Grace") from pushing the page wider on mobile. */
+.pillar-hero__inner,
+.pillar-section__inner {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.pillar-hero__inner a,
+.pillar-section__inner a {
+  overflow-wrap: anywhere;
+}
+/* Tighten inline grids used in refreshed auction pages so they don't pinch
+   on mobile (was: minmax(240px, 1fr) → forced overflow under 280px viewport).
+   .pillar-section__inner > ul[style*="grid"] picks up any ul that has an
+   inline grid declaration set by the generator. */
+.pillar-section__inner > ul[style*="grid-template-columns"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important;
+}
+@media (max-width: 480px) {
+  .pillar-section__inner > ul[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
 .pillar-section__head {
   max-width: 740px !important; margin: 0 auto 2.5rem !important;
   text-align: center !important; padding: 0 1rem;
@@ -4409,7 +4460,12 @@ body {
 .elite-cta__inner {
   position: relative; z-index: 1;
   max-width: 1080px; margin: 0 auto;
+  /* Horizontal padding so content doesn't butt against viewport edge on mobile
+     (the parent .elite-cta has full-bleed background but inner content needs
+     a safe gutter). */
+  padding: 0 clamp(1rem, 4vw, 1.75rem);
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 /* Brand mark row */
