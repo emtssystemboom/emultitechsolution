@@ -3021,7 +3021,604 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   PILLAR CARDS — modern styling for the .auction-grid / .auction-card
+   AUCTION FLAGSHIP HERO — used ONLY on auction-software.html.
+   This is the company's deepest practice (16 years of real-time
+   bidding software since 2010) — the page deserves a hero that
+   communicates that depth at first glance. Dark gradient backdrop +
+   dual aurora glows + grid overlay + massive 16+ numeral visual +
+   timeline tick marks + 5-column stat band.
+   ══════════════════════════════════════════════════════════════════ */
+.auction-flagship {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(6.5rem, 12vh, 9rem) clamp(1.25rem, 5vw, 4rem) clamp(3rem, 5vh, 4.5rem);
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(37, 99, 235, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 100%, rgba(124, 182, 255, 0.10) 0%, transparent 55%),
+    linear-gradient(135deg, #050912 0%, #0a1628 40%, #0b1f4f 100%);
+  color: #ffffff;
+  overflow: hidden;
+}
+.auction-flagship__aurora {
+  position: absolute;
+  top: -25%;
+  right: -10%;
+  width: 820px;
+  height: 820px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.38) 0%, transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(4px);
+}
+.auction-flagship__aurora--two {
+  top: auto;
+  bottom: -30%;
+  left: -15%;
+  right: auto;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124, 182, 255, 0.18) 0%, transparent 60%);
+}
+.auction-flagship__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  z-index: -1;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at top, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at top, black 25%, transparent 75%);
+}
+.auction-flagship__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.75rem);
+}
+.auction-flagship__crumb {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+.auction-flagship__crumb a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 220ms ease;
+}
+.auction-flagship__crumb a:hover { color: #ffffff; }
+.auction-flagship__crumb span:not([aria-hidden]) { color: rgba(255, 255, 255, 0.6); }
+.auction-flagship__crumb [aria-hidden] { margin: 0 0.4rem; color: rgba(255, 255, 255, 0.25); }
+.auction-flagship__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .auction-flagship__main { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+.auction-flagship__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.9rem;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.28);
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(220, 252, 231, 0.95);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+.auction-flagship__status a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.4);
+  text-underline-offset: 3px;
+  font-weight: 700;
+}
+.auction-flagship__status a:hover { text-decoration-color: #ffffff; }
+.auction-flagship__pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.65);
+  animation: flagshipPulse 2s ease-out infinite;
+}
+@keyframes flagshipPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .auction-flagship__pulse { animation: none; }
+}
+.auction-flagship__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 0.95rem;
+}
+.auction-flagship__h1 {
+  font-size: clamp(2.4rem, 5.6vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  margin: 0 0 1.4rem;
+  color: #ffffff;
+}
+.auction-flagship__h1 span { display: block; }
+.auction-flagship__h-l1,
+.auction-flagship__h-l2,
+.auction-flagship__h-l3 { color: #ffffff; }
+.auction-flagship__h-accent {
+  background: linear-gradient(135deg, #7cb6ff 0%, #c8d8ff 55%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  font-weight: 700;
+  font-size: 0.58em;
+  letter-spacing: -0.02em;
+  margin-top: 0.45em;
+  line-height: 1.15;
+}
+.auction-flagship__lede {
+  font-size: clamp(1rem, 1.45vw, 1.175rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.74);
+  max-width: 60ch;
+  margin: 0 0 2rem;
+}
+.auction-flagship__lede strong { color: #ffffff; font-weight: 700; }
+.auction-flagship__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.1rem;
+}
+.auction-flagship__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  background: #ffffff;
+  color: #0a1628 !important;
+  border: 1px solid #ffffff;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.55);
+}
+.auction-flagship__btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px -14px rgba(0, 0, 0, 0.65);
+  color: #0a1628 !important;
+}
+.auction-flagship__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.95rem 1.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 220ms ease, border-color 220ms ease;
+}
+.auction-flagship__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+.auction-flagship__btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.auction-flagship__btn-ghost:hover { color: #ffffff; }
+.auction-flagship__btn-ghost svg { opacity: 0.7; }
+.auction-flagship__reassurance {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+.auction-flagship__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: clamp(1.5rem, 2vw, 2rem);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+.auction-flagship__visual::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 18%; right: 18%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(124, 182, 255, 0.6) 50%, transparent 100%);
+}
+.auction-flagship__numeral {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.05em;
+  line-height: 0.85;
+}
+.auction-flagship__num-big {
+  font-size: clamp(5.5rem, 13vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+.auction-flagship__num-plus {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #7cb6ff;
+  line-height: 0.85;
+}
+.auction-flagship__num-label {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.auction-flagship__num-label strong { color: #ffffff; font-weight: 700; }
+.auction-flagship__formats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.4;
+}
+.auction-flagship__formats li {
+  position: relative;
+  padding-left: 1.35rem;
+}
+.auction-flagship__formats li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7cb6ff;
+}
+.auction-flagship__formats-label {
+  padding-left: 0 !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.15rem;
+}
+.auction-flagship__formats-label::before { display: none; }
+.auction-flagship__stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  margin: clamp(2.5rem, 4vw, 3.5rem) 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+@media (max-width: 880px) {
+  .auction-flagship__stats { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+}
+@media (max-width: 540px) {
+  .auction-flagship__stats { grid-template-columns: repeat(2, 1fr); gap: 1rem 1.25rem; }
+}
+.auction-flagship__stats > div { display: flex; flex-direction: column; }
+.auction-flagship__stats dt {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.65rem, 1rem + 2vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 0.4rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.05em;
+}
+.auction-flagship__stats dt span {
+  font-size: 0.62em;
+  color: #93c5fd;
+  font-weight: 600;
+}
+.auction-flagship__stats dd {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.58);
+  letter-spacing: 0.005em;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   FORMAT-HERO — elite editorial dark-gradient hero block prepended to
+   each auction format sub-page (penny, lowest-unique, highest-unique,
+   price-reveal, ebay) by tools/add-elite-hero-to-auction-pages.mjs.
+   Sits above the legacy .casestudies--detail / .customer content;
+   gives the format pages a premium landing without rewriting the body.
+   ══════════════════════════════════════════════════════════════════ */
+.format-hero {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(6.5rem, 13vh, 9rem) clamp(1.25rem, 5vw, 4rem) clamp(2.75rem, 5vh, 4rem);
+  background: linear-gradient(135deg, #0a0f1f 0%, #0a1628 45%, #0d3f8f 100%);
+  color: #ffffff;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.format-hero__aurora {
+  position: absolute;
+  top: -20%;
+  right: -12%;
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(26, 107, 204, 0.32) 0%, transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+}
+.format-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  z-index: -1;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+}
+.format-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.75rem);
+}
+.format-hero__crumb {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+}
+.format-hero__crumb a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 220ms ease;
+}
+.format-hero__crumb a:hover { color: #ffffff; }
+.format-hero__crumb span:not([aria-hidden]) { color: rgba(255, 255, 255, 0.55); }
+.format-hero__crumb [aria-hidden] { margin: 0 0.4rem; color: rgba(255, 255, 255, 0.25); }
+
+.format-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+.format-hero__pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  animation: fhPulse 2.2s ease-out infinite;
+}
+@keyframes fhPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .format-hero__pulse { animation: none; }
+}
+
+.format-hero__h1 {
+  font-size: clamp(2.25rem, 5.4vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+  color: #ffffff;
+  max-width: 22ch;
+}
+.format-hero__accent {
+  display: block;
+  background: linear-gradient(135deg, #7cb6ff 0%, #c8d8ff 60%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  font-size: 0.62em;
+  margin-top: 0.3em;
+  letter-spacing: -0.018em;
+}
+.format-hero__lede {
+  font-size: clamp(1.0rem, 1.5vw, 1.18rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 62ch;
+  margin: 0 0 1.75rem;
+}
+
+/* Stats band — 4-up on desktop, 2x2 on tablet, single column on mobile */
+.format-hero__facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 1.4vw, 1.25rem);
+  margin: 0 0 1.85rem;
+  padding: 1.1rem 0 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  max-width: 880px;
+}
+@media (max-width: 720px) {
+  .format-hero__facts { grid-template-columns: repeat(2, 1fr); gap: 1rem 1.5rem; }
+}
+@media (max-width: 380px) {
+  .format-hero__facts { grid-template-columns: 1fr; }
+}
+.format-hero__stat dt {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 0.35rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.05em;
+}
+.format-hero__stat dt span {
+  font-size: 0.6em;
+  color: #93c5fd;
+  font-weight: 600;
+}
+.format-hero__stat dd {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.01em;
+}
+
+.format-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+}
+.format-hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.85rem 1.5rem;
+  background: #ffffff;
+  color: #0a1628 !important;
+  border: 1px solid #ffffff;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.4);
+}
+.format-hero__btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px -10px rgba(0, 0, 0, 0.5);
+  color: #0a1628 !important;
+}
+.format-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.85rem 1.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 220ms ease, border-color 220ms ease;
+}
+.format-hero__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+/* FEATURED PILLAR SECTION — used on auction-software.html to visually
+   spotlight the 6 formats showcase as the primary above-the-fold value
+   prop. Adds a subtle gradient top-accent and a 'Featured showcase'
+   star-badge above the eyebrow. */
+.pillar-section--featured {
+  position: relative;
+}
+.pillar-section--featured::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(37, 99, 235, 0.3) 25%,
+    rgba(37, 99, 235, 0.85) 50%,
+    rgba(37, 99, 235, 0.3) 75%,
+    transparent 100%);
+  pointer-events: none;
+}
+.pillar-section__feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.7rem;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin: 0 0 0.85rem;
+}
+.pillar-section__feature-badge svg {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+/* PILLAR CARDS — modern styling for the .auction-grid / .auction-card
    pattern used on auction-software, custom-software-development,
    saas-development, and mobile-development pillar pages.
 
@@ -3045,38 +3642,74 @@ body {
   .pillar-section .auction-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
 }
 
+/* Auto-numbered index (01–06) — counter lives on the grid */
+.pillar-section .auction-grid { counter-reset: auctioncard; }
+
 .pillar-section .auction-card {
   position: relative;
-  background: #ffffff !important;
+  background: linear-gradient(160deg, #ffffff 0%, #f9fbff 100%) !important;
   border: 1px solid rgba(15, 23, 42, 0.08) !important;
-  border-radius: 14px !important;
-  padding: 1.75rem 1.5rem !important;
+  border-radius: 18px !important;
+  padding: 2rem 1.6rem 1.5rem !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 10px 30px -18px rgba(15, 23, 42, 0.12) !important;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.28s ease,
+              box-shadow 0.28s ease !important;
   min-height: 100%;
+  overflow: hidden;
+}
+/* Gradient accent bar across the top — animates from 0 to full width on hover */
+.pillar-section .auction-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #2563eb 0%, #7cb6ff 100%);
+  border-radius: 18px 18px 0 0;
+  transition: width 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Big faint counter index in the top-right corner */
+.pillar-section .auction-card::after {
+  counter-increment: auctioncard;
+  content: "0" counter(auctioncard);
+  position: absolute;
+  top: 1.15rem; right: 1.3rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(37, 99, 235, 0.22);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.28s ease;
 }
 .pillar-section .auction-card:hover {
-  transform: translateY(-3px) !important;
-  border-color: rgba(37, 99, 235, 0.4) !important;
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.1) !important;
+  transform: translateY(-5px) !important;
+  border-color: rgba(37, 99, 235, 0.35) !important;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 24px 48px -20px rgba(37, 99, 235, 0.28) !important;
 }
+.pillar-section .auction-card:hover::before { width: 100%; }
+.pillar-section .auction-card:hover::after { color: rgba(37, 99, 235, 0.5); }
 .pillar-section--alt .auction-card {
-  background: #ffffff !important;
+  background: linear-gradient(160deg, #ffffff 0%, #f9fbff 100%) !important;
 }
 
 .pillar-section .auction-icon {
-  width: 56px !important;
-  height: 56px !important;
-  border-radius: 12px !important;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(99, 102, 241, 0.12) 100%) !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 15px !important;
+  background: linear-gradient(135deg, #2563eb 0%, #0d3f8f 100%) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  color: #2563eb !important;
-  margin: 0 0 1.1rem 0 !important;
+  color: #ffffff !important;
+  margin: 0 0 1.25rem 0 !important;
   flex-shrink: 0;
   position: relative !important;
   top: auto !important;
@@ -3084,19 +3717,28 @@ body {
   font-size: inherit !important;
   line-height: 1 !important;
   letter-spacing: 0 !important;
+  box-shadow:
+    0 8px 18px -8px rgba(37, 99, 235, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.pillar-section .auction-card:hover .auction-icon {
+  transform: scale(1.06) rotate(-3deg) !important;
 }
 .pillar-section .auction-icon i {
-  color: #2563eb !important;
+  color: #ffffff !important;
   font-size: 1.6rem !important;
   line-height: 1 !important;
 }
 .pillar-section .auction-icon svg {
-  color: #2563eb !important;
-  stroke: #2563eb !important;
+  color: #ffffff !important;
+  stroke: #ffffff !important;
   width: 28px !important;
   height: 28px !important;
   display: block !important;
 }
+/* Brand-coloured auction PNG icons render as near-white via filter so they
+   sit cleanly on the new dark-blue gradient icon tile. */
 .pillar-section .auction-icon img {
   width: 32px !important;
   height: auto !important;
@@ -3104,63 +3746,164 @@ body {
   position: static !important;
   top: auto !important;
   right: auto !important;
+  filter: brightness(0) invert(1) !important;
 }
 .pillar-section .auction-icon picture {
   display: flex; align-items: center; justify-content: center;
 }
 
 .pillar-section .auction-card h3 {
-  font-size: 1.15rem !important;
-  font-weight: 600 !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
   color: #0f172a !important;
-  margin: 0 0 0.75rem !important;
-  line-height: 1.3 !important;
-  letter-spacing: -0.01em;
+  margin: 0 0 0.85rem !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.018em;
+  padding-right: 1.5rem; /* clear the number index */
 }
 .pillar-section .auction-card h3 a {
   color: #0f172a !important;
   text-decoration: none !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   font-size: inherit !important;
+  background-image: linear-gradient(#2563eb, #2563eb);
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease, color 0.2s ease;
+  padding-bottom: 2px;
 }
 .pillar-section .auction-card h3 a:hover {
   color: #2563eb !important;
+  background-size: 100% 2px;
 }
 .pillar-section .auction-card p {
-  font-size: 0.93rem !important;
-  line-height: 1.6 !important;
-  color: rgba(15, 23, 42, 0.7) !important;
-  margin: 0 0 1rem !important;
+  font-size: 0.92rem !important;
+  line-height: 1.62 !important;
+  color: rgba(15, 23, 42, 0.66) !important;
+  margin: 0 0 1.1rem !important;
 }
 .pillar-section .auction-card p:last-of-type {
-  margin-bottom: 1rem !important;
+  margin-bottom: 1.1rem !important;
 }
 .pillar-section .auction-card p strong {
   color: #0f172a !important;
   font-weight: 600 !important;
 }
+/* The "For:" / "Reference deployments:" inline labels become small,
+   uppercase, tracked micro-labels for a more editorial, scannable feel. */
 .pillar-section .auction-card p br + strong,
 .pillar-section .auction-card p strong:first-child {
+  display: inline-block;
   color: #2563eb !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
 }
 
+/* Arrow becomes a circular pill button that fills with brand blue on hover */
 .pillar-section .auction-card > a:last-child {
   display: inline-flex !important;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   margin-top: auto;
   align-self: flex-end;
   text-decoration: none !important;
-  padding-top: 0.5rem;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  transition: background 0.24s ease, border-color 0.24s ease, transform 0.24s ease;
+}
+.pillar-section .auction-card:hover > a:last-child {
+  background: #2563eb;
+  border-color: #2563eb;
 }
 .pillar-section .auction-card .arrow-icon {
   color: #2563eb !important;
-  font-size: 1rem !important;
-  transition: transform 0.18s ease !important;
+  font-size: 0.95rem !important;
+  transition: transform 0.24s ease, color 0.24s ease !important;
 }
 .pillar-section .auction-card:hover .arrow-icon {
-  transform: translateX(4px) !important;
+  transform: translateX(3px) !important;
+  color: #ffffff !important;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   ELITE ANIMATED PRESENTATION — scoped to the featured 6-format
+   showcase on auction-software.html. Two layers:
+   (1) a premium rise-and-scale staggered entrance (expo-out easing),
+   (2) a diagonal light sheen that sweeps across the card on hover.
+   ────────────────────────────────────────────────────────────────── */
+
+/* (1) Premium entrance — overrides the default fade-up for these cards only.
+   Cards rise from further down, scale up from 96%, and settle with an
+   expressive expo-out curve. The per-card stagger uses the existing
+   [data-reveal-delay] values, widened here for a more deliberate cascade. */
+.pillar-section--featured .auction-card[data-reveal] {
+  opacity: 0;
+  transform: translateY(42px) scale(0.955);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+  will-change: opacity, transform;
+}
+.pillar-section--featured .auction-card[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* Widen the cascade so the six cards arrive in a clearly-readable sequence. */
+.pillar-section--featured .auction-card[data-reveal-delay='1'] { transition-delay: 60ms; }
+.pillar-section--featured .auction-card[data-reveal-delay='2'] { transition-delay: 160ms; }
+.pillar-section--featured .auction-card[data-reveal-delay='3'] { transition-delay: 260ms; }
+.pillar-section--featured .auction-card[data-reveal-delay='4'] { transition-delay: 360ms; }
+.pillar-section--featured .auction-card[data-reveal-delay='5'] { transition-delay: 460ms; }
+.pillar-section--featured .auction-card[data-reveal-delay='6'] { transition-delay: 560ms; }
+
+/* (2) Diagonal sheen sweep on hover. The inner wrapper's ::before is an
+   off-card gleam that travels left→right across the whole card. The card
+   is position:relative + overflow:hidden, so the gleam is clipped cleanly. */
+.pillar-section--featured .auction-card > div { position: static; }
+.pillar-section--featured .auction-card > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(124, 182, 255, 0.16) 45%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(124, 182, 255, 0.16) 55%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: none;
+}
+.pillar-section--featured .auction-card:hover > div::before {
+  opacity: 1;
+  left: 130%;
+  transition: left 0.85s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+/* Respect reduced-motion: no entrance transform, no sheen. */
+@media (prefers-reduced-motion: reduce) {
+  .pillar-section--featured .auction-card[data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .pillar-section--featured .auction-card > div::before { display: none !important; }
 }
 
 /* ══════════════════════════════════════════════════════════════════

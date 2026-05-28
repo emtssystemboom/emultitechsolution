@@ -143,23 +143,95 @@
 
   <main id="main">
 
-    <!-- Pillar section 1 — Hero -->
-    <section class="pillar-hero">
-      <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
+    <!-- Pillar section 1 — Flagship elite hero (auction is our deepest practice) -->
+    <section class="auction-flagship" aria-labelledby="flagship-h1">
+      <div class="auction-flagship__aurora" aria-hidden="true"></div>
+      <div class="auction-flagship__aurora auction-flagship__aurora--two" aria-hidden="true"></div>
+      <div class="auction-flagship__grid" aria-hidden="true"></div>
+
+      <div class="auction-flagship__inner">
+        <nav class="auction-flagship__crumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a> <span aria-hidden="true">&rsaquo;</span>
           <a href="index.html#services-section">Services</a> <span aria-hidden="true">&rsaquo;</span>
           <span aria-current="page">Auction Software</span>
         </nav>
 
-        <p class="pillar-hero__eyebrow" data-reveal>OUR DEEPEST PRACTICE &middot; SINCE OCTOBER 2010</p>
-        <h1 class="pillar-hero__h1" data-reveal data-reveal-delay="1">Auction software, built by the team that&rsquo;s been shipping it since 2010.</h1>
-        <p class="pillar-hero__sub" data-reveal data-reveal-delay="2">Six auction formats. Production deployments for operators across the US, UK, EU, Singapore, Australia, and Asia. Listed on Capterra at <strong>4.8&#9733; across 25 verified client reviews</strong> &mdash; including verified auction-owner buyers. If your auction has to handle real money and real users under load, you don&rsquo;t want a generalist. You want us.</p>
-        <div class="pillar-hero__cta" data-reveal data-reveal-delay="3">
-          <a href="request_quote.html" class="btn btn-hero">Talk to an auction engineer</a>
-          <a href="#formats" class="btn btn-hero-white">See all 6 formats</a>
+        <div class="auction-flagship__main">
+          <div class="auction-flagship__text">
+            <span class="auction-flagship__status">
+              <span class="auction-flagship__pulse" aria-hidden="true"></span>
+              Real-time bidding &middot; Live in production at <a href="https://www.bidbid.co.uk/en" target="_blank" rel="noopener noreferrer">bidbid.co.uk</a>
+            </span>
+
+            <p class="auction-flagship__eyebrow">REAL-TIME AUCTION SOFTWARE &middot; OUR DEEPEST PRACTICE &middot; SINCE OCTOBER 2010</p>
+
+            <h1 id="flagship-h1" class="auction-flagship__h1">
+              <span class="auction-flagship__h-l1">16&thinsp;years</span>
+              <span class="auction-flagship__h-l2">building real-time</span>
+              <span class="auction-flagship__h-l3">auction software</span>
+              <span class="auction-flagship__h-accent">that doesn&rsquo;t break in the final&nbsp;10&nbsp;seconds.</span>
+            </h1>
+
+            <p class="auction-flagship__lede">
+              <strong>Six auction formats. 40+ production deployments. 11+ countries.</strong> From penny and lowest-unique-bid to price-reveal, Dutch, eBay-style, and reverse-procurement &mdash; we have shipped every major bidding pattern at production load since 2010. Real bidders, real money, real spikes in the final 30 seconds of every auction. Listed on Capterra at <strong>4.8&#9733; across 25 verified client reviews</strong>, including verified auction-owner buyers.
+            </p>
+
+            <div class="auction-flagship__cta">
+              <a href="request_quote.html" class="auction-flagship__btn-primary">
+                <span>Talk to an Auction Engineer</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="#formats" class="auction-flagship__btn-secondary">See All 6 Formats &darr;</a>
+              <a href="https://www.bidbid.co.uk/en" target="_blank" rel="noopener noreferrer" class="auction-flagship__btn-ghost">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                See live demo
+              </a>
+            </div>
+
+            <p class="auction-flagship__reassurance">48-hour reply &middot; NDA on request &middot; Your first call is with an auction engineer, not a sales rep</p>
+          </div>
+
+          <!-- Visual anchor: massive 16+ numeral block + formats shipped -->
+          <aside class="auction-flagship__visual">
+            <div class="auction-flagship__numeral" aria-hidden="true">
+              <span class="auction-flagship__num-big">16</span>
+              <span class="auction-flagship__num-plus">+</span>
+            </div>
+            <p class="auction-flagship__num-label">Years building<br><strong>real-time auction software</strong><br>Since October 2010</p>
+            <ul class="auction-flagship__formats">
+              <li class="auction-flagship__formats-label">Every bidding pattern, shipped to production:</li>
+              <li>Penny &middot; live bidding</li>
+              <li>Lowest &amp; highest unique bid</li>
+              <li>Price reveal &middot; Dutch</li>
+              <li>eBay-style marketplace</li>
+              <li>Reverse &middot; B2B procurement</li>
+            </ul>
+          </aside>
         </div>
-        <p class="cta-reassurance" data-reveal data-reveal-delay="3">48-hour response &middot; NDA on request &middot; Your first call is with an engineer</p>
+
+        <!-- Stat band — the credibility row, full-width across both columns -->
+        <dl class="auction-flagship__stats" aria-label="Auction practice scope">
+          <div>
+            <dt>16<span>+</span></dt>
+            <dd>Years engineering<br>auction software</dd>
+          </div>
+          <div>
+            <dt>40<span>+</span></dt>
+            <dd>Production<br>auction deployments</dd>
+          </div>
+          <div>
+            <dt>11<span>+</span></dt>
+            <dd>Countries shipped<br>UK &middot; EU &middot; APAC &middot; US</dd>
+          </div>
+          <div>
+            <dt>6</dt>
+            <dd>Bidding formats<br>shipped to production</dd>
+          </div>
+          <div>
+            <dt>4.8<span>&#9733;</span></dt>
+            <dd>Capterra rating<br>25 verified reviews</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
@@ -175,7 +247,78 @@
       </div>
     </section>
 
-    <!-- Pillar section 3 — Problem statement -->
+    <!-- Pillar section 3 — Formats we ship (six cards · featured showcase) -->
+    <section class="pillar-section pillar-section--alt pillar-section--featured" id="formats">
+      <div class="container">
+        <header class="pillar-section__head" data-reveal>
+          <span class="pillar-section__feature-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
+            Featured showcase
+          </span>
+          <p class="pillar-section__eyebrow">FORMATS WE SHIP</p>
+          <h2>Six auction formats. Every bidding pattern, engineered properly.</h2>
+          <p class="pillar-section__lead">Each format is a distinct revenue model, fraud surface, and engagement loop &mdash; not a theme on top of one engine. Tap any format for the deep-dive: full feature list, operator panel, tech stack, and reference deployments.</p>
+        </header>
+
+        <div class="auction-grid">
+          <div class="auction-card" data-reveal data-reveal-delay="1">
+            <div>
+              <div class="auction-icon"><picture data-built><source srcset="images/auction_penny.webp" type="image/webp"><img src="images/auction_penny.png" alt="" aria-hidden="true" loading="lazy" width="53" height="40" decoding="async"></picture></div>
+              <h3><a href="penny-live-auction-script-software.html">Penny Auction (Live Bidding)</a></h3>
+              <p>A strategy bidding game: every bid costs a small non-refundable fee, nudges the price up one increment, and extends the timer. The last bidder when the clock hits zero wins &mdash; often at a fraction of retail. We build the full economic engine: bid-fee wallet, master auto-bidder, time extensions, bonus auctions, and the operator control panel behind it.<br><strong>Best for:</strong> consumer entertainment auctions with bid-fee revenue.</p>
+            </div>
+            <a href="penny-live-auction-script-software.html" aria-label="Read more about Penny Auction"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="2">
+            <div>
+              <div class="auction-icon"><picture data-built><source srcset="images/sale.webp" type="image/webp"><img src="images/sale.png" alt="" aria-hidden="true" loading="lazy" width="48" height="40" decoding="async"></picture></div>
+              <h3><a href="lowest-unique-bid-auction-script-online-software-reverse-auction-low-bid.html">Lowest Unique Bid</a></h3>
+              <p>The winner is whoever places the lowest bid that nobody else has matched. The entire format lives or dies on bid integrity &mdash; so we enforce uniqueness atomically at the database, timestamp every bid server-side, and ship anti-collusion logic plus bot-detection so operators can trust every single result.<br><strong>Best for:</strong> gamified, prize-based B2C auctions.</p>
+            </div>
+            <a href="lowest-unique-bid-auction-script-online-software-reverse-auction-low-bid.html" aria-label="Read more about Lowest Unique Bid"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="3">
+            <div>
+              <div class="auction-icon"><picture data-built><source srcset="images/auction_high.webp" type="image/webp"><img src="images/auction_high.png" alt="" aria-hidden="true" loading="lazy" width="40" height="40" decoding="async"></picture></div>
+              <h3><a href="highest-unique-bids-auction-script-online-highest-bid-software-services.html">Highest Unique Bid</a></h3>
+              <p>The inverse of lowest-unique: the highest bid nobody else matched wins, usually under a ceiling set below retail value. Same airtight integrity model &mdash; atomic uniqueness, server-authoritative timing, exportable audit logs &mdash; tuned for the high-engagement loops that drive repeat bidding.<br><strong>Best for:</strong> gift-card, electronics &amp; small-ticket merchandise.</p>
+            </div>
+            <a href="highest-unique-bids-auction-script-online-highest-bid-software-services.html" aria-label="Read more about Highest Unique Bid"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="4">
+            <div>
+              <div class="auction-icon"><picture data-built><source srcset="images/gift_auction.webp" type="image/webp"><img src="images/gift_auction.png" alt="" aria-hidden="true" loading="lazy" width="40" height="40" decoding="async"></picture></div>
+              <h3><a href="price-reveal-auction-script-express-auction-software-live-unique-bidding-system.html">Price Reveal / Dutch</a></h3>
+              <p>Gamified price discovery. Players pay to reveal the live price and commit when it feels right; Dutch auctions descend continuously until someone buys. We engineer the reveal interaction for sub-second response, with operator-configurable price curves, multi-currency, and optional live video streaming for high-trust categories.<br><strong>Best for:</strong> gamified discovery &amp; live descending-price sales.</p>
+            </div>
+            <a href="price-reveal-auction-script-express-auction-software-live-unique-bidding-system.html" aria-label="Read more about Price Reveal / Dutch"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="5">
+            <div>
+              <div class="auction-icon"><picture data-built><source srcset="images/btob.webp" type="image/webp"><img src="images/btob.png" alt="" aria-hidden="true" loading="lazy" width="37" height="40" decoding="async"></picture></div>
+              <h3><a href="ebay-auction-like-ebay-script.html">eBay-Style Marketplace</a></h3>
+              <p>A full multi-seller, multi-category auction marketplace under one operator. Proxy bidding (set a max, the system bids for you), auction extensions on late bids, watchlists, saved searches, and seller reputation &mdash; SEO-friendly and built to scale to thousands of sellers and millions of listings.<br><strong>Best for:</strong> multi-seller B2B or B2C marketplaces.</p>
+            </div>
+            <a href="ebay-auction-like-ebay-script.html" aria-label="Read more about eBay-Style Marketplace"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="6">
+            <div>
+              <div class="auction-icon"><picture data-built><source srcset="images/auction_reverse.webp" type="image/webp"><img src="images/auction_reverse.png" alt="" aria-hidden="true" loading="lazy" width="40" height="50" decoding="async"></picture></div>
+              <h3><a href="lowest-unique-bid-auction-script-online-software-reverse-auction-low-bid.html">Reverse / B2B Procurement</a></h3>
+              <p>Buyers post requirements; suppliers compete by bidding the price <em>down</em> in real time. Built for enterprise procurement and public-sector tenders &mdash; multi-tenant SaaS, tender-window lifecycle, weighted multi-criteria evaluation across price, lead time and quality, and audit-grade event logs for compliance.<br><strong>Best for:</strong> enterprise procurement &amp; public tenders.</p>
+            </div>
+            <a href="dinepa-case-study.html" aria-label="Read the DiNePa case study"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillar section 4 — Problem statement -->
     <section class="pillar-section">
       <div class="container">
         <header class="pillar-section__head" data-reveal>
@@ -190,7 +333,7 @@
       </div>
     </section>
 
-    <!-- Pillar section 4 — Our approach -->
+    <!-- Pillar section 5 — Our approach -->
     <section class="pillar-section pillar-section--alt">
       <div class="container">
         <header class="pillar-section__head" data-reveal>
@@ -219,73 +362,6 @@
             <p>We don&rsquo;t disappear after go-live. Every auction client we&rsquo;ve shipped is still operational &mdash; most remain on a retainer for feature work, performance tuning, or fraud-pattern updates. Deliverable: production deployment, monitoring/alerting setup, runbook for operators, and a 90-day production warranty period.</p>
           </li>
         </ol>
-      </div>
-    </section>
-
-    <!-- Pillar section 5 — Formats we ship (six cards) -->
-    <section class="pillar-section" id="formats">
-      <div class="container">
-        <header class="pillar-section__head" data-reveal>
-          <p class="pillar-section__eyebrow">FORMATS WE SHIP</p>
-          <h2>Six auction formats, each with production references.</h2>
-          <p class="pillar-section__lead">Click any format for the deep-dive page with feature list, tech stack, and operator panel details.</p>
-        </header>
-
-        <div class="auction-grid">
-          <div class="auction-card" data-reveal data-reveal-delay="1">
-            <div>
-              <div class="auction-icon"><picture data-built><source srcset="images/auction_penny.webp" type="image/webp"><img src="images/auction_penny.png" alt="" aria-hidden="true" loading="lazy" width="53" height="40" decoding="async"></picture></div>
-              <h3><a href="penny-live-auction-script-software.html">Penny Auction (Live Bidding)</a></h3>
-              <p><strong>For:</strong> B2C consumer entertainment auctions with bid-fee monetization. Bid extensions, master auto-bid, bonus auctions, 24-hour auctions, CSV product uploads, refund logic, user-tier management.<br><strong>Reference deployments:</strong> BidBid.co.uk (Node.js + PHP), AuctionCents (US), Bid2U, Auktis (multi-language).</p>
-            </div>
-            <a href="penny-live-auction-script-software.html" aria-label="Read more about Penny Auction"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
-          </div>
-
-          <div class="auction-card" data-reveal data-reveal-delay="2">
-            <div>
-              <div class="auction-icon"><picture data-built><source srcset="images/sale.webp" type="image/webp"><img src="images/sale.png" alt="" aria-hidden="true" loading="lazy" width="48" height="40" decoding="async"></picture></div>
-              <h3><a href="lowest-unique-bid-auction-script-online-software-reverse-auction-low-bid.html">Lowest Unique Bid</a></h3>
-              <p><strong>For:</strong> Gamified, prize-based B2C auctions where the lowest unique bidder wins. Anti-collusion logic, automated bid-generator detection, refund and audit tools for operators.<br><strong>Reference deployments:</strong> SMG Bids (UK), Lambobidz, Chase Bid, Pyrabid (UK), Bid For Sin.</p>
-            </div>
-            <a href="lowest-unique-bid-auction-script-online-software-reverse-auction-low-bid.html" aria-label="Read more about Lowest Unique Bid"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
-          </div>
-
-          <div class="auction-card" data-reveal data-reveal-delay="3">
-            <div>
-              <div class="auction-icon"><picture data-built><source srcset="images/auction_high.webp" type="image/webp"><img src="images/auction_high.png" alt="" aria-hidden="true" loading="lazy" width="40" height="40" decoding="async"></picture></div>
-              <h3><a href="highest-unique-bids-auction-script-online-highest-bid-software-services.html">Highest Unique Bid</a></h3>
-              <p><strong>For:</strong> Inverse of lowest-unique &mdash; the highest unique bid wins, generally with a ceiling below market value. Strong engagement loops for gift-card, electronics, and small-ticket merchandise auctions.<br><strong>Reference deployments:</strong> Gift Card Auctions, EodBox (multi-currency).</p>
-            </div>
-            <a href="highest-unique-bids-auction-script-online-highest-bid-software-services.html" aria-label="Read more about Highest Unique Bid"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
-          </div>
-
-          <div class="auction-card" data-reveal data-reveal-delay="4">
-            <div>
-              <div class="auction-icon"><picture data-built><source srcset="images/gift_auction.webp" type="image/webp"><img src="images/gift_auction.png" alt="" aria-hidden="true" loading="lazy" width="40" height="40" decoding="async"></picture></div>
-              <h3><a href="price-reveal-auction-script-express-auction-software-live-unique-bidding-system.html">Price Reveal / Dutch</a></h3>
-              <p><strong>For:</strong> Gamified price discovery (reveal) and live descending-price (Dutch) auctions. Multi-language, multi-currency, optional live video streaming for high-trust categories.<br><strong>Reference deployments:</strong> uBiduBuy.sg (Singapore), PigeonOnNet (Dutch + live video), TopEncheres, SubastasGamer.</p>
-            </div>
-            <a href="price-reveal-auction-script-express-auction-software-live-unique-bidding-system.html" aria-label="Read more about Price Reveal / Dutch"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
-          </div>
-
-          <div class="auction-card" data-reveal data-reveal-delay="5">
-            <div>
-              <div class="auction-icon"><picture data-built><source srcset="images/btob.webp" type="image/webp"><img src="images/btob.png" alt="" aria-hidden="true" loading="lazy" width="37" height="40" decoding="async"></picture></div>
-              <h3><a href="ebay-auction-like-ebay-script.html">eBay-Style Marketplace</a></h3>
-              <p><strong>For:</strong> Multi-seller, multi-category B2B or B2C marketplaces with one operator panel. Open-source customizable script, SEO-friendly, scales to thousands of sellers and millions of listings.<br><strong>Reference deployments:</strong> Bidcy, MakeMyBids, TiptopBids (web + mobile).</p>
-            </div>
-            <a href="ebay-auction-like-ebay-script.html" aria-label="Read more about eBay-Style Marketplace"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
-          </div>
-
-          <div class="auction-card" data-reveal data-reveal-delay="6">
-            <div>
-              <div class="auction-icon"><picture data-built><source srcset="images/auction_reverse.webp" type="image/webp"><img src="images/auction_reverse.png" alt="" aria-hidden="true" loading="lazy" width="40" height="50" decoding="async"></picture></div>
-              <h3><a href="lowest-unique-bid-auction-script-online-software-reverse-auction-low-bid.html">Reverse / B2B Procurement</a></h3>
-              <p><strong>For:</strong> Enterprise procurement, public-sector tenders, multi-seller marketplaces. Buyers post requirements, suppliers compete with live quotes. Multi-tenant SaaS for public agencies; tender-window lifecycle, audit-grade event logs.<br><strong>Reference deployments:</strong> DiNePa (EU public sector), OnlineAlku, E-Trade, Light Auction.</p>
-            </div>
-            <a href="dinepa-case-study.html" aria-label="Read the DiNePa case study"><i class="fa-solid fa-arrow-right arrow-icon" aria-hidden="true"></i></a>
-          </div>
-        </div>
       </div>
     </section>
 

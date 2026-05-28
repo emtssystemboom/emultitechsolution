@@ -339,27 +339,91 @@
 
             <div class="card" data-aos="fade-right">
                 <div class="icon--round"><picture data-built><source srcset="images/hr.webp" type="image/webp"><img src="images/hr.png" alt="Data Reliability" width="50" height="34" loading="lazy" decoding="async"></picture></div>
-                <h3>0.3% Error Rate/h3>
+                <h3>0.3% Error Rate</h3>
                 <p>Achieved extreme reliability in complex data handling through automated validation and currency normalization.</p>
             </div>
         </div>
-        <div class="client-testimonial text-center mt-5" data-aos="zoom-in">
-            <blockquote class="h4 italic text-white">“Before DiNePa, final bid analysis was delayed after completion. Now we run events in a few hours with immediate analysis available.”</blockquote>
-            <p class="text-white"><strong>— Head of Strategic Procurement, Enterprise Client (Spain)</strong></p>
+        <div class="client-testimonial text-center mt-5" data-aos="zoom-in" style="background:rgba(37,99,235,0.04);padding:2rem;border-radius:14px;max-width:820px;margin:2.5rem auto 0;">
+            <p style="font-size:0.92rem;color:rgba(15,23,42,0.7);margin:0 0 0.5rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Client testimonial</p>
+            <blockquote style="margin:0;font-size:1.15rem;color:rgba(15,23,42,0.85);line-height:1.5;font-style:italic;">&ldquo;Before DiNePa, final bid analysis was delayed after completion. Now we run events in a few hours with immediate analysis available.&rdquo;</blockquote>
+            <p style="margin:0.5rem 0 0;font-style:normal;font-size:0.9rem;color:rgba(15,23,42,0.6);">&mdash; Head of Strategic Procurement, Enterprise Client (Spain)</p>
         </div>
     </section>
 
-    <!-- CALL TO ACTION -->
-    <section class="web__wrapper">
-        <div class="col img_2" data-aos="fade-right"></div>
-        <div class="col text">
-            <div data-aos="fade-left">
-                <h2>Building a Real-Time or Multi-Tenant Platform?</h2>
-                <p>We engineer systems where performance, data isolation, and scalability are critical from day one.</p>
-                <div>
-                    <a href="request_quote.html" class="btn btn-hero">Book Free Architecture Consultation</a>
-                </div>
+    <!-- WHY THIS CASE STUDY MATTERS -->
+    <section class="project-section project-scope" style="background:#f7f9fc;">
+        <div class="project-content hero-content">
+            <h2>Why This Case Study Matters</h2>
+            <p>If you&rsquo;re evaluating engineering partners for a multi-tenant SaaS that will serve European or regulated enterprise customers, three things matter more than a pitch deck:</p>
+            <div class="divider"></div>
+            <ul>
+                <li><b>Have they actually shipped multi-tenant at scale?</b> DiNePa has been live for 5+ years at 99.4% uptime for European enterprise procurement, with strict schema-level tenant isolation that has never had a cross-tenant incident. The patterns we used here transfer to <a href="adult-home-care-saas-case-study.html">our healthcare HIPAA build</a> and to any multi-tenant platform that needs the same isolation guarantees.</li>
+                <li><b>Can they handle real-time concurrency under load?</b> 80 concurrent suppliers across 100+ weighted line items in a single live tender is the kind of concurrency that breaks naive architectures. Sub-500ms real-time bid evaluation under that load is not a free outcome &mdash; it&rsquo;s the result of event-driven processing decisions made in week one.</li>
+                <li><b>Will they stay engaged for years?</b> SaaS platforms aren&rsquo;t one-off builds &mdash; they need uptime work, feature additions, payer/integration changes, audit support. We&rsquo;ve been on DiNePa for 5+ years and on <a href="litigation-management-system-nepal-rastra-bank.html">Nepal Rastra Bank</a> for even longer. <a href="saas-development.html">Read our SaaS development practice page</a> for the engagement model.</li>
+            </ul>
+            <a href="request_quote.html" class="btn btn-hero">Discuss Your SaaS Architecture</a>
+        </div>
+        <div class="project-image project-image-left hero-content">
+            <picture data-built><source srcset="images/data-marketing.webp" type="image/webp"><img src="images/data-marketing.jpg" alt="Multi-tenant SaaS engineering" loading="lazy" width="800" height="533" decoding="async"></picture>
+        </div>
+    </section>
+
+    <!-- Editorial CTA — elite -->
+    <section class="elite-cta" aria-labelledby="elite-cta-title">
+        <div class="elite-cta__aurora" aria-hidden="true"></div>
+        <div class="elite-cta__grid" aria-hidden="true"></div>
+
+        <div class="elite-cta__inner">
+            <div class="elite-cta__mark">
+                <span class="elite-cta__pulse" aria-hidden="true"></span>
+                <picture data-built><source srcset="images/dinepa.webp" type="image/webp"><img src="images/dinepa.png" alt="DiNePa" loading="lazy" width="140" height="32" decoding="async"></picture>
+                <span class="elite-cta__sep" aria-hidden="true">/</span>
+                <span class="elite-cta__status">Live in EU production &middot; 5+ years</span>
             </div>
+
+            <h2 id="elite-cta-title" class="elite-cta__headline">
+                <span class="elite-cta__h-line1">Ship a multi-tenant SaaS</span>
+                <span class="elite-cta__h-line2">that runs 5+ years</span>
+                <span class="elite-cta__h-line3">at 99.4% uptime.</span>
+            </h2>
+
+            <div class="elite-cta__rule" aria-hidden="true"></div>
+
+            <dl class="elite-cta__stats">
+                <div>
+                    <dt>99.4<span>%</span></dt>
+                    <dd>Uptime maintained<br>5+ years in production</dd>
+                </div>
+                <div>
+                    <dt>&lt;500<span>ms</span></dt>
+                    <dd>Real-time bid<br>evaluation latency</dd>
+                </div>
+                <div>
+                    <dt>80</dt>
+                    <dd>Concurrent suppliers<br>per live tender</dd>
+                </div>
+                <div>
+                    <dt>4</dt>
+                    <dd>Languages live<br>EN &middot; DE &middot; ES &middot; FR</dd>
+                </div>
+            </dl>
+
+            <div class="elite-cta__rule" aria-hidden="true"></div>
+
+            <p class="elite-cta__lede">Tell us your SaaS architecture goals. We&rsquo;ll tell you the patterns that survived 5 years of EU production.</p>
+
+            <div class="elite-cta__action">
+                <a href="request_quote.html" class="elite-cta__btn">
+                    <span>Book a SaaS architecture call</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+
+            <p class="elite-cta__signature">
+                <span class="elite-cta__signature-label">Direct line, founder-to-founder</span>
+                <a href="https://wa.me/9779851038796" target="_blank" rel="noopener noreferrer">+977 9851038796</a>
+                <span class="elite-cta__signature-name">&mdash; <a href="https://www.linkedin.com/in/roshan-subedi-7285b614/" target="_blank" rel="noopener noreferrer" class="founder-linkedin-inline">Roshan Subedi</a>, Founder &amp; MD &middot; 48-hour reply, engineer-only</span>
+            </p>
         </div>
     </section>
 </main>
