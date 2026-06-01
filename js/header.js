@@ -53,7 +53,7 @@
       <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
       <li class="nav-item"><a class="nav-link" href="works.html">Our Works</a></li>
       <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-      <li class="nav-item"><a class="nav-link" href="testimonial-all.html">Testimonial</a></li>
+      <li class="nav-item"><a class="nav-link" href="testimonial-all.html">Testimonials</a></li>
       <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
     </ul>
   </aside>

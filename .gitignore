@@ -43,3 +43,6 @@ tools/_scan.json
 # ── Coverage / test ────────────────────────────────────────────────
 coverage/
 .nyc_output/
+
+# ── Internal audit deliverables (keep private — do NOT deploy publicly) ──
+EMTS-Pre-Launch-Audit-Checklist.*

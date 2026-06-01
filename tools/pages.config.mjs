@@ -397,7 +397,7 @@ export const PAGES = {
   '404.html': {
     title: 'Page Not Found',
     description:
-      "The page you're looking for doesn't exist. Try the homepage, browse our services, or contact us.",
+      'The page you’re looking for doesn’t exist. Try the homepage, browse our services, or contact us.',
     type: 'page',
     noindex: true,
   },

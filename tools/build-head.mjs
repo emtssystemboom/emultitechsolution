@@ -23,6 +23,54 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SKIP = new Set(['index_1.html']);
 
+// ── Analytics & Search Console (managed, idempotent) ──────────────────
+// 1. Create a GA4 property at analytics.google.com → copy its Measurement ID
+//    (looks like G-XXXXXXXXXX) into GA4_ID below.
+// 2. (Optional) In Google Search Console, choose the "HTML tag" verification
+//    method → paste only the content value into GSC_VERIFICATION below.
+//    (If you verify via the "Google Analytics" method instead, leave it empty.)
+// 3. Re-run:  node tools/build-head.mjs   (or: npm run build)
+// Both are empty by default, so nothing is injected until you fill them in.
+const GA4_ID = '';            // e.g. 'G-ABCD123XYZ'
+const GSC_VERIFICATION = '';  // e.g. 'aBcDeFg...' (content attr only)
+
+const ANALYTICS_START = '<!-- ANALYTICS:START — managed by tools/build-head.mjs -->';
+const ANALYTICS_END = '<!-- ANALYTICS:END -->';
+const ANALYTICS_BLOCK_RE = /\n?[ \t]*<!-- ANALYTICS:START[\s\S]*?<!-- ANALYTICS:END -->/;
+
+function buildAnalyticsBlock() {
+  const parts = [];
+  if (GSC_VERIFICATION) {
+    parts.push(`  <meta name="google-site-verification" content="${GSC_VERIFICATION}">`);
+  }
+  if (GA4_ID) {
+    parts.push(`  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script>`);
+    parts.push(`  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_ID}');</script>`);
+  }
+  if (!parts.length) return '';
+  return `${ANALYTICS_START}\n${parts.join('\n')}\n  ${ANALYTICS_END}`;
+}
+
+// Inserts / replaces / removes the analytics block based on the config above.
+function ensureAnalytics(html) {
+  const block = buildAnalyticsBlock();
+  const hasBlock = ANALYTICS_BLOCK_RE.test(html);
+  if (!block) {
+    // Nothing configured — strip any previously-injected block so re-running
+    // after clearing the IDs cleanly removes the tag from every page.
+    return hasBlock ? html.replace(ANALYTICS_BLOCK_RE, '') : html;
+  }
+  if (hasBlock) {
+    return html.replace(ANALYTICS_BLOCK_RE, `\n  ${block}`);
+  }
+  // Insert right after the viewport meta so the tag loads as early as possible.
+  if (/<meta\s+name=["']viewport["'][^>]*>/i.test(html)) {
+    return html.replace(/(<meta\s+name=["']viewport["'][^>]*>)/i, `$1\n  ${block}`);
+  }
+  // Fallback: just before </head>.
+  return html.replace(/<\/head>/i, `  ${block}\n</head>`);
+}
+
 const INTER_LINK =
   '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">';
 
@@ -215,6 +263,7 @@ for (const file of htmlFiles) {
   let next = original;
   next = ensureFontIsInter(next);
   next = ensureCdnPreconnects(next);
+  next = ensureAnalytics(next);
   next = ensureThemeAfterStyle(next);
   next = ensureRevealScript(next);
   next = ensureFontAwesomeAsync(next);
