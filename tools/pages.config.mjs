@@ -53,14 +53,14 @@ export const PAGES = {
   'index.html': {
     title: 'Custom Software, SaaS & AI Partner',
     description:
-      'Founder-led software engineering since 2010. 70+ production platforms shipped for clients across 108 countries. 4.8★ on Capterra across 25 verified client reviews.',
+      'Founder-led software engineering since 2010. 70+ production platforms shipped across 108 countries — central-bank systems, European SaaS, marketplaces at scale.',
     type: 'home',
     image: 'images/og-default.png',
   },
   'about.html': {
     title: 'About — Founder-Led Since October 2010',
     description:
-      'Founder-led engineering team since October 2010. 70+ production platforms across 108 countries. Trusted by Nepal Rastra Bank, DiNePa & Upkeep.pro. 4.8★ Capterra.',
+      'Founder-led engineering since 2010 — 70+ production platforms across 108 countries. Trusted by Nepal Rastra Bank, DiNePa & Upkeep.pro.',
     type: 'about',
     image: 'images/about.png',
   },
@@ -83,42 +83,42 @@ export const PAGES = {
   'custom-software-development.html': {
     title: 'Custom Software Development Services',
     description:
-      'Custom software built for production load since 2010. Litigation system for Nepal Rastra Bank, EU procurement SaaS, 70+ shipped platforms. 4.8★ on Capterra.',
+      'Custom software built for production load since 2010. Litigation system for Nepal Rastra Bank, EU procurement SaaS, 70+ shipped platforms across 108 countries.',
     type: 'service',
     image: 'images/custom-software.jpg',
   },
   'saas-development.html': {
     title: 'SaaS Product Development Services',
     description:
-      'Multi-tenant SaaS built to survive years in production. DiNePa: 99.4% uptime over 5+ years, sub-500ms latency for EU enterprise procurement. 4.8★ Capterra.',
+      'Multi-tenant SaaS built to survive years in production. DiNePa: 99.4% uptime over 5+ years, sub-500ms latency for EU enterprise procurement.',
     type: 'service',
     image: 'images/data-marketing.jpg',
   },
   'mobile-development.html': {
     title: 'Mobile App Development Services',
     description:
-      'iOS, Android, Flutter & React Native apps for marketplaces, logistics, healthcare EVV. Upkeep.pro: 500K+ daily appointments, 10K+ pros worldwide. 4.8★ Capterra.',
+      'iOS, Android, Flutter & React Native apps for marketplaces, logistics & healthcare EVV. Upkeep.pro: 500K+ daily appointments for 10K+ pros worldwide.',
     type: 'service',
     image: 'images/top-bg.png',
   },
   'ai-powered-solutions.html': {
     title: 'AI Solutions & Agentic Automation',
     description:
-      'AI engineered into production systems — document intelligence, voice-to-text, risk detection, predictive ops. Built for regulated industries. 4.8★ Capterra.',
+      'AI engineered into production systems — document intelligence, voice-to-text, risk detection, predictive ops. Built for regulated industries since 2010.',
     type: 'service',
     image: 'images/ai-solution.jpg',
   },
   'devops-engineer.html': {
     title: 'DevOps & Cloud Engineering',
     description:
-      'Cloud, CI/CD, Kubernetes, IaC & SRE. DiNePa: 99.4% uptime over 5+ years. NRB: central-bank-grade intranet deployment. 4.8★ Capterra · founder-led since 2010.',
+      'Cloud, CI/CD, Kubernetes, IaC & SRE. DiNePa: 99.4% uptime over 5+ years. NRB: central-bank-grade intranet deployment. Founder-led since 2010.',
     type: 'service',
     image: 'images/devops.jpg',
   },
   'product-engineering.html': {
     title: 'Product Engineering Services',
     description:
-      'End-to-end product engineering — discovery, design, build, ship, scale. For founders without a CTO. 70+ platforms shipped, 4 verticals, 4.8★ Capterra.',
+      'End-to-end product engineering — discovery, design, build, ship, scale. For founders without a CTO. 70+ platforms shipped across 4 verticals.',
     type: 'service',
     image: 'images/og-default.png',
   },
@@ -133,7 +133,7 @@ export const PAGES = {
   'healthcare-saas-development.html': {
     title: 'Healthcare SaaS Development Services',
     description:
-      'HIPAA-architected healthcare SaaS for US home care, EVV & AI document intelligence. 4.8★ Capterra · founder-led since 2010 · in-house engineering team.',
+      'HIPAA-architected healthcare SaaS for US home care, EVV & AI document intelligence. Founder-led since 2010 · in-house engineering team.',
     type: 'service',
     image: 'images/health-industries.jpg',
   },
@@ -142,7 +142,7 @@ export const PAGES = {
   'industries.html': {
     title: 'Industries We Ship Production Software For',
     description:
-      'Healthcare HIPAA SaaS · banking & compliance · procurement · real estate · on-demand marketplaces · IoT — every vertical anchored by a named production case study. 16+ years, 70+ platforms.',
+      'Healthcare, banking, procurement, real estate, marketplaces & IoT — every vertical anchored by a named production case study. 16+ years, 70+ platforms.',
     type: 'industry',
     image: 'images/og-default.png',
   },
@@ -156,7 +156,7 @@ export const PAGES = {
   'realestate.html': {
     title: 'Real Estate Software Development',
     description:
-      'Property marketplaces, multi-class listing engines, MLS/IDX integrations, agent CMS, mortgage-ready lead capture. Anchored by MSG Homes — live in the Philippines.',
+      'Property marketplaces, multi-class listings, MLS/IDX integrations, agent CMS & mortgage-ready lead capture. Anchored by MSG Homes, live in the Philippines.',
     type: 'industry',
     image: 'images/og-default.png',
   },
@@ -165,7 +165,7 @@ export const PAGES = {
   'auction-software.html': {
     title: 'Auction Software Development Services',
     description:
-      'Penny, reverse, unique-bid, Dutch, price-reveal, eBay-style auction software. Built since 2010 for operators across the US, UK, EU, Asia & Australia. 4.8★ Capterra.',
+      'Penny, reverse, unique-bid, Dutch, price-reveal & eBay-style auction software, built since 2010 for operators across the US, UK, EU, Asia & Australia.',
     type: 'service',
     image: 'images/auction.jpg',
   },
@@ -179,7 +179,7 @@ export const PAGES = {
   'highest-unique-bids-auction-script-online-highest-bid-software-services.html': {
     title: 'Highest Unique Bid Auction Script',
     description:
-      'Highest Unique Bid auction software with secure scripts, full customization, and proven deployments. Built by E Multitech for global auction operators since 2010.',
+      'Highest Unique Bid auction software — secure scripts, full customization & proven deployments. Built for global auction operators since 2010.',
     type: 'auctionProduct',
     image: 'images/auction.jpg',
   },
@@ -281,7 +281,7 @@ export const PAGES = {
   'case-studies-detail.html': {
     title: 'SaaS EHR Case Study — Multi-Hospital',
     description:
-      'How we built a SaaS EHR for a US healthcare institution: 25% improvement in regulatory compliance and 50% faster access to patient records. Approach and outcomes.',
+      'How we built a SaaS EHR for a US healthcare institution: 25% better regulatory compliance and 50% faster access to patient records.',
     type: 'case',
     image: 'images/health-industries.jpg',
   },
@@ -302,7 +302,7 @@ export const PAGES = {
   'adult-home-care-saas-case-study.html': {
     title: 'AI-Powered Home Care SaaS — HIPAA Build',
     description:
-      'AI-powered, HIPAA-architected multi-tenant home care SaaS for a US healthcare operator. Document intelligence, voice-to-text notes, predictive scheduling, risk detection.',
+      'AI-powered, HIPAA-architected home-care SaaS for a US operator — document intelligence, voice-to-text notes, predictive scheduling & risk detection.',
     type: 'case',
     image: 'images/health-industries.jpg',
   },
@@ -316,14 +316,14 @@ export const PAGES = {
   'banking-fintech-software-development.html': {
     title: 'Banking & Fintech Software Development',
     description:
-      'Central-bank-grade enterprise software development — case tracking, audit logs, document management, regulatory workflow. Anchored by Nepal Rastra Bank litigation system in production.',
+      'Central-bank-grade software: case tracking, audit logs, document management & regulatory workflow. Anchored by the Nepal Rastra Bank litigation system.',
     type: 'service',
     image: 'images/og-default.png',
   },
   'msg-homes-realty-case-study.html': {
-    title: 'MSG Homes — Multi-Region Real Estate Marketplace',
+    title: 'MSG Homes — Real Estate Marketplace',
     description:
-      'How E Multitech built msg-homes.com for My Saving Grace Realty & Development Corporation — multi-region real estate marketplace covering 6 property types across the Philippines, integrated with major Filipino banks.',
+      'How we built msg-homes.com for My Saving Grace Realty — multi-region real estate marketplace covering 6 property types across the Philippines, bank-integrated.',
     type: 'case',
     image: 'images/urban.png',
   },
@@ -352,7 +352,7 @@ export const PAGES = {
   'security.html': {
     title: 'Security & Compliance Posture',
     description:
-      'Our security architecture, compliance posture & vendor due-diligence summary. HIPAA-aligned, BAA available, multi-tenant isolation. For US, EU & enterprise clients.',
+      'Our security architecture, compliance posture & due-diligence summary — HIPAA-aligned, BAA available, multi-tenant isolation. For US & EU clients.',
     type: 'page',
     image: 'images/og-default.png',
   },
@@ -361,7 +361,7 @@ export const PAGES = {
   'works.html': {
     title: 'Our Portfolio of Software Projects',
     description:
-      'Portfolio of web, mobile, SaaS, AI, and auction platforms from E Multitech Solution — 70+ production deployments across 108 countries, founder-led and built in-house since 2010.',
+      'Portfolio of web, mobile, SaaS, AI & auction platforms — 70+ production deployments across 108 countries, founder-led and built in-house since 2010.',
     type: 'portfolio',
     image: 'images/og-default.png',
   },
