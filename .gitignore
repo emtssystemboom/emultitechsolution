@@ -46,3 +46,6 @@ coverage/
 
 # ── Internal audit deliverables (keep private — do NOT deploy publicly) ──
 EMTS-Pre-Launch-Audit-Checklist.*
+
+# ── Local deploy artifact (HostGator upload bundle — not part of the repo) ──
+emts-new-site.zip

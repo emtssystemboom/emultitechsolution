@@ -417,6 +417,67 @@
       </div>
     </section>
 
+    <!-- How we are structured: six in-house engineering practices (team depth, no junior names) -->
+    <section class="pillar-section" id="team-structure">
+      <div class="container">
+        <header class="pillar-section__head" data-reveal>
+          <p class="pillar-section__eyebrow">HOW WE&rsquo;RE STRUCTURED</p>
+          <h2>Six in-house engineering practices, one team.</h2>
+          <p class="pillar-section__lead">Behind the two names above is a single in-house team in Kathmandu spanning six engineering practices. The same engineers carry work across disciplines &mdash; that&rsquo;s how a 16-year team builds enough depth to ship 70+ production platforms across 7 service lines without ever subcontracting.</p>
+        </header>
+
+        <div class="auction-grid">
+          <div class="auction-card" data-reveal data-reveal-delay="1">
+            <div>
+              <div class="auction-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+              <h3>Back-end Engineering</h3>
+              <p><strong>Stack:</strong> Node.js + TypeScript, PHP 8 + Laravel 9, PostgreSQL, MySQL, Redis, WebSocket.<br><strong>Production reference:</strong> Nepal Rastra Bank litigation system (Laravel + MySQL, 5+ years live), DiNePa multi-tenant SaaS (Node + WebSocket, 99.4% uptime).</p>
+            </div>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="2">
+            <div>
+              <div class="auction-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+              <h3>Mobile Engineering</h3>
+              <p><strong>Stack:</strong> Native iOS (Swift), Native Android (Kotlin), Flutter, React Native. Offline-first storage, biometric auth, OS-level push delivery, App Store + Play Store ops.<br><strong>Production reference:</strong> Upkeep.pro (native iOS + Android, 500K+ daily appointments), AI Home Care Caregiver App (Flutter).</p>
+            </div>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="3">
+            <div>
+              <div class="auction-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg></div>
+              <h3>AI / ML Engineering</h3>
+              <p><strong>Stack:</strong> OpenAI / Anthropic (BAA where required), in-house fine-tuned models, vector DBs (pgvector, Pinecone, Weaviate), Whisper transcription, AWS Textract OCR, evaluation pipelines (Langfuse).<br><strong>Production reference:</strong> 6 AI capabilities embedded in the AI Home Care SaaS (document intelligence, voice-to-text, risk detection, predictive ops, anomaly detection, summarisation).</p>
+            </div>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="4">
+            <div>
+              <div class="auction-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+              <h3>SaaS Architecture</h3>
+              <p><strong>Specialty:</strong> Multi-tenant data isolation (schema-per-tenant or shared with RLS), subscription billing engines, real-time event processing (WebSocket), RBAC, multi-language / multi-currency.<br><strong>Production reference:</strong> DiNePa (4 isolated portals, 80+ concurrent suppliers, 5+ years live).</p>
+            </div>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="5">
+            <div>
+              <div class="auction-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+              <h3>DevOps &amp; SRE</h3>
+              <p><strong>Stack:</strong> AWS, DigitalOcean, on-prem intranet (for central-bank engagements). Terraform, GitHub Actions, Docker, Kubernetes when justified, Prometheus + Grafana, PagerDuty, runbook-driven on-call.<br><strong>Production reference:</strong> DiNePa 99.4% uptime over 5+ years; NRB isolated intranet deployment.</p>
+            </div>
+          </div>
+
+          <div class="auction-card" data-reveal data-reveal-delay="6">
+            <div>
+              <div class="auction-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+              <h3>Quality Engineering &amp; Compliance</h3>
+              <p><strong>Practice:</strong> Test automation (Jest, Vitest, Playwright, Cypress), CI-blocking suites, real-device mobile testing, compliance audit prep (HIPAA, EVV, GDPR, SOC 2-aligned), security review on every release.<br><strong>Production reference:</strong> Central-bank-grade audit readiness on NRB; healthcare-grade compliance design on the AI Home Care SaaS.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Sixteen Years milestone — dramatic trust-building moment -->
     <section class="about-milestone" aria-labelledby="about-milestone-title">
       <div class="about-milestone__aurora" aria-hidden="true"></div>
@@ -670,6 +731,151 @@
         </div>
       </div>
     </section>
+
+    <!-- What clients say — 2 embedded testimonials -->
+    <section class="testimonials-container testimonials-section">
+      <div class="container-fluid">
+        <div class="testimonials-section__head">
+          <span class="testimonials-section__eyebrow" data-reveal>IN THEIR WORDS</span>
+          <h2 data-reveal data-reveal-delay="1">What it&rsquo;s like to work with us.</h2>
+          <p class="testimonials-section__lead" data-reveal data-reveal-delay="2">Two of many &mdash; read the rest on our <a href="testimonial-all.html">client stories page</a>, or verify them independently on <a href="https://www.capterra.com/p/130933/E-Multitech-Auction/" target="_blank" rel="noopener noreferrer">Capterra</a>.</p>
+        </div>
+        <div class="testimonials testimonials-grid">
+
+          <article class="testimonial-card" data-reveal data-reveal-delay="1">
+            <div class="testimonial-card__rating" aria-label="Rated 5 out of 5">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+            </div>
+            <svg class="testimonial-card__glyph" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17v6.66h6.83v-6.66H5.5C5.5 9.42 6.92 8 8.67 8L7.17 6zm12 0A5.17 5.17 0 0 0 14 11.17v6.66h6.83v-6.66H17.5C17.5 9.42 18.92 8 20.67 8L19.17 6z"/></svg>
+            <blockquote class="testimonial-card__quote">
+              "Excellent Work. Quality, awesome and fully knowledgeable Team. Always like to work with them. Communication is very good with E-Multitech Solution and they always understand what i need. I just need to give a word and they understand it quickly and bring all my concepts on real working software in front of me. I am very much impressed with there art of working."
+            </blockquote>
+            <footer class="testimonial-card__attrib">
+              <div class="testimonial-card__avatar">
+                <picture data-built><source srcset="images/bob-brick.webp" type="image/webp"><img src="images/bob-brick.jpg" alt="Bob Brick" loading="lazy" width="179" height="180" decoding="async"></picture>
+              </div>
+              <div class="testimonial-card__person">
+                <div class="testimonial-card__name">Bob Brick</div>
+                <div class="testimonial-card__role">Miami, USA</div>
+              </div>
+              <span class="testimonial-card__chip" aria-hidden="true">&#127482;&#127480;</span>
+            </footer>
+          </article>
+
+          <article class="testimonial-card" data-reveal data-reveal-delay="2">
+            <div class="testimonial-card__rating" aria-label="Rated 5 out of 5">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+            </div>
+            <svg class="testimonial-card__glyph" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17v6.66h6.83v-6.66H5.5C5.5 9.42 6.92 8 8.67 8L7.17 6zm12 0A5.17 5.17 0 0 0 14 11.17v6.66h6.83v-6.66H17.5C17.5 9.42 18.92 8 20.67 8L19.17 6z"/></svg>
+            <blockquote class="testimonial-card__quote">
+              "Great experience working with these guys. Can highly recommend. Great software and a great team to work with. They were happy to work with my designs and to accommodate changes as and when. They are always available when needed to customize my site to my requirements and answer any technical questions."
+            </blockquote>
+            <footer class="testimonial-card__attrib">
+              <div class="testimonial-card__avatar">
+                <picture data-built><source srcset="images/simon_grady.webp" type="image/webp"><img src="images/simon_grady.jpg" alt="Simon Grady" loading="lazy" width="450" height="450" decoding="async"></picture>
+              </div>
+              <div class="testimonial-card__person">
+                <div class="testimonial-card__name">Simon Grady</div>
+                <div class="testimonial-card__role">United Kingdom</div>
+              </div>
+              <span class="testimonial-card__chip" aria-hidden="true">&#127468;&#127463;</span>
+            </footer>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Company FAQ — answer-engine + SEO friendly -->
+    <section class="pillar-section pillar-section--alt" aria-labelledby="about-faq-title">
+      <div class="container">
+        <header class="pillar-section__head" data-reveal>
+          <p class="pillar-section__eyebrow">QUESTIONS</p>
+          <h2 id="about-faq-title">About E Multitech Solution, frequently asked.</h2>
+          <p class="pillar-section__lead">The questions prospective clients ask us most &mdash; answered straight.</p>
+        </header>
+        <div class="pillar-faq" data-reveal data-reveal-delay="1">
+          <details>
+            <summary>What does E Multitech Solution do?</summary>
+            <p>We&rsquo;re a founder-led software engineering company, building production software since October 2010. Our work spans custom software, SaaS product development, AI/ML, mobile apps, DevOps &amp; cloud, and end-to-end product engineering &mdash; 70+ platforms shipped for clients across 108 countries.</p>
+          </details>
+          <details>
+            <summary>Where is E Multitech Solution based?</summary>
+            <p>Our engineering team is in-house in Kathmandu, Nepal, registered as E Multitech Solution Pvt. Ltd. since October 2010. We also have an Asia-Pacific marketing partner, Santosh Bhattarai, based in Melbourne, Australia, for local APAC client coverage.</p>
+          </details>
+          <details>
+            <summary>How long have you been in business?</summary>
+            <p>Since October 2010 &mdash; over 16 years of continuous production software delivery. That tenure is the reason our reference deployments (Nepal Rastra Bank, DiNePa) are still live in year five.</p>
+          </details>
+          <details>
+            <summary>Who are some of your clients?</summary>
+            <p>Nepal Rastra Bank (the country&rsquo;s central bank), DiNePa (European enterprise procurement SaaS), Upkeep.pro (a service-booking marketplace at 500K+ daily bookings), and auction operators across the US, UK, EU, Singapore, and Australia. Our auction platform holds a 4.8&#9733; rating on Capterra across 25 verified reviews.</p>
+          </details>
+          <details>
+            <summary>Do you work with international clients?</summary>
+            <p>Yes. We&rsquo;ve served clients in 108 countries, with active production deployments across the US, UK, EU, Australia, and Asia. All work is in English, and our two-timezone setup (Kathmandu + Melbourne) gives most regions same-business-day coverage.</p>
+          </details>
+          <details>
+            <summary>Do you use subcontractors or freelancers?</summary>
+            <p>No. Every line of your code is written by our in-house team in Kathmandu &mdash; no hidden freelancer pool, no offshore handoff, no quality roulette between sprints.</p>
+          </details>
+          <details>
+            <summary>Will I work with the same engineers throughout the project?</summary>
+            <p>Yes. The engineer you meet in discovery is the engineer who ships your code &mdash; no bait-and-switch onto juniors after the contract signs. The founder, Roshan Subedi, personally reviews every architecture engagement.</p>
+          </details>
+          <details>
+            <summary>Do you sign NDAs and BAAs?</summary>
+            <p>An NDA is available on request before discovery. For HIPAA healthcare engagements, a Business Associate Agreement (BAA) is available. Standard MSA and SOW templates can be shared before our first call.</p>
+          </details>
+          <details>
+            <summary>Are you HIPAA and GDPR compliant?</summary>
+            <p>We architect for compliance from day one rather than bolting it on. Our builds are HIPAA-architected and GDPR-aligned, with central-bank-grade audit experience (Nepal Rastra Bank). SOC 2 is on our 2026 roadmap. See our <a href="security.html">Security &amp; Compliance</a> page for detail.</p>
+          </details>
+          <details>
+            <summary>What are your engagement and pricing models?</summary>
+            <p>Fixed-price discovery sprint, fixed-price MVP build, and time-and-materials retainer post-launch &mdash; pick the model that fits your stage. We send a ballpark range on the first call and a firm quote after a 30-minute discovery session. No hidden fees, no surprise change orders.</p>
+          </details>
+          <details>
+            <summary>How quickly will you respond if I get in touch?</summary>
+            <p>Within 48 hours &mdash; and your first call is with an engineer, not a sales rep. No call-center, no qualification quiz, no demo deck before a real conversation.</p>
+          </details>
+          <details>
+            <summary>Can you take over an existing or troubled project?</summary>
+            <p>Yes &mdash; it&rsquo;s one of our most common engagements. We audit the existing codebase, write a remediation plan, and either keep it running or rebuild the problem pieces. We&rsquo;ve done this for clients whose original team disappeared or whose platform stopped scaling.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQPage structured data (hand-maintained in body so the SEO build never overwrites it) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What does E Multitech Solution do?","acceptedAnswer":{"@type":"Answer","text":"E Multitech Solution is a founder-led software engineering company building production software since October 2010. Work spans custom software, SaaS product development, AI and ML, mobile apps, DevOps and cloud, and end-to-end product engineering. 70+ platforms shipped for clients across 108 countries."}},
+        {"@type":"Question","name":"Where is E Multitech Solution based?","acceptedAnswer":{"@type":"Answer","text":"The in-house engineering team is in Kathmandu, Nepal, registered as E Multitech Solution Pvt. Ltd. since October 2010. There is also an Asia-Pacific marketing partner based in Melbourne, Australia for local APAC client coverage."}},
+        {"@type":"Question","name":"How long has E Multitech Solution been in business?","acceptedAnswer":{"@type":"Answer","text":"Since October 2010, more than 16 years of continuous production software delivery. Reference deployments for Nepal Rastra Bank and DiNePa are still live in year five."}},
+        {"@type":"Question","name":"Who are some of E Multitech Solution clients?","acceptedAnswer":{"@type":"Answer","text":"Nepal Rastra Bank (the country central bank), DiNePa (European enterprise procurement SaaS), and Upkeep.pro (a service-booking marketplace at 500K-plus daily bookings), plus auction operators across the US, UK, EU, Singapore and Australia. The auction platform holds a 4.8-star rating on Capterra across 25 verified reviews."}},
+        {"@type":"Question","name":"Does E Multitech Solution work with international clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. The company has served clients in 108 countries, with active production deployments across the US, UK, EU, Australia and Asia. All work is in English, and a two-timezone setup across Kathmandu and Melbourne gives most regions same-business-day coverage."}},
+        {"@type":"Question","name":"Do you use subcontractors or freelancers?","acceptedAnswer":{"@type":"Answer","text":"No. Every line of code is written by the in-house team in Kathmandu. No hidden freelancer pool, no offshore handoff."}},
+        {"@type":"Question","name":"Will I work with the same engineers throughout the project?","acceptedAnswer":{"@type":"Answer","text":"Yes. The engineer you meet in discovery is the engineer who ships your code, with no bait-and-switch onto juniors after the contract signs. Founder Roshan Subedi personally reviews every architecture engagement."}},
+        {"@type":"Question","name":"Do you sign NDAs and BAAs?","acceptedAnswer":{"@type":"Answer","text":"An NDA is available on request before discovery. For HIPAA healthcare engagements a Business Associate Agreement is available. Standard MSA and SOW templates can be shared before the first call."}},
+        {"@type":"Question","name":"Are you HIPAA and GDPR compliant?","acceptedAnswer":{"@type":"Answer","text":"Compliance is designed into the architecture from day one rather than bolted on afterward. Builds are HIPAA-architected and GDPR-aligned, with central-bank-grade audit experience for Nepal Rastra Bank. SOC 2 is on the 2026 roadmap."}},
+        {"@type":"Question","name":"What are your engagement and pricing models?","acceptedAnswer":{"@type":"Answer","text":"Fixed-price discovery sprint, fixed-price MVP build, and time-and-materials retainer post-launch. A ballpark range is shared on the first call and a firm quote after a 30-minute discovery session."}},
+        {"@type":"Question","name":"How quickly will E Multitech Solution respond to an enquiry?","acceptedAnswer":{"@type":"Answer","text":"Within 48 hours, and the first call is with an engineer rather than a sales rep. No call-center, no qualification quiz, no demo deck before a real conversation."}},
+        {"@type":"Question","name":"Can you take over an existing or troubled project?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is one of the most common engagements. The team audits the existing codebase, writes a remediation plan, and either keeps it running or rebuilds the problem pieces."}}
+      ]
+    }
+    </script>
 
     <!-- Elite CTA -->
     <section class="elite-cta" aria-labelledby="elite-cta-title">
